@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>022-爬虫基础 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="Jackiezz, Jackiezz's Blog">
+  
+  <meta name="description" content="爬虫###　爬虫基础 1. 什么是网络爬虫 简介   12306抢票, 网站头票, 短信轰炸   Robots协议:  网络爬虫排除标准: 网站通过Robots协议告诉搜索引擎哪些页面不能抓取, 哪些页面可以抓取    2. 通用爬虫和聚焦爬虫1) 通用爬虫 简介  搜索引擎的抓取系统, 互联网 –&amp;gt; 本地 –&amp;gt; 形成内容镜像 (baidu, google)   抓取流程  抓取网页">
+<meta property="og:type" content="article">
+<meta property="og:title" content="022-爬虫基础">
+<meta property="og:url" content="https://www.jackiezz.com/2019/01/23/022-爬虫基础/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="爬虫###　爬虫基础 1. 什么是网络爬虫 简介   12306抢票, 网站头票, 短信轰炸   Robots协议:  网络爬虫排除标准: 网站通过Robots协议告诉搜索引擎哪些页面不能抓取, 哪些页面可以抓取    2. 通用爬虫和聚焦爬虫1) 通用爬虫 简介  搜索引擎的抓取系统, 互联网 –&amp;gt; 本地 –&amp;gt; 形成内容镜像 (baidu, google)   抓取流程  抓取网页">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-02-11T08:55:35.834Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="022-爬虫基础">
+<meta name="twitter:description" content="爬虫###　爬虫基础 1. 什么是网络爬虫 简介   12306抢票, 网站头票, 短信轰炸   Robots协议:  网络爬虫排除标准: 网站通过Robots协议告诉搜索引擎哪些页面不能抓取, 哪些页面可以抓取    2. 通用爬虫和聚焦爬虫1) 通用爬虫 简介  搜索引擎的抓取系统, 互联网 –&amp;gt; 本地 –&amp;gt; 形成内容镜像 (baidu, google)   抓取流程  抓取网页">
+  
+  
+    <link rel="icon" href="images/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">Jackiezz&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a href="/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        Jackiezz&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        Jackiezz的python之路
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="MinHow" target="_blank" href="//minhow.com">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/wongminho">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" href="//weibo.com/WongMinHo">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                        <a title="Twitter" target="_blank" href="//twitter.com/huangminhow">
+                            <i class="fa fa-twitter fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-022-爬虫基础" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      022-爬虫基础
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2019-01-23
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h1 id="爬虫"><a href="#爬虫" class="headerlink" title="爬虫"></a>爬虫</h1><p>###　爬虫基础</p>
+<h3 id="1-什么是网络爬虫"><a href="#1-什么是网络爬虫" class="headerlink" title="1. 什么是网络爬虫"></a>1. 什么是网络爬虫</h3><ul>
+<li><p>简介</p>
+<blockquote>
+<p> 12306抢票, 网站头票, 短信轰炸</p>
+</blockquote>
+</li>
+<li><p>Robots协议:</p>
+<blockquote>
+<p>网络爬虫排除标准: 网站通过Robots协议告诉搜索引擎哪些页面不能抓取, 哪些页面可以抓取</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="2-通用爬虫和聚焦爬虫"><a href="#2-通用爬虫和聚焦爬虫" class="headerlink" title="2. 通用爬虫和聚焦爬虫"></a>2. 通用爬虫和聚焦爬虫</h3><h4 id="1-通用爬虫"><a href="#1-通用爬虫" class="headerlink" title="1) 通用爬虫"></a>1) 通用爬虫</h4><ul>
+<li><p>简介</p>
+<ul>
+<li>搜索引擎的抓取系统, 互联网 –&gt; 本地 –&gt; 形成内容镜像 (baidu, google)</li>
+</ul>
+</li>
+<li><p>抓取流程</p>
+<ol>
+<li>抓取网页 :  start –&gt; 初始URL –&gt; 获取网页 –&gt; 进取新的URL放入URL队列 –&gt; 循环 –&gt; end</li>
+<li>数据存储 :  将HTML内容存入数据库, 如果网页内容大量重复可能不用抓取</li>
+<li>预处理 :  提取文字, 中文分词, 消除噪音等</li>
+<li>提供检索服务,网站排名</li>
+</ol>
+</li>
+</ul>
+<h4 id="2-聚焦爬虫"><a href="#2-聚焦爬虫" class="headerlink" title="2) 聚焦爬虫"></a>2) 聚焦爬虫</h4><ul>
+<li><p>简介</p>
+<ul>
+<li>在网页抓取时对内容进行处理筛选, 尽量保证只抓取需求相关的网页信息 (优于通用爬虫)</li>
+</ul>
+</li>
+<li><p>抓取流程</p>
+</li>
+</ul>
+<h3 id="3-HTTP和HTTPS"><a href="#3-HTTP和HTTPS" class="headerlink" title="3. HTTP和HTTPS"></a>3. HTTP和HTTPS</h3><ul>
+<li><p>简介</p>
+<blockquote>
+<p>HTTP协议: 发布和接收HTML页面的方法                端口: 80</p>
+<p>HTTPS协议: HTTP+SSL 在传输层保障数据传输安全        端口: 443</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="1-HTTP通信"><a href="#1-HTTP通信" class="headerlink" title="1) HTTP通信"></a>1) HTTP通信</h4><ul>
+<li><p>客户端请求信息</p>
+<p>请求内容 : 请求行, 请求头, 空行, 请求数据</p>
+<p>请求行 : 请求方法 URL 协议版本 \r\n        <code>GET https://www.baidu.com/ HTTP/1.1</code></p>
+<p>请求头 : 头部字段名 : 值  –&gt; 请求头        <code>Host: www.baidu.com</code></p>
+<p>…                                    <code>Cookie: UID=04A7B:FG=1; SID=34EA74A</code></p>
+<p>\r\n\r\n                                <code>\r\n</code></p>
+<p>请求体                                <code>content</code></p>
+</li>
+<li><p>请求方法</p>
+<p>| 序号 | 方法    | 描述                                                         |<br>| —- | ——- | ———————————————————— |<br>| 1    | GET     | 请求指定的页面信息，并返回实体主体。                         |<br>| 2    | HEAD    | 类似于get请求，只不过返回的响应中没有具体的内容，用于获取报头 |<br>| 3    | POST    | 向指定资源提交数据进行处理请求（例如提交表单或者上传文件），数据被包含在请求体中。POST请求可能会导致新的资源的建立和/或已有资源的修改。 |<br>| 4    | PUT     | 从客户端向服务器传送的数据取代指定的文档的内容。             |<br>| 5    | DELETE  | 请求服务器删除指定的页面。                                   |<br>| 6    | CONNECT | HTTP/1.1协议中预留给能够将连接改为管道方式的代理服务器。     |<br>| 7    | OPTIONS | 允许客户端查看服务器的性能。                                 |<br>| 8    | TRACE   | 回显服务器收到的请求，主要用于测试或诊断。                   |</p>
+<ul>
+<li><p>GET请求与POST请求</p>
+<p>GET从服务器获取数据, POST请求向服务器传送数据</p>
+<p>GET请求参数显示在URL中, POST请求参数在请求体中</p>
+</li>
+</ul>
+</li>
+<li><p>常用请求报头</p>
+<ul>
+<li><p>Host请求报头 : 指定web名称和端口            <code>Host: www.baidu.com</code>  # 默认80</p>
+</li>
+<li><p>Connection : 链接类型                      <code>Connection : keep-alive</code></p>
+<blockquote>
+<p>Server支持keep-alive回复Connection : keep-alive响应, 不关闭连接, 直到一方先关闭</p>
+<p>Server不支持keep-alibe回复Connection : close 响应, 关闭连接</p>
+</blockquote>
+</li>
+<li><p>Upgrade-Insecure-Requests : 升级为HTTPS, HTTPS承载的页面不能出现HTTP请求</p>
+</li>
+<li><p>User-Agent : 浏览器名称</p>
+</li>
+<li><p>Accept : 表示客户端接收个么样的数据        </p>
+<ul>
+<li><code>Accept: */*</code>            表示什么都可以接收</li>
+<li><code>Accept: image/gif</code>        表示客户端接收Gif图像格式资源</li>
+<li><code>Accept: text/html</code>        表示主客户端支持html文本</li>
+<li><code>Accept: application/xhtml+xml</code>   表示支持xhtml和xml格式的资源</li>
+<li><code>Accept: text/html, application/xhtml+xml;q=0.9, image/*;q=0.8</code><ul>
+<li>q表示权重 0 &lt;= q &lt;= 1, q越大,越倾向于获得;前面的值</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Referer: <code>https://translate.google.cn/</code> 表示页面跳转处</p>
+</li>
+<li><p>Accept-Encoding : 文件编码格式</p>
+</li>
+<li><p>Accept-Language : 表示页面语言为us,zh-cn</p>
+</li>
+<li><p>Accept-Charset : 字符编码 utf-8等</p>
+</li>
+<li><p>Cookie : 在浏览器中寄存的小型数据体, 记载服务器相关用户信息</p>
+</li>
+<li><p>Content-Type : POST请求体中内容类型  eg: Content-Type = Text/XML; charset=gbk2312</p>
+</li>
+</ul>
+</li>
+</ul>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年02月11日 16:55</p>
+        <p>原始链接： <a class="post-url" href="/2019/01/23/022-爬虫基础/" title="022-爬虫基础">https://www.jackiezz.com/2019/01/23/022-爬虫基础/</a></p>
+        <footer>
+            <a href="https://www.jackiezz.com">
+                <img src="/images/logo.png" alt="John Doe">
+                John Doe
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://www.jackiezz.com/2019/01/23/022-爬虫基础/&title=《022-爬虫基础》 — Hexo&pic=https://www.jackiezz.comimages/logo.png" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.jackiezz.com/2019/01/23/022-爬虫基础/&title=《022-爬虫基础》 — Hexo&source=" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://www.jackiezz.com/2019/01/23/022-爬虫基础/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《022-爬虫基础》 — Hexo&url=https://www.jackiezz.com/2019/01/23/022-爬虫基础/&via=https://www.jackiezz.com" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://www.jackiezz.com/2019/01/23/022-爬虫基础/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://www.jackiezz.com/2019/01/23/022-爬虫基础/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#爬虫"><span class="post-toc-text">爬虫</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-什么是网络爬虫"><span class="post-toc-text">1. 什么是网络爬虫</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-通用爬虫和聚焦爬虫"><span class="post-toc-text">2. 通用爬虫和聚焦爬虫</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-通用爬虫"><span class="post-toc-text">1) 通用爬虫</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-聚焦爬虫"><span class="post-toc-text">2) 聚焦爬虫</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-HTTP和HTTPS"><span class="post-toc-text">3. HTTP和HTTPS</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-HTTP通信"><span class="post-toc-text">1) HTTP通信</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2019/02/11/016-git/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          (no title)
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2019/01/12/021-Flask项目-新经资讯/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">021.Flask项目_新经资讯</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2019 John Doe<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://www.jackiezz.com",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/Bug/">Bug</a><a class="category-link" href="/categories/Linux/">Linux</a><a class="category-link" href="/categories/Markdown/">Markdown</a><a class="category-link" href="/categories/Python/">Python</a><a class="category-link" href="/categories/Tool/">Tool</a><a class="category-link" href="/categories/博客/">博客</a><a class="category-link" href="/categories/操作系统/">操作系统</a><a class="category-link" href="/categories/正则/">正则</a><a class="category-link" href="/categories/编辑器/">编辑器</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/bug/" style="font-size: 20px;">bug</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/vi/" style="font-size: 10px;">vi</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a href="/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/bug/" style="font-size: 20px;">bug</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/vi/" style="font-size: 10px;">vi</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>

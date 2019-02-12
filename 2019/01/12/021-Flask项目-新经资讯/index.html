@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>021.Flask项目_新经资讯 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="Jackiezz, Jackiezz's Blog">
+  
+  <meta name="description" content="Flask项目_新经产资讯1.项目开发准备1) 项目分析 项目简介  一款新闻展示的Web项目，主要为用户提供最新的金融资讯、数据 以抓取其他网站数据和用户发布作为新闻的主要来源 基于 Flask 框架，以 前后端不分离 的形式实现具体业务逻辑   技术实现  基于 Python 3.0 + Flask 框架实现 数据存储使用 Redis + MySQL 实现 第三方扩展： 七牛云：文件存储平台">
+<meta property="og:type" content="article">
+<meta property="og:title" content="021.Flask项目_新经资讯">
+<meta property="og:url" content="https://www.jackiezz.com/2019/01/12/021-Flask项目-新经资讯/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Flask项目_新经产资讯1.项目开发准备1) 项目分析 项目简介  一款新闻展示的Web项目，主要为用户提供最新的金融资讯、数据 以抓取其他网站数据和用户发布作为新闻的主要来源 基于 Flask 框架，以 前后端不分离 的形式实现具体业务逻辑   技术实现  基于 Python 3.0 + Flask 框架实现 数据存储使用 Redis + MySQL 实现 第三方扩展： 七牛云：文件存储平台">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://www.jackiezz.com/2019/01/12/021-Flask项目-新经资讯/021-Flask项目-新经资讯/1547223486723.png">
+<meta property="og:image" content="https://www.jackiezz.com/2019/01/12/021-Flask项目-新经资讯/021-Flask项目-新经资讯/1547223860015.png">
+<meta property="og:image" content="https://www.jackiezz.com/2019/01/12/021-Flask项目-新经资讯/021-Flask项目-新经资讯/1547223987062.png">
+<meta property="og:image" content="https://www.jackiezz.com/2019/01/12/021-Flask项目-新经资讯/021-Flask项目-新经资讯/1547224215814.png">
+<meta property="og:image" content="https://www.jackiezz.com/2019/01/12/021-Flask项目-新经资讯/021-Flask项目-新经资讯/1547224295409.png">
+<meta property="og:image" content="https://www.jackiezz.com/2019/01/12/021-Flask项目-新经资讯/021-Flask项目-新经资讯/1547224319228.png">
+<meta property="og:image" content="https://www.jackiezz.com/2019/01/12/021-Flask项目-新经资讯/021-Flask项目-新经资讯/1547268274177.png">
+<meta property="og:image" content="https://www.jackiezz.com/2019/01/12/021-Flask项目-新经资讯/021-Flask项目-新经资讯/1547437386994.png">
+<meta property="og:image" content="https://www.jackiezz.com/assets/未设置csrf_token.png">
+<meta property="og:image" content="https://www.jackiezz.com/assets/手机验证码发送成功.png">
+<meta property="og:updated_time" content="2019-02-11T08:55:35.834Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="021.Flask项目_新经资讯">
+<meta name="twitter:description" content="Flask项目_新经产资讯1.项目开发准备1) 项目分析 项目简介  一款新闻展示的Web项目，主要为用户提供最新的金融资讯、数据 以抓取其他网站数据和用户发布作为新闻的主要来源 基于 Flask 框架，以 前后端不分离 的形式实现具体业务逻辑   技术实现  基于 Python 3.0 + Flask 框架实现 数据存储使用 Redis + MySQL 实现 第三方扩展： 七牛云：文件存储平台">
+<meta name="twitter:image" content="https://www.jackiezz.com/2019/01/12/021-Flask项目-新经资讯/021-Flask项目-新经资讯/1547223486723.png">
+  
+  
+    <link rel="icon" href="images/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">Jackiezz&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a href="/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        Jackiezz&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        Jackiezz的python之路
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="MinHow" target="_blank" href="//minhow.com">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/wongminho">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" href="//weibo.com/WongMinHo">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                        <a title="Twitter" target="_blank" href="//twitter.com/huangminhow">
+                            <i class="fa fa-twitter fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-021-Flask项目-新经资讯" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      021.Flask项目_新经资讯
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2019-01-12
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h1 id="Flask项目-新经产资讯"><a href="#Flask项目-新经产资讯" class="headerlink" title="Flask项目_新经产资讯"></a>Flask项目_新经产资讯</h1><h3 id="1-项目开发准备"><a href="#1-项目开发准备" class="headerlink" title="1.项目开发准备"></a>1.项目开发准备</h3><h4 id="1-项目分析"><a href="#1-项目分析" class="headerlink" title="1) 项目分析"></a>1) 项目分析</h4><ul>
+<li><p>项目简介</p>
+<ul>
+<li>一款新闻展示的Web项目，主要为用户提供最新的金融资讯、数据</li>
+<li>以抓取其他网站数据和用户发布作为新闻的主要来源</li>
+<li>基于 Flask 框架，以 <strong>前后端不分离</strong> 的形式实现具体业务逻辑</li>
+</ul>
+</li>
+<li><p>技术实现</p>
+<ul>
+<li>基于 Python 3.0 + Flask 框架实现</li>
+<li>数据存储使用 Redis + MySQL 实现</li>
+<li>第三方扩展：<ul>
+<li>七牛云：文件存储平台</li>
+<li>云通信：短信验证码平台</li>
+</ul>
+</li>
+<li>布署：基于ubuntu 16.04系统，使用 Gunicorn + Nginx 进行布署</li>
+</ul>
+</li>
+<li><p>功能模块</p>
+<ul>
+<li>新闻模块<ul>
+<li>首页新闻列表</li>
+<li>新闻详情</li>
+</ul>
+</li>
+<li>用户模块<ul>
+<li>登录注册/个人信息修改</li>
+<li>新闻收藏/发布</li>
+</ul>
+</li>
+<li>后台管理</li>
+</ul>
+</li>
+<li><p>具体需求</p>
+</li>
+</ul>
+<ol>
+<li>首页<ul>
+<li>根据分类进行新闻列表展示</li>
+<li>上拉加载更多数据</li>
+<li>点击新窗口跳转到新闻详情页</li>
+<li>顶部显示用户登录信息，未登录显示登录/注册按钮</li>
+<li>右侧显示新闻点击排行</li>
+</ul>
+</li>
+<li>注册<ul>
+<li>用户账号为手机号</li>
+<li>图片验证码正确后才能发送短信验证码</li>
+<li>短信验证码每60秒发送一次</li>
+<li>条件出错时有相应的错误提示</li>
+</ul>
+</li>
+<li>登录<ul>
+<li>用手机号与密码登录</li>
+<li>错误时有相应的提示</li>
+</ul>
+</li>
+<li>新闻详情<ul>
+<li>新闻内容 html 数据展示</li>
+<li>用户点击收藏可以收藏当前新闻</li>
+<li>根据当前登录用户显示收藏状态</li>
+<li>用户可以评论该新闻</li>
+<li>其他用户可以回复某一条评论</li>
+<li>右侧显示新闻点击排行</li>
+<li>如果当前新闻由具体作者发布，右侧显示作者信息，并且可以关注作者</li>
+</ul>
+</li>
+<li>个人中心<ul>
+<li>显示个人头像、昵称(未设置时显示为用户手机号)</li>
+<li>提供我的关注、我的粉丝入口</li>
+<li>提供修改基本资料入口</li>
+<li>提供头像设置入口</li>
+<li>提供密码修改入口</li>
+<li>提供我的收藏入口</li>
+<li>提供新闻发布入口</li>
+<li>提供我发布的新闻的入口</li>
+</ul>
+</li>
+<li>个人信息修改<ul>
+<li>可以修改用户名</li>
+<li>可以修改个人头像</li>
+<li>登陆手机号不能修改</li>
+<li>上传新头像后页面立即显示新头像</li>
+</ul>
+</li>
+<li>我的关注<ul>
+<li>以分页的形式展示数据</li>
+<li>每页展示4个我关注的用户</li>
+<li>可以在当前页面进行取消关注</li>
+<li>点击关注用户的昵称跳转到用户信息页面</li>
+</ul>
+</li>
+<li>我的收藏<ul>
+<li>以分页的形式展示数据</li>
+<li>按收藏时间倒序排序</li>
+</ul>
+</li>
+<li>发布新闻<ul>
+<li>可以发布新闻</li>
+<li>可以将新闻页的图片上传到七牛云</li>
+<li>发布完新闻跳转到我的新闻列表页面</li>
+</ul>
+</li>
+<li>我发布的新闻<ul>
+<li>按照发布的时候先后顺序排序，最近新闻排在前面</li>
+<li>显示当前我发布新闻的新闻状态</li>
+<li>点击审核通过的新闻直接跳转到新闻详情页</li>
+<li>审核中的无法点击</li>
+<li>未审核通过的新闻可以重新发布</li>
+<li>点击审核失败的新闻跳转到新闻发布页面，并填充具体新闻内容</li>
+</ul>
+</li>
+<li>查看其他人用户页面<ul>
+<li>显示他人的头像、昵称、粉丝数</li>
+<li>可以点击关注和取消关注按钮进行关注操作</li>
+<li>展示他发布的新闻</li>
+<li>点击新闻在新窗口中打开展示新闻详情</li>
+</ul>
+</li>
+<li>退出<ul>
+<li>提供退出功能</li>
+</ul>
+</li>
+<li>后台-登录<ul>
+<li>提供后台登录页面</li>
+<li>如果当前用户已登录，进入到登录页面之后直接跳转到后台主页</li>
+</ul>
+</li>
+<li>后台-用户统计<ul>
+<li>登录到后台界面之后展示用户统计界面</li>
+<li>显示用户总人数</li>
+<li>展示当前月用户新增人数</li>
+<li>展示当前日新增数</li>
+</ul>
+</li>
+<li>后台-用户列表<ul>
+<li>按注册时间顺序排序用户列表</li>
+<li>显示用户注册时间</li>
+<li>显示用户上次登录时间</li>
+</ul>
+</li>
+<li>后台-新闻审核<ul>
+<li>展示待审核新闻内容</li>
+<li>点击进入新闻审核界面</li>
+<li>可以对新闻进行审核</li>
+<li>如果审核不通过，需要有拒绝原因</li>
+</ul>
+</li>
+<li>新闻版式编辑<ul>
+<li>进入默认展示所有新闻数据</li>
+<li>可以根据新闻标题搜索新闻</li>
+</ul>
+</li>
+<li>新闻分类管理<ul>
+<li>展示所有分类列表</li>
+<li>可以添加/修改分类</li>
+</ul>
+</li>
+</ol>
+<h4 id="2-项目框架搭建"><a href="#2-项目框架搭建" class="headerlink" title="2) 项目框架搭建"></a>2) 项目框架搭建</h4><ul>
+<li><p><strong>目标</strong>：</p>
+<ul>
+<li>使用 Pycharm 为项目设置 Git 版本控制</li>
+<li>完成项目基本配置</li>
+<li>抽取代码，熟悉项目目录结构</li>
+</ul>
+</li>
+<li><p><strong>远程提交</strong></p>
+<ul>
+<li><p>新建项目，虚拟环境选择python3版本，创建 <code>manage.py</code> 文件</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/index')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'index'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    app.run()</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><strong>Git管理源代码</strong></p>
+<ul>
+<li><p><strong>项目初始化</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 初始化git</span></span><br><span class="line"><span class="built_in">cd</span> [项目目录]</span><br><span class="line">git init</span><br><span class="line"><span class="comment"># 配置当前项目git提交信息(可省略此步，如不配置则使用全局配置)</span></span><br><span class="line">git config user.name XXX</span><br><span class="line">git config user.email XXX@xxx.com</span><br><span class="line"><span class="comment"># 添加忽略文件</span></span><br><span class="line">touch .gitignore</span><br><span class="line"><span class="comment"># 设置忽略文件内容(后续根据需要再添加)</span></span><br><span class="line">.idea</span><br><span class="line">*.py[cod]</span><br><span class="line"><span class="comment"># 添加所有文件到暂存区</span></span><br><span class="line">git add .</span><br><span class="line"><span class="comment"># 提交到本地仓库并填写注释</span></span><br><span class="line">git commit -m<span class="string">'第一次提交'</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>让 Pycharm 管理当前项目的 git</strong></p>
+<p><img src="021-Flask项目-新经资讯/1547223486723.png" alt="1547223486723"></p>
+</li>
+<li><p><strong>远程提交</strong></p>
+<blockquote>
+<p> 使用码云 <a href="https://gitee.com/" target="_blank" rel="noopener">https://gitee.com/</a> 作为在线 git 源代码仓库</p>
+</blockquote>
+<p><img src="021-Flask项目-新经资讯/1547223860015.png" alt="1547223860015"></p>
+</li>
+<li><p><strong>将已有项目上传到码云</strong>：</p>
+<ul>
+<li>方式一: 命令行</li>
+</ul>
+<p><img src="021-Flask项目-新经资讯/1547223987062.png" alt="1547223987062"></p>
+<ul>
+<li><p>方式二: Pycharm</p>
+<p><img src="021-Flask项目-新经资讯/1547224215814.png" alt="1547224215814"></p>
+<p><img src="021-Flask项目-新经资讯/1547224295409.png" alt="1547224295409"></p>
+<p><img src="021-Flask项目-新经资讯/1547224319228.png" alt="1547224319228"></p>
+</li>
+</ul>
+</li>
+<li><p>回滚代码</p>
+<ul>
+<li><p>回滚到上一版本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reset --hard HEAD~1</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看所有提交版本记录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reflog</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>回到指定版本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reset --hard 提交id</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>项目基本配置</p>
+<ul>
+<li><p>Config类</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Config</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="string">"""工程配置信息"""</span></span><br><span class="line">    DEBUG = <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line">app.config.from_object(Config)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>SQLAlchemy</p>
+<ul>
+<li>导入数据库扩展，并在配置中填写相关配置</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask_sqlalchemy <span class="keyword">import</span> SQLAlchemy</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Config</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="string">"""工程配置信息"""</span></span><br><span class="line">    DEBUG = <span class="keyword">True</span></span><br><span class="line">    <span class="comment"># 数据库的配置信息</span></span><br><span class="line">    SQLALCHEMY_DATABASE_URI = <span class="string">"mysql://root:mysql@127.0.0.1:3306/information"</span></span><br><span class="line">    SQLALCHEMY_TRACK_MODIFICATIONS = <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">app.config.from_object(Config)</span><br><span class="line">db = SQLAlchemy(app)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在终端创建数据库</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; create database information charset utf8;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>运行测试</p>
+</blockquote>
+</li>
+<li><p>Redis配置</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> redis</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Config</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="string">"""工程配置信息"""</span></span><br><span class="line">    ...</span><br><span class="line">    <span class="comment"># redis配置</span></span><br><span class="line">    REDIS_HOST = <span class="string">"127.0.0.1"</span></span><br><span class="line">    REDIS_PORT = <span class="number">6379</span></span><br><span class="line"></span><br><span class="line">app.config.from_object(Config)</span><br><span class="line">db = SQLAlchemy(app)</span><br><span class="line">redis_store = redis.StrictRedis(host=Config.REDIS_HOST, port=Config.REDIS_PORT)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>运行测试</p>
+</blockquote>
+</li>
+<li><p>CSRF</p>
+<ul>
+<li><p>包含请求体的请求都需要开启CSRF      </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask_wtf.csrf <span class="keyword">import</span> CSRFProtect</span><br><span class="line">...</span><br><span class="line">app.config.from_object(Config)</span><br><span class="line">...</span><br><span class="line">CSRFProtect(app)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>CSRFProtect只做验证工作，cookie中的 csrf_token 和表单中的 csrf_token 需要我们自己实现</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>Session</p>
+<ul>
+<li><p>利用 flask-session扩展，将 session 数据保存到 Redis 中</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask_session <span class="keyword">import</span> Session</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Config</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="string">"""工程配置信息"""</span></span><br><span class="line">    <span class="comment"># base64.b64encode(os.urandom(64)).decode()</span></span><br><span class="line">    SECRET_KEY = <span class="string">"EjpNVSNQTyGi1VvWECj9TvC/+kq3oujee2kTfQUs8yCM6xX9Yjq52v54g+HVoknA"</span></span><br><span class="line">    ...</span><br><span class="line">    <span class="comment"># flask_session的配置信息</span></span><br><span class="line">    SESSION_TYPE = <span class="string">"redis"</span>  <span class="comment"># 指定 session 保存到 redis 中</span></span><br><span class="line">    SESSION_USE_SIGNER = <span class="keyword">True</span>  <span class="comment"># 让 cookie 中的 session_id 被加密签名处理</span></span><br><span class="line">    SESSION_REDIS = redis.StrictRedis(host=REDIS_HOST, port=REDIS_PORT)  <span class="comment"># 使用 redis 的实例</span></span><br><span class="line">    PERMANENT_SESSION_LIFETIME = <span class="number">86400</span>  <span class="comment"># session 的有效期，单位是秒</span></span><br><span class="line"></span><br><span class="line">app.config.from_object(Config)</span><br><span class="line">...</span><br><span class="line">Session(app)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>运行测试</p>
+<p>文档地址：<a href="http://pythonhosted.org/Flask-Session/" target="_blank" rel="noopener">http://pythonhosted.org/Flask-Session/</a></p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>Flask-Script与数据库迁移扩展</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask_script <span class="keyword">import</span> Manager</span><br><span class="line"><span class="keyword">from</span> flask_migrate <span class="keyword">import</span> Migrate, MigrateCommand</span><br><span class="line">...</span><br><span class="line">manager = Manager(app)</span><br><span class="line">Migrate(app, db)</span><br><span class="line">manager.add_command(<span class="string">'db'</span>, MigrateCommand)</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    manager.run()</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>运行测试</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-代码抽取"><a href="#3-代码抽取" class="headerlink" title="3) 代码抽取"></a>3) 代码抽取</h4><ul>
+<li><p><strong>配置文件</strong></p>
+<ul>
+<li><p>在与 <code>manage.py</code> 同级目录下创建 <code>config.py</code> 文件，用作于项目的配置文件</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> redis</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Config</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="string">"""工程配置信息"""</span></span><br><span class="line">    SECRET_KEY = <span class="string">"EjpNVSNQTyGi1VvWECj9TvC/+kq3oujee2kTfQUs8yCM6xX9Yjq52v54g+HVoknA"</span></span><br><span class="line"></span><br><span class="line">    DEBUG = <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 数据库的配置信息</span></span><br><span class="line">    SQLALCHEMY_DATABASE_URI = <span class="string">"mysql://root:mysql@192.168.199.113:3306/information"</span></span><br><span class="line">    SQLALCHEMY_TRACK_MODIFICATIONS = <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># redis配置</span></span><br><span class="line">    REDIS_HOST = <span class="string">"127.0.0.1"</span></span><br><span class="line">    REDIS_PORT = <span class="number">6379</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># session 配置</span></span><br><span class="line">    SESSION_TYPE = <span class="string">"redis"</span>  <span class="comment"># 指定 session 保存到 redis 中</span></span><br><span class="line">    SESSION_USE_SIGNER = <span class="keyword">True</span>  <span class="comment"># 让 cookie 中的 session_id 被加密签名处理</span></span><br><span class="line">    SESSION_REDIS = redis.StrictRedis(host=REDIS_HOST, port=REDIS_PORT)  <span class="comment"># 使用 redis 的实例</span></span><br><span class="line">    PERMANENT_SESSION_LIFETIME = <span class="number">86400</span>  <span class="comment"># session 的有效期，单位是秒</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在 <code>manager.py</code> 中引入 <code>Config</code> 类，直接使用</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> config <span class="keyword">import</span> Config</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置</span></span><br><span class="line">app.config.from_object(Config)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>运行测试</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p><strong>业务逻辑独立</strong></p>
+<blockquote>
+<p>在整个项目文件夹中，除启动文件 <code>manage.py</code> 和配置文件 <code>config.py</code> 放在根目录，其他具体业务逻辑文件都放在一个单独的文件夹内，与 <code>manage.py</code> 同级</p>
+</blockquote>
+<ul>
+<li>创建 <code>info</code> Package，与 <code>manage.py</code> 同级</li>
+<li><p><code>manage.py</code> 只做最基本的启动工作，将 <code>app</code> 的创建操作移动到 <code>info</code> 的 <code>__init__.py</code> 文件中</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> redis</span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"><span class="keyword">from</span> flask_sqlalchemy <span class="keyword">import</span> SQLAlchemy</span><br><span class="line"><span class="keyword">from</span> flask_wtf.csrf <span class="keyword">import</span> CSRFProtect</span><br><span class="line"><span class="keyword">from</span> flask_session <span class="keyword">import</span> Session</span><br><span class="line"><span class="keyword">from</span> config <span class="keyword">import</span> Config</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置</span></span><br><span class="line">app.config.from_object(Config)</span><br><span class="line"><span class="comment"># 配置数据库</span></span><br><span class="line">db = SQLAlchemy(app)</span><br><span class="line"><span class="comment"># 配置redis</span></span><br><span class="line">redis_store = redis.StrictRedis(host=Config.REDIS_HOST, port=Config.REDIS_PORT)</span><br><span class="line"><span class="comment"># 开启csrf保护</span></span><br><span class="line">CSRFProtect(app)</span><br><span class="line"><span class="comment"># 设置session保存位置</span></span><br><span class="line">Session(app)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>manage.py</code> 的代码为</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask_script <span class="keyword">import</span> Manager</span><br><span class="line"><span class="keyword">from</span> flask_migrate <span class="keyword">import</span> Migrate, MigrateCommand</span><br><span class="line"><span class="keyword">from</span> info <span class="keyword">import</span> app, db</span><br><span class="line"></span><br><span class="line"><span class="comment"># Flask-script</span></span><br><span class="line">manager = Manager(app)</span><br><span class="line"><span class="comment"># 数据库迁移</span></span><br><span class="line">Migrate(app, db)</span><br><span class="line">manager.add_command(<span class="string">'db'</span>, MigrateCommand)</span><br><span class="line"><span class="meta">@app.route('/index')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'index'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    manager.run()</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>运行测试</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>项目多种配置(生产, 开发)</p>
+<blockquote>
+<p> 一个web程序在开发阶段可能与生产阶段所需要的配置信息可能不一样，所以为了实现此功能，可以给不同情况创建不同的配置类，比如开发阶段使用的配置类名为 <code>DevelopementConfig</code>，生产阶段使用的配置类名为 <code>ProdutionConfig</code></p>
+</blockquote>
+<ul>
+<li><p>修改 <code>config.py</code> 文件的配置文件如下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> redis</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Config</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="string">"""工程配置信息"""</span></span><br><span class="line"></span><br><span class="line">    SECRET_KEY = <span class="string">"EjpNVSNQTyGi1VvWECj9TvC/+kq3oujee2kTfQUs8yCM6xX9Yjq52v54g+HVoknA"</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 数据库的配置信息</span></span><br><span class="line">    SQLALCHEMY_DATABASE_URI = <span class="string">"mysql://root:root@192.168.199.113:3306/information"</span></span><br><span class="line">    SQLALCHEMY_TRACK_MODIFICATIONS = <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># redis配置</span></span><br><span class="line">    REDIS_HOST = <span class="string">"192.168.199.113"</span></span><br><span class="line">    REDIS_PORT = <span class="number">6379</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># flask_session的配置信息</span></span><br><span class="line">    SESSION_TYPE = <span class="string">"redis"</span>  <span class="comment"># 指定 session 保存到 redis 中</span></span><br><span class="line">    SESSION_USE_SIGNER = <span class="keyword">True</span>  <span class="comment"># 让 cookie 中的 session_id 被加密签名处理</span></span><br><span class="line">    SESSION_REDIS = redis.StrictRedis(host=REDIS_HOST, port=REDIS_PORT)  <span class="comment"># 使用 redis 的实例</span></span><br><span class="line">    PERMANENT_SESSION_LIFETIME = <span class="number">86400</span>  <span class="comment"># session 的有效期，单位是秒</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DevelopmentConfig</span><span class="params">(Config)</span>:</span></span><br><span class="line">    <span class="string">"""开发模式下的配置"""</span></span><br><span class="line">    DEBUG = <span class="keyword">True</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ProductionConfig</span><span class="params">(Config)</span>:</span></span><br><span class="line">    <span class="string">"""生产模式下的配置"""</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p> 接下来思考如何能才更快速的针对不同的布署环境去使用不同的配置</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>工厂模式创建应用实例</p>
+<blockquote>
+<p> 要在不同环境下去使用不同的配置，那么可以在 <code>manage.py</code> 文件中给 <code>info</code> 包传入不同的配置信息，让 ihome 去根据传入指定配置去创建 <code>app</code>，所以可以在 <code>info</code> 的 <code>__init__.py</code> 文件中添加一个工厂方法，根据传入的配置不同创建其对应的应用实例</p>
+</blockquote>
+<ul>
+<li><p>在 <code>config.py</code> 文件中添加以下代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 定义配置字典</span></span><br><span class="line">config = &#123;</span><br><span class="line">    <span class="string">"development"</span>: DevelopementConfig,</span><br><span class="line">    <span class="string">"production"</span>: ProductionConfig</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改 <code>info</code> 文件夹下 <code>__init__.py</code>，添加 <code>create_app</code> 的工厂方法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_app</span><span class="params">(config_name)</span>:</span></span><br><span class="line">    <span class="string">"""通过传入不同的配置名字，初始化其对应配置的应用实例"""</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改 <code>manage.py</code> 文件中的代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> info <span class="keyword">import</span> create_app, db</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建 app，并传入配置模式：development / production</span></span><br><span class="line">app = create_app(<span class="string">'development'</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将 <code>__init__.py</code> 文件中创建 app 实例的方法移动到 <code>create_app</code> 方法中</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> config <span class="keyword">import</span> config</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 数据库</span></span><br><span class="line">db = SQLAlchemy()</span><br><span class="line">redis_store = <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_app</span><span class="params">(config_name)</span>:</span></span><br><span class="line">    <span class="string">"""通过传入不同的配置名字，初始化其对应配置的应用实例"""</span></span><br><span class="line"></span><br><span class="line">    app = Flask(__name__)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 配置</span></span><br><span class="line">    app.config.from_object(config[config_name])</span><br><span class="line">    <span class="comment"># 配置数据库</span></span><br><span class="line">    db.init_app(app)</span><br><span class="line">    <span class="comment"># 配置redis</span></span><br><span class="line">    <span class="keyword">global</span> redis_store</span><br><span class="line">    redis_store = redis.StrictRedis(host=config[config_name].REDIS_HOST, port=config[config_name].REDIS_PORT)</span><br><span class="line">    <span class="comment"># 开启csrf保护</span></span><br><span class="line">    CSRFProtect(app)</span><br><span class="line">    <span class="comment"># 设置session保存位置</span></span><br><span class="line">    Session(app)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> app</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="4-日志"><a href="#4-日志" class="headerlink" title="4) 日志"></a>4) 日志</h4><ul>
+<li><p>概念</p>
+<ul>
+<li>什么是日志<ul>
+<li>日志是一种可以追踪某些软件运行时所发生事件的方法</li>
+<li>软件开发人员可以向他们的代码中调用日志记录相关的方法来表明发生了某些事情</li>
+</ul>
+</li>
+<li>日志的作用<ul>
+<li>程序调试</li>
+<li>了解软件程序运行情况，是否正常</li>
+<li>软件程序运行故障分析与问题定位</li>
+<li>如果应用的日志信息足够详细和丰富，还可以用来做用户行为分析</li>
+</ul>
+</li>
+<li>日志的等级<ul>
+<li>FATAL/CRITICAL = 重大的，危险的</li>
+<li>ERROR = 错误</li>
+<li>WARNING = 警告</li>
+<li>INFO = 信息</li>
+<li>DEBUG = 调试</li>
+<li>NOTSET = 没有设置</li>
+</ul>
+</li>
+<li>日志功能的实现<ul>
+<li>Python 自身提供了一个用于记录日志的标准库模块：logging。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>logging 模块</p>
+<blockquote>
+<p>logging 是 <strong>Python 的一个标准库模块</strong></p>
+<ul>
+<li>开发: 使用 DEBUG 或 INFO 级别的日志获取尽可能详细的日志信息来进行开发或部署调试；</li>
+<li>上线: 使用 WARNING 或 ERROR 或 CRITICAL 级别的日志, 降低机器的I/O压力和提高获取错误日志信息的效率。</li>
+</ul>
+</blockquote>
+</li>
+<li><p>logging 模块的使用方式</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 设置日志的记录等级</span></span><br><span class="line">logging.basicConfig(level=logging.DEBUG) <span class="comment"># 调试debug级</span></span><br><span class="line"><span class="comment"># 创建日志记录器，指明日志保存的路径、每个日志文件的最大大小、保存的日志文件个数上限</span></span><br><span class="line">file_log_handler = RotatingFileHandler(<span class="string">"logs/log"</span>, maxBytes=<span class="number">1024</span>*<span class="number">1024</span>*<span class="number">100</span>, backupCount=<span class="number">10</span>)</span><br><span class="line"><span class="comment"># 创建日志记录的格式 日志等级 输入日志信息的文件名 行数 日志信息</span></span><br><span class="line">formatter = logging.Formatter(<span class="string">'%(levelname)s %(filename)s:%(lineno)d %(message)s'</span>)</span><br><span class="line"><span class="comment"># 为刚创建的日志记录器设置日志记录格式</span></span><br><span class="line">file_log_handler.setFormatter(formatter)</span><br><span class="line"><span class="comment"># 为全局的日志工具对象（flask app使用的）添加日志记录器</span></span><br><span class="line">logging.getLogger().addHandler(file_log_handler)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>使用logging提供的模块级别的函数记录日志</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> logging</span><br><span class="line">logging.debug(<span class="string">"This is a debug log."</span>)</span><br><span class="line">logging.info(<span class="string">"This is a info log."</span>)</span><br><span class="line">logging.warning(<span class="string">"This is a warning log."</span>)</span><br><span class="line">logging.error(<span class="string">"This is a error log."</span>)</span><br><span class="line">logging.critical(<span class="string">"This is a critical log."</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>也可以这样写：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">logging.log(logging.DEBUG, <span class="string">"This is a debug log."</span>)</span><br><span class="line">logging.log(logging.INFO, <span class="string">"This is a info log."</span>)</span><br><span class="line">logging.log(logging.WARNING, <span class="string">"This is a warning log."</span>)</span><br><span class="line">logging.log(logging.ERROR, <span class="string">"This is a error log."</span>)</span><br><span class="line">logging.log(logging.CRITICAL, <span class="string">"This is a critical log."</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改配置改变输出内容</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">logging.basicConfig(level=logging.DEBUG)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>切记：设置 <code>Configurations</code> 中的 <strong>Working directory</strong> 为当前项目</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>集成日志到当前项目</p>
+<p>  <code>config.py</code></p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Config</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="comment"># 默认日志等级</span></span><br><span class="line">    LOG_LEVEL = logging.DEBUG</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ProductionConfig</span><span class="params">(Config)</span>:</span></span><br><span class="line">    <span class="string">"""生产模式下的配置"""</span></span><br><span class="line">    LOG_LEVEL = logging.ERROR</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在 <code>info</code> 目录下的 <code>init.py</code> 文件中添加日志配置的相关方法</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">setup_log</span><span class="params">(config_name)</span>:</span></span><br><span class="line">    <span class="string">"""配置日志"""</span></span><br><span class="line">    <span class="comment"># 设置日志的记录等级</span></span><br><span class="line">    logging.basicConfig(level=config[config_name].LOG_LEVEL)  <span class="comment"># 调试debug级</span></span><br><span class="line">    <span class="comment"># 创建日志记录器，指明日志保存的路径、每个日志文件的最大大小、保存的日志文件个数上限</span></span><br><span class="line">    file_log_handler = RotatingFileHandler(<span class="string">"logs/log"</span>, maxBytes=<span class="number">1024</span> * <span class="number">1024</span> * <span class="number">100</span>, backupCount=<span class="number">10</span>)</span><br><span class="line">    <span class="comment"># 创建日志记录的格式 日志等级 输入日志信息的文件名 行数 日志信息</span></span><br><span class="line">    formatter = logging.Formatter(<span class="string">'%(levelname)s %(filename)s:%(lineno)d %(message)s'</span>)</span><br><span class="line">    <span class="comment"># 为刚创建的日志记录器设置日志记录格式</span></span><br><span class="line">    file_log_handler.setFormatter(formatter)</span><br><span class="line">    <span class="comment"># 为全局的日志工具对象（flask app使用的）添加日志记录器</span></span><br><span class="line">    logging.getLogger().addHandler(file_log_handler)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在 <code>create_app</code> 方法中调用上一步创建的方法，并传入 <code>config_name</code></p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_app</span><span class="params">(config_name)</span>:</span></span><br><span class="line">    <span class="comment"># 配置项目日志</span></span><br><span class="line">    setup_log(config_name)</span><br><span class="line">    app = Flask(__name__)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在项目根目录下创建日志目录文件夹 <code>logs</code></p>
+<blockquote>
+<p>运行项目，当前项目日志已输出到 <code>logs</code> 的目录下自动创建的 log 文件中</p>
+</blockquote>
+</li>
+<li><p>在 logs 文件夹下创建 .gitkeep 文件，以便能将 logs 文件夹添加到远程仓库，并在 .gitignore 文件中添加忽略提交生成的日志文件</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">logs/log*</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>在 Flask框架 中，其自己对 Python 的 logging 进行了封装，在 Flask 应用程序中，可以以如下方式进行输出 log:</p>
+</blockquote>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">current_app.logger.debug(&apos;debug&apos;)</span><br><span class="line">current_app.logger.error(&apos;error&apos;)</span><br></pre></td></tr></table></figure>
+</code></pre><blockquote>
+<p>当前应用程序的 logger 会根据应用程序的调试状态去调整日志级别, 如下图:</p>
+</blockquote>
+<p>  <img src="021-Flask项目-新经资讯/1547268274177.png" alt="1547268274177"></p>
+</li>
+</ul>
+<h4 id="5-蓝图的使用"><a href="#5-蓝图的使用" class="headerlink" title="5) 蓝图的使用"></a>5) 蓝图的使用</h4><ul>
+<li><p>在 <code>info</code> 目录下创建 <code>modules</code> Package</p>
+<blockquote>
+<p>modules 存放当前项目所有的模块</p>
+</blockquote>
+</li>
+<li><p>在 <code>modules</code> 文件夹下创建 <code>index</code> package， 并在此文件夹下创建 <code>views.py</code> 文件，将 <code>manage.py</code>中定义的路由拷贝至该文件中</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.route('/index')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'index'</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>暂时忽略报错，此处的index文件夹就是一个模块，此处这样设置是参照后续 Django 项目目录结构设置，views 存放当前模块所有的视图函数</p>
+</blockquote>
+</li>
+</ul>
+<ol>
+<li><p>在 <code>index</code> 文件夹中的 <code>__init__.py</code>创建其自已的蓝图</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Blueprint</span><br><span class="line"></span><br><span class="line">index_blu = Blueprint(<span class="string">"index"</span>, __name__)</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> . <span class="keyword">import</span> views</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在 <code>views.py</code> 中导入蓝图，并使用该蓝图注册路由</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> . <span class="keyword">import</span> index_blu</span><br><span class="line"></span><br><span class="line"><span class="meta">@index_blu.route('/index')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'index'</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将上一步创建出来的蓝图注册到 app 中</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_app</span><span class="params">(config_name)</span>:</span></span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 注册蓝图</span></span><br><span class="line">    <span class="keyword">from</span> info.modules.index <span class="keyword">import</span> index_blu</span><br><span class="line">    app.register_blueprint(index_blu)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> app</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>运行测试</p>
+</blockquote>
+</li>
+</ol>
+<h4 id="6-数据库分析及创建"><a href="#6-数据库分析及创建" class="headerlink" title="6) 数据库分析及创建"></a>6) 数据库分析及创建</h4><p>​    <img src="021-Flask项目-新经资讯/1547437386994.png" alt="1547437386994"></p>
+<ul>
+<li><p>数据库表迁移</p>
+<ul>
+<li><p>确认当前配置的数据库是否存在</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; use information;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将 <code>constants.py</code> 和 <code>models.py</code> 文件拷贝到项目的 <code>info</code> 目录下</p>
+<blockquote>
+<p>注：constants.py 是当前项目中要使用的一些常量，预先定义好的，models.py 文件中需要使用到该文件中的一些常量</p>
+</blockquote>
+</li>
+<li><p>并在 <code>manage.py</code> 中导入 <code>models</code></p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">form info <span class="keyword">import</span> models</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>在迁移的时候以便能读取到对应模型</p>
+</blockquote>
+</li>
+<li><p>执行数据库迁移</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">python manage.py db init</span><br><span class="line">python manage.py db migrate -m <span class="string">"initial"</span></span><br><span class="line">python manage.py db upgrade</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看数据库表是否创建完成</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show tables;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：生成的迁移文件不需要提交到 git 保存，所以需要在 .gitignore 文件中添加migrations以便忽略迁移所生成的系列文件：</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>测试数据的添加</p>
+<blockquote>
+<p>在终端中添加,Pycharm添加有错误, 路径使用绝对路径</p>
+</blockquote>
+<ul>
+<li><p>先添加分类测试数据</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; source 路径/information_info_category.sql</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>再添加新闻测试数据</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; source 路径/information_info_news.sql</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="7-静态文件导入"><a href="#7-静态文件导入" class="headerlink" title="7) 静态文件导入"></a>7) 静态文件导入</h4><ul>
+<li>在项目 <code>info</code> 目录下创建 <code>static</code> 文件夹, 将news和admin静态资源放进去</li>
+<li>修改<code>create_app()</code>中<code>app = Flask(__name__, static_folder=&#39;./static&#39;)</code></li>
+<li>运行项目,访问：<a href="http://127.0.0.1:5000/static/news/html/index.html" target="_blank" rel="noopener">http://127.0.0.1:5000/static/news/html/index.html</a> 查看效果</li>
+</ul>
+<h4 id="8-根路由和网站图标"><a href="#8-根路由和网站图标" class="headerlink" title="8) 根路由和网站图标"></a>8) 根路由和网站图标</h4><ul>
+<li><p>注册根路由</p>
+<ul>
+<li><p>创建模板目录</p>
+<ol>
+<li><p>在 <strong>static</strong> 同级目录创建 <strong>templates</strong> 文件夹，并在此目录下创建 <strong>news</strong> 文件夹用于存放新闻前台模板文件</p>
+</li>
+<li><p>设置 <strong>templates</strong> 目录成模板目录属性</p>
+<blockquote>
+<p>操作方式：右键点击 <strong>templates</strong> 目录，选择 <code>Mark Directory as</code> -&gt; <code>Template Folder</code></p>
+<p>如果没有设置模板语言，会弹出是否设置模板语言，点击 <strong>Yes</strong>，跳转到模板语言设置界面，设置模板语言为 Jinja2 </p>
+</blockquote>
+</li>
+</ol>
+</li>
+<li><p>添加模板并创建根路由视图函数</p>
+<ol>
+<li><p>使用 Pycharm 将 <code>static/news/index.html</code> 文件移动到 <code>templates/news/</code> 目录下，并在 <code>index.py</code> 中添加根路由访问视图</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> . <span class="keyword">import</span> index_blu</span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> render_template</span><br><span class="line"><span class="meta">@index_blu.route('/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">'news/index.html'</span>)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code>&gt; 运行，访问根路由测试
+</code></pre><ul>
+<li><p>网站图标展示</p>
+<ul>
+<li><p>自定义视图函数，访问网站图标，send_static_file 是系统访问静态文件所调用的方法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@index_blu.route('/favicon.ico')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">favicon</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> current_app.send_static_file(<span class="string">'news/favicon.ico'</span>)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-新闻前台"><a href="#2-新闻前台" class="headerlink" title="2. 新闻前台"></a>2. 新闻前台</h3><h4 id="1-登录注册"><a href="#1-登录注册" class="headerlink" title="1) 登录注册"></a>1) 登录注册</h4><h5 id="1-gt-图片验证码"><a href="#1-gt-图片验证码" class="headerlink" title="1&gt; 图片验证码"></a>1&gt; 图片验证码</h5><ul>
+<li><p>图片验证码的流程</p>
+<ul>
+<li>前端页生成验证码编号，并将编号并提交到后台去请求验证码图片</li>
+<li>后台生成图片验证码，并把验证码文字内容当作值，验证码编号当作key存储在 redis 中</li>
+<li>后台把验证码图片当作响应返回给前端</li>
+<li>前端申请发送短信验证码的时候带上第1步验证码编号和用户输入的验证码内容</li>
+<li>后台取出验证码编号对应的验证码内容与前端传过来的验证码内容进行对比</li>
+<li>如果一样，则向指定手机发送验证码，如果不一样，则返回验证码错误</li>
+</ul>
+</li>
+<li><p>代码实现</p>
+<ul>
+<li><p>实现 \info\static\news\js\main.js 中的 generateImageCode 方法</p>
+<ul>
+<li>步骤：<ol>
+<li>通过uuid生成验证码编号</li>
+<li>拼接验证码地址</li>
+<li>设置验证码图片标签的src</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 生成一个图片验证码的编号，并设置页面中图片验证码img标签的src属性</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">generateImageCode</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 1. 生成一个编号</span></span><br><span class="line">    <span class="comment">// 严格一点的使用uuid保证编号唯一， 不是很严谨的情况下，也可以使用时间戳</span></span><br><span class="line">    imageCodeId = generateUUID();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 2. 拼接验证码地址</span></span><br><span class="line">    <span class="keyword">var</span> imageCodeUrl = <span class="string">"/passport/image_code?code_id="</span> + imageCodeId;</span><br><span class="line">    <span class="comment">// 3. 设置页面中图片验证码img标签的src属性</span></span><br><span class="line">    $(<span class="string">".get_pic_code"</span>).attr(<span class="string">"src"</span>, imageCodeUrl)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在 passport 目录下的<code>view.py</code>文件中添加获取验证码的路由<code>image_code</code></p>
+<ul>
+<li>步骤：<ol>
+<li>获取参数</li>
+<li>生成验证码</li>
+<li>删除之前验证码并保存当前验证码</li>
+<li>错误处理</li>
+<li>响应返回</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> . <span class="keyword">import</span> passport_blu</span><br><span class="line"></span><br><span class="line"><span class="meta">@passport_blu.route('/image_code')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_image_code</span><span class="params">()</span>:</span></span><br><span class="line">	<span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装图片验证码所需要的 Pillow 模块</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install Pillow</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>导入验证码生成工具包和自定义状态码文件</p>
+<ul>
+<li>在业务逻辑目录 <code>info</code> 下创建 <code>utils</code> Package</li>
+<li>将 <code>captcha</code> 文件夹和 <code>response_code.py</code> 文件拷贝到该目录</li>
+</ul>
+</li>
+<li><p>根据步骤实现视图函数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> current_app, jsonify</span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> make_response</span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> request</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> info <span class="keyword">import</span> constants</span><br><span class="line"><span class="keyword">from</span> info <span class="keyword">import</span> redis_store</span><br><span class="line"><span class="keyword">from</span> info.utils.captcha.captcha <span class="keyword">import</span> captcha</span><br><span class="line"><span class="keyword">from</span> info.utils.response_code <span class="keyword">import</span> RET</span><br><span class="line"><span class="keyword">from</span> . <span class="keyword">import</span> passport_blu</span><br><span class="line"></span><br><span class="line"><span class="meta">@passport_blu.route('/passport/image_code')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_image_code</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    获取图片验证码</span></span><br><span class="line"><span class="string">    :return:</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 1. 获取到当前的图片编号id</span></span><br><span class="line">    code_id = request.args.get(<span class="string">'code_id'</span>)</span><br><span class="line">    <span class="comment"># 2. 生成验证码</span></span><br><span class="line">    name, text, image = captcha.generate_captcha()</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="comment"># 保存当前生成的图片验证码内容</span></span><br><span class="line">        redis_store.setex(<span class="string">'ImageCode_'</span> + code_id, constants.IMAGE_CODE_REDIS_EXPIRES, text)</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        current_app.logger.error(e)</span><br><span class="line">        <span class="keyword">return</span> jsonify(jsonify(errno=RET.DATAERR, errmsg=<span class="string">'保存图片验证码失败'</span>))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 返回响应内容</span></span><br><span class="line">    resp = make_response(image)</span><br><span class="line">    <span class="comment"># 设置内容类型</span></span><br><span class="line">    resp.headers[<span class="string">'Content-Type'</span>] = <span class="string">'image/jpg'</span></span><br><span class="line">    <span class="keyword">return</span> resp</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>运行测试</p>
+</blockquote>
+</li>
+<li><p>实现一打开登录和注册就有验证码显示，在 main.js 文件中指定 js 点击回调中添加生成验证码的函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 打开注册框</span></span><br><span class="line">$(<span class="string">'.register_btn'</span>).click(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    $(<span class="string">'.register_form_con'</span>).show();</span><br><span class="line">    generateImageCode()</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 登录框和注册框切换</span></span><br><span class="line">$(<span class="string">'.to_register'</span>).click(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    $(<span class="string">'.login_form_con'</span>).hide();</span><br><span class="line">    $(<span class="string">'.register_form_con'</span>).show();</span><br><span class="line">    generateImageCode()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="2-gt-短信验证码"><a href="#2-gt-短信验证码" class="headerlink" title="2&gt; 短信验证码"></a>2&gt; 短信验证码</h5><ul>
+<li><p>云通讯</p>
+<ul>
+<li>用于发送短信(或语音)验证码的第三方平台</li>
+<li>云通讯：<a href="http://www.yuntongxun.com/" target="_blank" rel="noopener">http://www.yuntongxun.com/</a></li>
+<li>登录注册+实名认证</li>
+<li>文档及Demo地址：<a href="http://www.yuntongxun.com/doc/ready/demo/1_4_1_2.html" target="_blank" rel="noopener">http://www.yuntongxun.com/doc/ready/demo/1_4_1_2.html</a></li>
+<li>云通讯相关参数<ul>
+<li>云通讯管理控制台 –&gt; 管理 –&gt; 控制台首页</li>
+<li>设置测试号码 –&gt; 管理 –&gt; 测试号码</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>云通讯集成到项目</p>
+<ul>
+<li><p>将从项目资料文件中的 <code>CCPRestSDK.py</code> 和 <code>xmltojson.py</code> 拷贝至 <code>info\lib\yuntongxun</code> 目录下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> ihome.libs.yuntongxun.CCPRestSDK <span class="keyword">import</span> REST</span><br><span class="line"></span><br><span class="line"><span class="comment"># 说明：主账号，登陆云通讯网站后，可在"控制台-应用"中看到开发者主账号ACCOUNT SID</span></span><br><span class="line">accountSid = <span class="string">'xxxxxx'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 说明：主账号Token，登陆云通讯网站后，可在控制台-应用中看到开发者主账号AUTH TOKEN</span></span><br><span class="line">accountToken = <span class="string">'xxxxxx'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 请使用管理控制台首页的APPID或自己创建应用的APPID</span></span><br><span class="line">appId = <span class="string">'xxxxxxx'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 说明：请求地址，生产环境配置成app.cloopen.com</span></span><br><span class="line">serverIP = <span class="string">'sandboxapp.cloopen.com'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 说明：请求端口 ，生产环境为8883</span></span><br><span class="line">serverPort = <span class="string">'8883'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 说明：REST API版本号保持不变</span></span><br><span class="line">softVersion = <span class="string">'2013-12-26'</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>创建CCP的单例实例</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CCP</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="string">"""发送短信的辅助类"""</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__new__</span><span class="params">(cls, *args, **kwargs)</span>:</span></span><br><span class="line">        <span class="comment"># 判断是否存在类属性_instance，_instance是类CCP的唯一对象，即单例</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> hasattr(CCP, <span class="string">"instance"</span>):</span><br><span class="line">            cls.instance = super(CCP, cls).__new__(cls, *args, **kwargs)</span><br><span class="line">            cls.instance.rest = REST(serverIP, serverPort, softVersion)</span><br><span class="line">            cls.instance.rest.setAccount(accountSid, accountToken)</span><br><span class="line">            cls.instance.rest.setAppId(appId)</span><br><span class="line">        <span class="keyword">return</span> cls.instance</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">send_template_sms</span><span class="params">(self, to, datas, temp_id)</span>:</span></span><br><span class="line">        <span class="string">"""发送模板短信"""</span></span><br><span class="line">        <span class="comment"># @param to 手机号码</span></span><br><span class="line">        <span class="comment"># @param datas 内容数据 格式为数组 例如：&#123;'12','34'&#125;，如不需替换请填 ''</span></span><br><span class="line">        <span class="comment"># @param temp_id 模板Id</span></span><br><span class="line">        result = self.rest.sendTemplateSMS(to, datas, temp_id)</span><br><span class="line">        <span class="comment"># 如果云通讯发送短信成功，返回的字典数据result中statuCode字段的值为"000000"</span></span><br><span class="line">        <span class="keyword">if</span> result.get(<span class="string">"statusCode"</span>) == <span class="string">"000000"</span>:</span><br><span class="line">            <span class="comment"># 返回0 表示发送短信成功</span></span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="comment"># 返回-1 表示发送失败</span></span><br><span class="line">            <span class="keyword">return</span> <span class="number">-1</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>类似的短信平台有：极光、阿里云等等</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p>发送短信后端实现</p>
+<ul>
+<li>发送短信验证码实现流程：<ol>
+<li>接收前端发送过来的请求参数</li>
+<li>检查参数是否已经全部传过来</li>
+<li>判断手机号格式是否正确</li>
+<li>检查图片验证码是否正确，若不正确，则返回</li>
+<li>删除图片验证码</li>
+<li>生成随机的短信验证码</li>
+<li>使用第三方SDK发送短信验证码</li>
+</ol>
+</li>
+<li><p>接口设计</p>
+<ul>
+<li>URL：/passport/sms_code</li>
+<li>请求方式：POST</li>
+<li>传入参数：JSON格式</li>
+<li>参数</li>
+</ul>
+<p>| 参数名        | 类型   | 是否必须 | 参数说明                 |<br>| ————- | —— | ——– | ———————— |<br>| mobile        | string | 是       | 手机号                   |<br>| image_code    | string | 是       | 用户输入的图片验证码内容 |<br>| image_code_id | string | 是       | 真实图片验证码编号       |</p>
+<ul>
+<li>返回类型：JSON</li>
+</ul>
+<p>| 参数名 | 类型   | 是否必须 | 参数说明 |<br>| —— | —— | ——– | ——– |<br>| errno  | int    | 是       | 错误码   |<br>| errmsg | string | 是       | 错误信息 |</p>
+</li>
+<li><p>代码实现</p>
+<ul>
+<li><p>在 <code>passport/views.py</code> 文件中，注册 <code>smscode</code> 路由，并实现代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@passport_blu.route('/smscode')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">send_sms</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    1. 接收参数并判断是否有值</span></span><br><span class="line"><span class="string">    2. 校验手机号是正确</span></span><br><span class="line"><span class="string">    3. 通过传入的图片编码去redis中查询真实的图片验证码内容</span></span><br><span class="line"><span class="string">    4. 进行验证码内容的比对</span></span><br><span class="line"><span class="string">    5. 生成发送短信的内容并发送短信</span></span><br><span class="line"><span class="string">    6. redis中保存短信验证码内容</span></span><br><span class="line"><span class="string">    7. 返回发送成功的响应</span></span><br><span class="line"><span class="string">    :return:</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="comment"># 1. 接收参数并判断是否有值</span></span><br><span class="line">    <span class="comment"># 取到请求值中的内容</span></span><br><span class="line">    param_dict = request.json</span><br><span class="line">    mobile = param_dict.get(<span class="string">"mobile"</span>)</span><br><span class="line">    image_code = param_dict.get(<span class="string">"image_code"</span>)</span><br><span class="line">    image_code_id = param_dict.get(<span class="string">"image_code_id"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> all([mobile, image_code_id, image_code]):</span><br><span class="line">        <span class="comment"># 参数不全</span></span><br><span class="line">        <span class="keyword">return</span> jsonify(errno=RET.PARAMERR, errmsg=<span class="string">"参数不全"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 2. 校验手机号是正确</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> re.match(<span class="string">"^1[3578][0-9]&#123;9&#125;$"</span>, mobile):</span><br><span class="line">        <span class="comment"># 提示手机号不正确</span></span><br><span class="line">        <span class="keyword">return</span> jsonify(errno=RET.DATAERR, errmsg=<span class="string">"手机号不正确"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 3. 通过传入的图片编码去redis中查询真实的图片验证码内容</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        real_image_code = redis_store.get(<span class="string">"ImageCode_"</span> + image_code_id)</span><br><span class="line">        <span class="comment"># 如果能够取出来值，删除redis中缓存的内容</span></span><br><span class="line">        <span class="keyword">if</span> real_image_code:</span><br><span class="line">            real_image_code = real_image_code.decode()</span><br><span class="line">            redis_store.delete(<span class="string">"ImageCode_"</span> + image_code_id)</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        current_app.logger.error(e)</span><br><span class="line">        <span class="comment"># 获取图片验证码失败</span></span><br><span class="line">        <span class="keyword">return</span> jsonify(errno=RET.DBERR, errmsg=<span class="string">"获取图片验证码失败"</span>)</span><br><span class="line">    <span class="comment"># 3.1 判断验证码是否存在，已过期</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> real_image_code:</span><br><span class="line">        <span class="comment"># 验证码已过期</span></span><br><span class="line">        <span class="keyword">return</span> jsonify(errno=RET.NODATA, errmsg=<span class="string">"验证码已过期"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 4. 进行验证码内容的比对</span></span><br><span class="line">    <span class="keyword">if</span> image_code.lower() != real_image_code.lower():</span><br><span class="line">        <span class="comment"># 验证码输入错误</span></span><br><span class="line">        <span class="keyword">return</span> jsonify(errno=RET.DATAERR, errmsg=<span class="string">"验证码输入错误"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 4.1 校验该手机是否已经注册</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        user = User.query.filter_by(mobile=mobile).first()</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        current_app.logger.error(e)</span><br><span class="line">        <span class="keyword">return</span> jsonify(errno=RET.DBERR, errmsg=<span class="string">"数据库查询错误"</span>)</span><br><span class="line">    <span class="keyword">if</span> user:</span><br><span class="line">        <span class="comment"># 该手机已被注册</span></span><br><span class="line">        <span class="keyword">return</span> jsonify(errno=RET.DATAEXIST, errmsg=<span class="string">"该手机已被注册"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 5. 生成发送短信的内容并发送短信</span></span><br><span class="line">    result = random.randint(<span class="number">0</span>, <span class="number">999999</span>)</span><br><span class="line">    sms_code = <span class="string">"%06d"</span> % result</span><br><span class="line">    current_app.logger.debug(<span class="string">"短信验证码的内容：%s"</span> % sms_code)</span><br><span class="line">    result = CCP().send_template_sms(mobile, [sms_code, constants.SMS_CODE_REDIS_EXPIRES / <span class="number">60</span>], <span class="string">"1"</span>)</span><br><span class="line">    <span class="keyword">if</span> result != <span class="number">0</span>:</span><br><span class="line">        <span class="comment"># 发送短信失败</span></span><br><span class="line">        <span class="keyword">return</span> jsonify(errno=RET.THIRDERR, errmsg=<span class="string">"发送短信失败"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 6. redis中保存短信验证码内容</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        redis_store.set(<span class="string">"SMS_"</span> + mobile, sms_code, constants.SMS_CODE_REDIS_EXPIRES)</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        current_app.logger.error(e)</span><br><span class="line">        <span class="comment"># 保存短信验证码失败</span></span><br><span class="line">        <span class="keyword">return</span> jsonify(errno=RET.DBERR, errmsg=<span class="string">"保存短信验证码失败"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 7. 返回发送成功的响应</span></span><br><span class="line">    <span class="keyword">return</span> jsonify(errno=RET.OK, errmsg=<span class="string">"发送成功"</span>)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>发送短信前端实现</p>
+<ul>
+<li>在 <code>main.js</code> 文件的 <code>sendSMSCode</code> 方法中，使用 ajax 进行发送短信请求<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 发送短信验证码</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sendSMSCode</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 校验参数，保证输入框有数据填写</span></span><br><span class="line">    $(<span class="string">".get_code"</span>).removeAttr(<span class="string">"onclick"</span>);</span><br><span class="line">    <span class="keyword">var</span> mobile = $(<span class="string">"#register_mobile"</span>).val();</span><br><span class="line">    <span class="keyword">if</span> (!mobile) &#123;</span><br><span class="line">        $(<span class="string">"#register-mobile-err"</span>).html(<span class="string">"请填写正确的手机号！"</span>);</span><br><span class="line">        $(<span class="string">"#register-mobile-err"</span>).show();</span><br><span class="line">        $(<span class="string">".get_code"</span>).attr(<span class="string">"onclick"</span>, <span class="string">"sendSMSCode();"</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> imageCode = $(<span class="string">"#imagecode"</span>).val();</span><br><span class="line">    <span class="keyword">if</span> (!imageCode) &#123;</span><br><span class="line">        $(<span class="string">"#image-code-err"</span>).html(<span class="string">"请填写验证码！"</span>);</span><br><span class="line">        $(<span class="string">"#image-code-err"</span>).show();</span><br><span class="line">        $(<span class="string">".get_code"</span>).attr(<span class="string">"onclick"</span>, <span class="string">"sendSMSCode();"</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 发送短信验证码</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> params = &#123;</span><br><span class="line">        <span class="string">"mobile"</span>: mobile,</span><br><span class="line">        <span class="string">"image_code"</span>: imageCode,</span><br><span class="line">        <span class="string">"image_code_id"</span>: imageCodeId</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    $.ajax(&#123;</span><br><span class="line">        <span class="comment">// 请求地址</span></span><br><span class="line">        url: <span class="string">"/passport/smscode"</span>,</span><br><span class="line">        <span class="comment">// 请求方式</span></span><br><span class="line">        method: <span class="string">"POST"</span>,</span><br><span class="line">        <span class="comment">// 请求内容</span></span><br><span class="line">        data: <span class="built_in">JSON</span>.stringify(params),</span><br><span class="line">        <span class="comment">// 请求内容的数据类型</span></span><br><span class="line">        contentType: <span class="string">"application/json"</span>,</span><br><span class="line">        <span class="comment">// 响应数据的格式</span></span><br><span class="line">        dataType: <span class="string">"json"</span>,</span><br><span class="line">        success: <span class="function"><span class="keyword">function</span> (<span class="params">resp</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (resp.errno == <span class="string">"0"</span>) &#123;</span><br><span class="line">                <span class="comment">// 倒计时60秒，60秒后允许用户再次点击发送短信验证码的按钮</span></span><br><span class="line">                <span class="keyword">var</span> num = <span class="number">60</span>;</span><br><span class="line">                <span class="comment">// 设置一个计时器</span></span><br><span class="line">                <span class="keyword">var</span> t = setInterval(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">                    <span class="keyword">if</span> (num == <span class="number">1</span>) &#123;</span><br><span class="line">                        <span class="comment">// 如果计时器到最后, 清除计时器对象</span></span><br><span class="line">                        clearInterval(t);</span><br><span class="line">                        <span class="comment">// 将点击获取验证码的按钮展示的文本回复成原始文本</span></span><br><span class="line">                        $(<span class="string">".get_code"</span>).html(<span class="string">"获取验证码"</span>);</span><br><span class="line">                        <span class="comment">// 将点击按钮的onclick事件函数恢复回去</span></span><br><span class="line">                        $(<span class="string">".get_code"</span>).attr(<span class="string">"onclick"</span>, <span class="string">"sendSMSCode();"</span>);</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        num -= <span class="number">1</span>;</span><br><span class="line">                        <span class="comment">// 展示倒计时信息</span></span><br><span class="line">                        $(<span class="string">".get_code"</span>).html(num + <span class="string">"秒"</span>);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;, <span class="number">1000</span>)</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">// 表示后端出现了错误，可以将错误信息展示到前端页面中</span></span><br><span class="line">                $(<span class="string">"#register-sms-code-err"</span>).html(resp.errmsg);</span><br><span class="line">                $(<span class="string">"#register-sms-code-err"</span>).show();</span><br><span class="line">                <span class="comment">// 将点击按钮的onclick事件函数恢复回去</span></span><br><span class="line">                $(<span class="string">".get_code"</span>).attr(<span class="string">"onclick"</span>, <span class="string">"sendSMSCode();"</span>);</span><br><span class="line">                <span class="comment">// 如果错误码是4004，代表验证码错误，重新生成验证码</span></span><br><span class="line">                <span class="keyword">if</span> (resp.errno == <span class="string">"4004"</span>) &#123;</span><br><span class="line">                    generateImageCode()</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>进行代码测试，发现在请求发送短信的时候提示如下：</p>
+</li>
+</ul>
+<p><img src="../../../../../../assets/未设置csrf_token.png" alt="img"></p>
+<ul>
+<li>暂时关闭 <code>csrf_token</code> 的校验，去 <code>init/__init__.py</code> 文件中注释 csrf_token 保护功能，先将当前业务调通。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_app</span><span class="params">(config_name)</span>:</span></span><br><span class="line">    <span class="string">"""通过传入不同的配置名字，初始化其对应配置的应用实例"""</span></span><br><span class="line"></span><br><span class="line">    ...</span><br><span class="line">    <span class="comment"># 开启csrf保护，暂时关闭</span></span><br><span class="line">    <span class="comment"># CSRFProtect(app)</span></span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">return</span> app</span><br></pre></td></tr></table></figure>
+<ul>
+<li>再次运行测试，页面正常倒计时，说明短信发送成功</li>
+</ul>
+<p><img src="../../../../../../assets/手机验证码发送成功.png" alt="img"></p>
+<blockquote>
+<p>修改现有前端页面 bug</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$(&apos;.form_group&apos;).on(&apos;click&apos;,function()&#123;</span><br><span class="line">    $(this).children(&apos;input&apos;).focus()</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">$(&apos;.form_group input&apos;).on(&apos;focusin&apos;,function()&#123;</span><br><span class="line">    $(this).siblings(&apos;.input_tip&apos;).animate(&#123;&apos;top&apos;:-5,&apos;font-size&apos;:12&#125;,&apos;fast&apos;)</span><br><span class="line">    $(this).parent().addClass(&apos;hotline&apos;);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年02月11日 16:55</p>
+        <p>原始链接： <a class="post-url" href="/2019/01/12/021-Flask项目-新经资讯/" title="021.Flask项目_新经资讯">https://www.jackiezz.com/2019/01/12/021-Flask项目-新经资讯/</a></p>
+        <footer>
+            <a href="https://www.jackiezz.com">
+                <img src="/images/logo.png" alt="John Doe">
+                John Doe
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://www.jackiezz.com/2019/01/12/021-Flask项目-新经资讯/&title=《021.Flask项目_新经资讯》 — Hexo&pic=https://www.jackiezz.comimages/logo.png" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.jackiezz.com/2019/01/12/021-Flask项目-新经资讯/&title=《021.Flask项目_新经资讯》 — Hexo&source=" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://www.jackiezz.com/2019/01/12/021-Flask项目-新经资讯/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《021.Flask项目_新经资讯》 — Hexo&url=https://www.jackiezz.com/2019/01/12/021-Flask项目-新经资讯/&via=https://www.jackiezz.com" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://www.jackiezz.com/2019/01/12/021-Flask项目-新经资讯/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://www.jackiezz.com/2019/01/12/021-Flask项目-新经资讯/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Flask项目-新经产资讯"><span class="post-toc-text">Flask项目_新经产资讯</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-项目开发准备"><span class="post-toc-text">1.项目开发准备</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-项目分析"><span class="post-toc-text">1) 项目分析</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-项目框架搭建"><span class="post-toc-text">2) 项目框架搭建</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-代码抽取"><span class="post-toc-text">3) 代码抽取</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-日志"><span class="post-toc-text">4) 日志</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#5-蓝图的使用"><span class="post-toc-text">5) 蓝图的使用</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#6-数据库分析及创建"><span class="post-toc-text">6) 数据库分析及创建</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-静态文件导入"><span class="post-toc-text">7) 静态文件导入</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#8-根路由和网站图标"><span class="post-toc-text">8) 根路由和网站图标</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-新闻前台"><span class="post-toc-text">2. 新闻前台</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-登录注册"><span class="post-toc-text">1) 登录注册</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#1-gt-图片验证码"><span class="post-toc-text">1&gt; 图片验证码</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#2-gt-短信验证码"><span class="post-toc-text">2&gt; 短信验证码</span></a></li></ol></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2019/01/23/022-爬虫基础/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          022-爬虫基础
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2019/01/10/014-python面向对象/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">014.python面向对象</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2019 John Doe<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://www.jackiezz.com",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/Bug/">Bug</a><a class="category-link" href="/categories/Linux/">Linux</a><a class="category-link" href="/categories/Markdown/">Markdown</a><a class="category-link" href="/categories/Python/">Python</a><a class="category-link" href="/categories/Tool/">Tool</a><a class="category-link" href="/categories/博客/">博客</a><a class="category-link" href="/categories/操作系统/">操作系统</a><a class="category-link" href="/categories/正则/">正则</a><a class="category-link" href="/categories/编辑器/">编辑器</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/bug/" style="font-size: 20px;">bug</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/vi/" style="font-size: 10px;">vi</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a href="/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/bug/" style="font-size: 20px;">bug</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/vi/" style="font-size: 10px;">vi</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>

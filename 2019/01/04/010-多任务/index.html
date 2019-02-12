@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>010.多任务 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="Jackiezz, Jackiezz's Blog">
+  
+  <meta name="description" content="1.基本概念1) 并发和并行  并发: 任务数&amp;gt;cpu核数 :  切换执行  并行: 任务数&amp;lt;cpu核数 :  真正一起执行 2.线程 threading 继承自 thread  1)多线程实现 函数实现 123t = threading.Thread(target=函数)len(threading.enumerate())  # 查看线程数量t.start()  # 启动线程执行">
+<meta property="og:type" content="article">
+<meta property="og:title" content="010.多任务">
+<meta property="og:url" content="https://www.jackiezz.com/2019/01/04/010-多任务/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1.基本概念1) 并发和并行  并发: 任务数&amp;gt;cpu核数 :  切换执行  并行: 任务数&amp;lt;cpu核数 :  真正一起执行 2.线程 threading 继承自 thread  1)多线程实现 函数实现 123t = threading.Thread(target=函数)len(threading.enumerate())  # 查看线程数量t.start()  # 启动线程执行">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-02-11T08:55:35.838Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="010.多任务">
+<meta name="twitter:description" content="1.基本概念1) 并发和并行  并发: 任务数&amp;gt;cpu核数 :  切换执行  并行: 任务数&amp;lt;cpu核数 :  真正一起执行 2.线程 threading 继承自 thread  1)多线程实现 函数实现 123t = threading.Thread(target=函数)len(threading.enumerate())  # 查看线程数量t.start()  # 启动线程执行">
+  
+  
+    <link rel="icon" href="images/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">Jackiezz&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a href="/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        Jackiezz&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        Jackiezz的python之路
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="MinHow" target="_blank" href="//minhow.com">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/wongminho">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" href="//weibo.com/WongMinHo">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                        <a title="Twitter" target="_blank" href="//twitter.com/huangminhow">
+                            <i class="fa fa-twitter fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-010-多任务" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      010.多任务
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2019-01-04
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h3 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1.基本概念"></a>1.基本概念</h3><h4 id="1-并发和并行"><a href="#1-并发和并行" class="headerlink" title="1) 并发和并行"></a>1) 并发和并行</h4><p>  并发: 任务数&gt;cpu核数 :  切换执行<br>  并行: 任务数&lt;cpu核数 :  真正一起执行</p>
+<h3 id="2-线程"><a href="#2-线程" class="headerlink" title="2.线程"></a>2.线程</h3><blockquote>
+<p>threading 继承自 thread</p>
+</blockquote>
+<h4 id="1-多线程实现"><a href="#1-多线程实现" class="headerlink" title="1)多线程实现"></a>1)多线程实现</h4><ul>
+<li><p>函数实现</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">t = threading.Thread(target=函数)</span><br><span class="line">len(threading.enumerate())  <span class="comment"># 查看线程数量</span></span><br><span class="line">t.start()  <span class="comment"># 启动线程执行</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>类实现</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyThread</span><span class="params">(threading.Thread)</span>:</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></span><br><span class="line">                <span class="keyword">pass</span></span><br><span class="line">t = MyThread()</span><br><span class="line">t.start()</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>注意</p>
+<ul>
+<li>主线程会等待所有子线程结束后才结束</li>
+<li>多线程共享全局变量<ul>
+<li>如果多个线程同时对同一个全局变量操作，会出现资源竞争问题，从而数据结果会不正确</li>
+<li>解决线程同时修改全局变量的方式: 线程同步(互斥锁)</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h4 id="2-锁"><a href="#2-锁" class="headerlink" title="2)锁"></a>2)锁</h4><blockquote>
+<p>threading中的Lock</p>
+</blockquote>
+<ul>
+<li><p>实现同步锁</p>
+<ul>
+<li>互斥锁保证了每次只有一个线程进行写入操作，从而保证了多线程情况下数据的正确性。<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">l = threading.Lock()</span><br><span class="line">l.acquire()</span><br><span class="line"><span class="comment"># 处理数据</span></span><br><span class="line">l.release()</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>死锁</p>
+<ul>
+<li>两个线程分别占有一部分资源并且同时等待对方的资源，就会造成死锁</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-进程"><a href="#3-进程" class="headerlink" title="3.进程"></a>3.进程</h3><blockquote>
+<p>multiprocessing</p>
+</blockquote>
+<h4 id="1-进程实现"><a href="#1-进程实现" class="headerlink" title="1) 进程实现"></a>1) 进程实现</h4><ul>
+<li><p>通过函数创建进程</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># target：如果传递了函数的引用，可以任务这个子进程就执行这里的代码</span></span><br><span class="line"><span class="comment"># args：给target指定的函数传递的参数，以元组的方式传递</span></span><br><span class="line"><span class="comment"># kwargs：给target指定的函数传递命名参数</span></span><br><span class="line"><span class="comment"># name：给进程设定一个名字，可以不设定</span></span><br><span class="line">p = multiprocessing.Process(target=函数, args=(<span class="string">'test'</span>,<span class="number">18</span>), kwargs=&#123;<span class="string">"m"</span>:<span class="number">20</span>&#125;, name=<span class="string">"进程名字"</span>)</span><br><span class="line">p.start()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Process实例的方法</p>
+<ul>
+<li>start()：启动子进程实例（创建子进程）</li>
+<li>is_alive()：判断进程子进程是否还在活着</li>
+<li>join([timeout])：是否等待子进程执行结束，或等待多少秒</li>
+<li>terminate()：不管任务是否完成，立即终止子进程</li>
+</ul>
+</li>
+<li><p>Process实例的属性</p>
+<ul>
+<li>name：当前进程的别名，默认为Process-N，N为从1开始递增的整数</li>
+<li>pid：当前进程的pid（进程号), os.getpid获取当前进程的进程号</li>
+</ul>
+</li>
+<li><p>通过进程池创建进程</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pool = multiprocessing.Pool(<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>进程池常用方法</p>
+<ul>
+<li>apply_async(func[, args[, kwds]]) ：使用非阻塞方式调用func（并行执行，堵塞方式必须等待上一个进程退出才能执行下一个进程），args为传递给func的参数列表，kwds为传递给func的关键字参数列表；</li>
+<li>close()：关闭Pool，使其不再接受新的任务；</li>
+<li>terminate()：不管任务是否完成，立即终止；</li>
+<li>join()：主进程阻塞，等待子进程的退出， 必须在close或terminate之后使用；</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-进程间通信Queue"><a href="#2-进程间通信Queue" class="headerlink" title="2) 进程间通信Queue"></a>2) 进程间通信Queue</h4><ul>
+<li><p>Queue常用方法</p>
+<ul>
+<li>Queue.qsize()：返回当前队列包含的消息数量；</li>
+<li>Queue.empty()：如果队列为空，返回True，反之False ；</li>
+<li>Queue.full()：如果队列满了，返回True,反之False；</li>
+<li>Queue.get_nowait()：相当Queue.get(False)；</li>
+<li>Queue.put_nowait(item)：相当Queue.put(item, False)；</li>
+</ul>
+</li>
+<li><p>Queue.get 和 Queue.put</p>
+<ul>
+<li>Queue.get([block[, timeout]])：获取队列中的一条消息，然后将其从列队中移除，block默认值为True；<ul>
+<li>1）如果block使用默认值，且没有设置timeout（单位秒），消息列队如果为空，此时程序将被阻塞（停在读取状态），直到从消息列队读到消息为止，如果设置了timeout，则会等待timeout秒，若还没读取到任何消息，则抛出”Queue.Empty”异常；</li>
+<li>2）如果block值为False，消息列队如果为空，则会立刻抛出”Queue.Empty”异常；</li>
+</ul>
+</li>
+<li>Queue.put(item,[block[, timeout]])：将item消息写入队列，block默认值为True；<ul>
+<li>1）如果block使用默认值，且没有设置timeout（单位秒），消息列队如果已经没有空间可写入，此时程序将被阻塞（停在写入状态），直到从消息列队腾出空间为止，如果设置了timeout，则会等待timeout秒，若还没空间，则抛出”Queue.Full”异常；</li>
+<li>2）如果block值为False，消息列队如果没有空间可写入，则会立刻抛出”Queue.Full”异常；</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-协程"><a href="#4-协程" class="headerlink" title="4.协程"></a>4.协程</h3><blockquote>
+<p>原理: 保存和恢复 CPU上下文, 速度极快, 切换时机由开发者自己确定</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install gevent</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> gevent</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(n)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">        print(gevent.getcurrent(), i)</span><br><span class="line"></span><br><span class="line">g1 = gevent.spawn(f, <span class="number">5</span>)</span><br><span class="line">g1.join()</span><br><span class="line"></span><br><span class="line">gevent.joinall([</span><br><span class="line">        gevent.spawn(f, <span class="number">1</span>),</span><br><span class="line">        gevent.spawn(f, <span class="number">1</span>)</span><br><span class="line">])</span><br></pre></td></tr></table></figure>
+<ul>
+<li>给程序打补丁<blockquote>
+<p>将程序中用到的耗时操作的代码，换为gevent中自己实现的模块<code></code>gevent.monkey.patch_all()`</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="5-进程-线程-协程-对比"><a href="#5-进程-线程-协程-对比" class="headerlink" title="5.进程 线程 协程 对比"></a>5.进程 线程 协程 对比</h3><ul>
+<li>举例<br>多进程: 多条生产线<br>多线程: 一条生产线多个工人<br>协程: 一个工人在多余时间做其它事情</li>
+<li>总结<br>进程是资源分配的单位<br>线程是操作系统调度的单位<br>进程切换需要的资源很最大，效率很低<br>线程切换需要的资源一般，效率一般（当然了在不考虑GIL的情况下）<br>协程切换任务资源很小，效率高<br>多进程、多线程根据cpu核数不一样可能是并行的，但是协程是在一个线程中 所以是并发</li>
+</ul>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年02月11日 16:55</p>
+        <p>原始链接： <a class="post-url" href="/2019/01/04/010-多任务/" title="010.多任务">https://www.jackiezz.com/2019/01/04/010-多任务/</a></p>
+        <footer>
+            <a href="https://www.jackiezz.com">
+                <img src="/images/logo.png" alt="John Doe">
+                John Doe
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://www.jackiezz.com/2019/01/04/010-多任务/&title=《010.多任务》 — Hexo&pic=images/010.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.jackiezz.com/2019/01/04/010-多任务/&title=《010.多任务》 — Hexo&source=" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://www.jackiezz.com/2019/01/04/010-多任务/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《010.多任务》 — Hexo&url=https://www.jackiezz.com/2019/01/04/010-多任务/&via=https://www.jackiezz.com" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://www.jackiezz.com/2019/01/04/010-多任务/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://www.jackiezz.com/2019/01/04/010-多任务/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-基本概念"><span class="post-toc-text">1.基本概念</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-并发和并行"><span class="post-toc-text">1) 并发和并行</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-线程"><span class="post-toc-text">2.线程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-多线程实现"><span class="post-toc-text">1)多线程实现</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-锁"><span class="post-toc-text">2)锁</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-进程"><span class="post-toc-text">3.进程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-进程实现"><span class="post-toc-text">1) 进程实现</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-进程间通信Queue"><span class="post-toc-text">2) 进程间通信Queue</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-协程"><span class="post-toc-text">4.协程</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-进程-线程-协程-对比"><span class="post-toc-text">5.进程 线程 协程 对比</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2019/01/06/011-正则/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          011.正则
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2018/07/04/009-网络编程/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">009.网络编程</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2019 John Doe<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://www.jackiezz.com",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/Bug/">Bug</a><a class="category-link" href="/categories/Linux/">Linux</a><a class="category-link" href="/categories/Markdown/">Markdown</a><a class="category-link" href="/categories/Python/">Python</a><a class="category-link" href="/categories/Tool/">Tool</a><a class="category-link" href="/categories/博客/">博客</a><a class="category-link" href="/categories/操作系统/">操作系统</a><a class="category-link" href="/categories/正则/">正则</a><a class="category-link" href="/categories/编辑器/">编辑器</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/bug/" style="font-size: 20px;">bug</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/vi/" style="font-size: 10px;">vi</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a href="/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/bug/" style="font-size: 20px;">bug</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/vi/" style="font-size: 10px;">vi</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>
