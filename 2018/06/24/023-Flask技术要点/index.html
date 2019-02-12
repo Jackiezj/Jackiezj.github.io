@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>003.Hexo | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="Jackiezz, Jackiezz's Blog">
+  
+  <meta name="description" content="1. 项目基本配置1) manage.py123456789101112from flask import Flaskapp = Flask(__name__)@app.route(&apos;/&apos;)def index():    passif __name__ == &apos;__main__&apos;:    app.run() 2) .gitignore123.idea*.py[cod]logs/log* 3) 加载">
+<meta name="keywords" content="Flask">
+<meta property="og:type" content="article">
+<meta property="og:title" content="003.Hexo">
+<meta property="og:url" content="https://www.jackiezz.com/2018/06/24/023-Flask技术要点/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1. 项目基本配置1) manage.py123456789101112from flask import Flaskapp = Flask(__name__)@app.route(&apos;/&apos;)def index():    passif __name__ == &apos;__main__&apos;:    app.run() 2) .gitignore123.idea*.py[cod]logs/log* 3) 加载">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-02-12T00:26:49.929Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="003.Hexo">
+<meta name="twitter:description" content="1. 项目基本配置1) manage.py123456789101112from flask import Flaskapp = Flask(__name__)@app.route(&apos;/&apos;)def index():    passif __name__ == &apos;__main__&apos;:    app.run() 2) .gitignore123.idea*.py[cod]logs/log* 3) 加载">
+  
+  
+    <link rel="icon" href="images/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">Jackiezz&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a href="/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        Jackiezz&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        Jackiezz的python之路
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="MinHow" target="_blank" href="//minhow.com">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/wongminho">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" href="//weibo.com/WongMinHo">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                        <a title="Twitter" target="_blank" href="//twitter.com/huangminhow">
+                            <i class="fa fa-twitter fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-023-Flask技术要点" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      003.Hexo
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/Flask/">Flask</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2018-06-24
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h3 id="1-项目基本配置"><a href="#1-项目基本配置" class="headerlink" title="1. 项目基本配置"></a>1. 项目基本配置</h3><h4 id="1-manage-py"><a href="#1-manage-py" class="headerlink" title="1) manage.py"></a>1) <code>manage.py</code></h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    app.run()</span><br></pre></td></tr></table></figure>
+<h4 id="2-gitignore"><a href="#2-gitignore" class="headerlink" title="2) .gitignore"></a>2) <code>.gitignore</code></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.idea</span><br><span class="line">*.py[cod]</span><br><span class="line">logs/log*</span><br></pre></td></tr></table></figure>
+<h4 id="3-加载配置"><a href="#3-加载配置" class="headerlink" title="3) 加载配置"></a>3) <code>加载配置</code></h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Config</span><span class="params">(Object)</span>:</span></span><br><span class="line">    DEBUG = <span class="keyword">True</span></span><br><span class="line">    </span><br><span class="line">app.config.from_object(Config)</span><br></pre></td></tr></table></figure>
+<h4 id="4-MySQL数据库配置"><a href="#4-MySQL数据库配置" class="headerlink" title="4) MySQL数据库配置"></a>4) <code>MySQL数据库配置</code></h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"""数据库配置详细信息"""</span></span><br><span class="line"><span class="comment"># 配置数据库连接地址</span></span><br><span class="line">SQLALCHEMY_DATABASE_URI = <span class="string">'mysql://root:root@127.0.0.1/database_name'</span></span><br><span class="line"><span class="comment"># 设置每次请求结束后会自动提交数据库中的改动</span></span><br><span class="line">SQLALCHEMY_COMMIT_ON_TEARDOWN = <span class="keyword">True</span></span><br><span class="line"><span class="comment"># 设置成 True，SQLAlchemy 将会追踪对象的修改并且发送信号。这需要额外的内存， 如果不必要的可以禁用它。</span></span><br><span class="line">SQLALCHEMY_TRACK_MODIFICATIONS = <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line"><span class="string">"""加载数据库配置"""</span></span><br><span class="line"><span class="comment"># 初始化SQLAlchemy对象</span></span><br><span class="line">db = SQLAlchemy(app)  <span class="comment"># 放在config外</span></span><br><span class="line"></span><br><span class="line"><span class="string">"""导入测试数据"""</span></span><br><span class="line">$ source fileName</span><br></pre></td></tr></table></figure>
+<h4 id="5-Redis配置"><a href="#5-Redis配置" class="headerlink" title="5) Redis配置"></a>5) <code>Redis配置</code></h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Redis的配置</span></span><br><span class="line">REDIS_HOST = <span class="string">"127.0.0.1"</span></span><br><span class="line">REDIS_PORT = <span class="number">6379</span></span><br><span class="line"><span class="comment"># 初始化 redis 存储对象 </span></span><br><span class="line">redis_store = StrictRedis(host=Config.REDIS_HOST, port=Config.REDIS_PORT)</span><br></pre></td></tr></table></figure>
+<h4 id="6-设置Session的保存位置"><a href="#6-设置Session的保存位置" class="headerlink" title="6) 设置Session的保存位置"></a>6) <code>设置Session的保存位置</code></h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"""Redis配置详细信息  在flask_session包中的Session中查看配置"""</span></span><br><span class="line">SECRET_KEY = <span class="string">"iECgbYWReMNxkRprrzMo5KAQYnb2UeZ3bwvReTSt+VSESW0OB8zbglT+6rEcDW9X"</span></span><br><span class="line"><span class="comment"># Session保存配置</span></span><br><span class="line">SESSION_TYPE = <span class="string">"redis"</span></span><br><span class="line"><span class="comment"># 开启session签名</span></span><br><span class="line">SESSION_USE_SIGNER = <span class="keyword">True</span></span><br><span class="line"><span class="comment"># 指定 Session 保存的 redis</span></span><br><span class="line">SESSION_REDIS = StrictRedis(host=<span class="string">"127.0.0.1, port=3306)</span></span><br><span class="line"><span class="string"># 设置需要过期</span></span><br><span class="line"><span class="string">SESSION_PERMANENT = False</span></span><br><span class="line"><span class="string"># 设置过期时间</span></span><br><span class="line"><span class="string">PERMANENT_SESSION_LIFETIME = 3600</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">"</span><span class="string">""</span>加载配置<span class="string">"""</span></span><br><span class="line"><span class="string">Session(app)</span></span><br></pre></td></tr></table></figure>
+<h4 id="7-设置CSRF保护"><a href="#7-设置CSRF保护" class="headerlink" title="7) 设置CSRF保护"></a>7) <code>设置CSRF保护</code></h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 开启当前项目 CSRF 保护，只做服务器验证功能</span></span><br><span class="line">CSRFProtect(app)</span><br></pre></td></tr></table></figure>
+<h4 id="8-加载Flask-Script组件"><a href="#8-加载Flask-Script组件" class="headerlink" title="8) 加载Flask_Script组件"></a>8) <code>加载Flask_Script组件</code></h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 通过manager启动项目,对数据库进行迁移等操作</span></span><br><span class="line">manager = Manager(app)</span><br></pre></td></tr></table></figure>
+<h4 id="9-集成Flask-Migrate对数据库进行迁移操作"><a href="#9-集成Flask-Migrate对数据库进行迁移操作" class="headerlink" title="9) 集成Flask_Migrate对数据库进行迁移操作"></a>9) <code>集成Flask_Migrate对数据库进行迁移操作</code></h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"""集成"""</span></span><br><span class="line">Migrate(app, db)</span><br><span class="line">manager.add_command(<span class="string">"db"</span>, MigrateCommand)</span><br><span class="line"></span><br><span class="line"><span class="string">"""命令"""</span></span><br><span class="line"><span class="comment"># 这个命令会创建migrations文件夹，所有迁移文件都放在里面。</span></span><br><span class="line">python database.py db init</span><br><span class="line"><span class="comment"># 自动创建迁移脚本 (确保完全正确,需要进行检查)</span></span><br><span class="line">python database.py db migrate -m <span class="string">'initial migration'</span></span><br><span class="line"><span class="comment"># 更新数据库</span></span><br><span class="line">python database.py db upgrade</span><br></pre></td></tr></table></figure>
+<h4 id="10-集成日志"><a href="#10-集成日志" class="headerlink" title="10) 集成日志"></a>10) <code>集成日志</code></h4><blockquote>
+<p>使用: 主程序启动调用setup_log方法, 并设置日志等级 DEBUG, ERROR, WARNING </p>
+<p>注意: 日志不需要提交, 在.<code>gitignore</code>中加入 <code>logs/log*</code></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">setup_log</span><span class="params">(config_name)</span>:</span></span><br><span class="line">    <span class="string">"""配置日志"""</span></span><br><span class="line">    <span class="comment"># 设置日志的记录等级</span></span><br><span class="line">    logging.basicConfig(level=config[config_name].LOG_LEVEL)  <span class="comment"># 调试debug级</span></span><br><span class="line">    <span class="comment"># 创建日志记录器，指明日志保存的路径、每个日志文件的最大大小、保存的日志文件个数上限</span></span><br><span class="line">    file_log_handler = RotatingFileHandler(<span class="string">"logs/log"</span>, maxBytes=<span class="number">1024</span> * <span class="number">1024</span> * <span class="number">100</span>, backupCount=<span class="number">10</span>)</span><br><span class="line">    <span class="comment"># 创建日志记录的格式 日志等级 输入日志信息的文件名 行数 日志信息</span></span><br><span class="line">    formatter = logging.Formatter(<span class="string">'%(levelname)s %(filename)s:%(lineno)d %(message)s'</span>)</span><br><span class="line">    <span class="comment"># 为刚创建的日志记录器设置日志记录格式</span></span><br><span class="line">    file_log_handler.setFormatter(formatter)</span><br><span class="line">    <span class="comment"># 为全局的日志工具对象（flask app使用的）添加日志记录器</span></span><br><span class="line">    logging.getLogger().addHandler(file_log_handler)</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="string">"""设置日志等级"""</span></span><br><span class="line">LOG_VEVEL = logging.DEBUG</span><br></pre></td></tr></table></figure>
+<h3 id="2-项目结构"><a href="#2-项目结构" class="headerlink" title="2. 项目结构"></a>2. 项目结构</h3><h4 id="1-蓝图和使用"><a href="#1-蓝图和使用" class="headerlink" title="1) 蓝图和使用"></a>1) 蓝图和使用</h4><p><code>info/index/__init__.py</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Blueprint</span><br><span class="line"></span><br><span class="line">index_blu = Blueprint(<span class="string">"index"</span>, __name__)</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> . <span class="keyword">import</span> views</span><br></pre></td></tr></table></figure>
+<p><code>info/index/views.py</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> info.index <span class="keyword">import</span> index_blu</span><br><span class="line"></span><br><span class="line"><span class="meta">@index_blu.route('/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">"index"</span></span><br></pre></td></tr></table></figure>
+<p><code>info/__init__.py</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 注册蓝图</span></span><br><span class="line"><span class="keyword">from</span> info.index <span class="keyword">import</span> index_blu  <span class="comment"># 什么时候注册什么时候导入</span></span><br><span class="line">app.register_blueprint(index_blu)</span><br></pre></td></tr></table></figure>
+<h4 id="2-添加静态文件"><a href="#2-添加静态文件" class="headerlink" title="2) 添加静态文件"></a>2) 添加静态文件</h4><p><code>info/static/静态文件</code></p>
+<p><code>info/__init__.py</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app = Flask(__name__, static_folder=<span class="string">"./static"</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="3-常用业务逻辑后端代码"><a href="#3-常用业务逻辑后端代码" class="headerlink" title="3. 常用业务逻辑后端代码"></a>3. 常用业务逻辑后端代码</h3><h4 id="1-根路由"><a href="#1-根路由" class="headerlink" title="1) 根路由"></a>1) 根路由</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@index_blu.route('/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">"index.html"</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="2-favicon图标加载"><a href="#2-favicon图标加载" class="headerlink" title="2) favicon图标加载"></a>2) favicon图标加载</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@index_blu.route("/favicon.ico")</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">favicon</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> current_app.send_static_file(<span class="string">"news/favicon.ico"</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="3-获取请求地址中的参数"><a href="#3-获取请求地址中的参数" class="headerlink" title="3) 获取请求地址中的参数"></a>3) 获取请求地址中的参数</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># http://localhost:5000/passport/image_code?imageCodeId="+imageCodeId</span></span><br><span class="line"><span class="meta">@passport_blu.route("/image_code")</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_image_code</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="comment"># 获取地址中参数的方法</span></span><br><span class="line">    image_code_id = request.args.get(<span class="string">"imageCodeId"</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="4-获取ajax请求参数"><a href="#4-获取ajax请求参数" class="headerlink" title="4) 获取ajax请求参数"></a>4) 获取ajax请求参数</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@passport_blu.route("/sms_code", methods=["POST"])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">send_sms_code</span><span class="params">()</span>:</span></span><br><span class="line">    json_dict = request.json</span><br><span class="line">	mobile = json_dict.get(<span class="string">"mobile"</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="5-操作redis数据库"><a href="#5-操作redis数据库" class="headerlink" title="5) 操作redis数据库"></a>5) 操作redis数据库</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">   <span class="comment"># 操作redis数据库的方法</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">       redis_store.set(<span class="string">"image_code_id"</span>, <span class="string">"1"</span>, <span class="number">60</span>)        </span><br><span class="line">       real_image_code = redis_store.get(<span class="string">"image_code_id"</span>).decode(<span class="string">"utf-8"</span>)</span><br><span class="line">   <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">       current_app.logger.error(e)</span><br><span class="line">       abort(<span class="number">500</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="6-返回特殊格式的响应"><a href="#6-返回特殊格式的响应" class="headerlink" title="6) 返回特殊格式的响应"></a>6) 返回特殊格式的响应</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 返回特殊格式的响应</span></span><br><span class="line">response = make_response(image)</span><br><span class="line">response.headers[<span class="string">"Content-Type"</span>] = <span class="string">"image/jpg"</span></span><br><span class="line"><span class="keyword">return</span> response</span><br></pre></td></tr></table></figure>
+<h4 id="7-返回报错-404-403-…"><a href="#7-返回报错-404-403-…" class="headerlink" title="7) 返回报错(404, 403, …)"></a>7) 返回报错(404, 403, …)</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> abort(<span class="number">403</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="8-校验参数的完整性"><a href="#8-校验参数的完整性" class="headerlink" title="8) 校验参数的完整性"></a>8) 校验参数的完整性</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> all([mobile, image_code_id, image_code]):</span><br><span class="line">    <span class="keyword">return</span> jsonify(errno=RET.PARAMERR, errmsg=<span class="string">"数据不完整"</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="9-返回json响应-返回模板及数据"><a href="#9-返回json响应-返回模板及数据" class="headerlink" title="9) 返回json响应,返回模板及数据"></a>9) 返回json响应,返回模板及数据</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> jsonify(errno=RET.OK, errmsg=<span class="string">"发送成功"</span>)</span><br><span class="line">data = &#123;</span><br><span class="line">    <span class="string">"user"</span>: user.to_dict() <span class="keyword">if</span> user <span class="keyword">else</span> <span class="keyword">None</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">return</span> render_template(<span class="string">'news/index.html'</span>, data=data)</span><br></pre></td></tr></table></figure>
+<h4 id="10-通过ORM映射将数据保存到数据库"><a href="#10-通过ORM映射将数据保存到数据库" class="headerlink" title="10) 通过ORM映射将数据保存到数据库"></a>10) 通过ORM映射将数据保存到数据库</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 保存数据</span></span><br><span class="line">user = User()</span><br><span class="line">user.mobile = mobile</span><br><span class="line">user.password = password</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    db.session.add(user)</span><br><span class="line"><span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">    db.session.rollback()</span><br><span class="line">    <span class="keyword">return</span> jsonify(errno=RET.DBERR, errmsg=<span class="string">"数据库存储错误"</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="11-向session中存储移出数据"><a href="#11-向session中存储移出数据" class="headerlink" title="11) 向session中存储移出数据"></a>11) 向session中存储移出数据</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 往session中存储数据表示已经登录</span></span><br><span class="line">session[<span class="string">"user_id"</span>] = user.id</span><br><span class="line">session[<span class="string">"mobile"</span>] = user.mobile</span><br><span class="line"><span class="comment"># 从session中移出数据</span></span><br><span class="line">session.pop(<span class="string">"user_id"</span>, <span class="keyword">None</span>)</span><br><span class="line">session.pop(<span class="string">"mobile"</span>, <span class="keyword">None</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="12-对属性加密处理-如-密码加密"><a href="#12-对属性加密处理-如-密码加密" class="headerlink" title="12) 对属性加密处理(如: 密码加密)"></a>12) 对属性加密处理(如: 密码加密)</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">   <span class="comment"># 类中的属性为password_hash</span></span><br><span class="line"><span class="meta">   @property</span></span><br><span class="line">   <span class="function"><span class="keyword">def</span> <span class="title">password</span><span class="params">(self)</span>:</span></span><br><span class="line">       <span class="keyword">raise</span> AttributeError(<span class="string">"当前属性不可读"</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">   @password.setter</span></span><br><span class="line">   <span class="function"><span class="keyword">def</span> <span class="title">password</span><span class="params">(self, value)</span>:</span></span><br><span class="line">       self.password_hash = generate_password_hash(value)</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">def</span> <span class="title">check_passowrd</span><span class="params">(self, password)</span>:</span></span><br><span class="line">       <span class="keyword">return</span> check_password_hash(self.password_hash, password)</span><br><span class="line">   </span><br><span class="line">   <span class="comment"># 外部操作属性</span></span><br><span class="line">   <span class="comment"># 给属性赋值</span></span><br><span class="line">user.password = password</span><br><span class="line">   <span class="comment"># 获取属性值</span></span><br><span class="line">   user.password  <span class="comment"># 在此处抛出异常, 但可以通过check_password校验密码</span></span><br></pre></td></tr></table></figure>
+<h4 id="13-分页数据展示"><a href="#13-分页数据展示" class="headerlink" title="13) 分页数据展示"></a>13) 分页数据展示</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">news_list = []</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">	news_list = News.query.order_by(News.clicks.desc()).limit(<span class="number">6</span>)</span><br><span class="line"><span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">	current_app.logger.error(e)</span><br><span class="line"><span class="comment"># 定义一个空的字典列表，里面装的就是字典</span></span><br><span class="line">news_dict_li = []</span><br><span class="line"><span class="comment"># 遍历对象列表，将对象的字典添加到字典列表中</span></span><br><span class="line"><span class="keyword">for</span> news <span class="keyword">in</span> news_list:</span><br><span class="line">	news_dict_li.append(news.to_basic_dict())</span><br><span class="line">data = &#123;</span><br><span class="line">	<span class="string">"user"</span>: user.to_dict() <span class="keyword">if</span> user <span class="keyword">else</span> <span class="keyword">None</span>,</span><br><span class="line">	<span class="string">"news_dict_li"</span>: news_dict_li</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> render_template(<span class="string">"news/index.html"</span>, data=data)</span><br></pre></td></tr></table></figure>
+<h4 id="14-自定义过滤器的实现"><a href="#14-自定义过滤器的实现" class="headerlink" title="14) 自定义过滤器的实现"></a>14) 自定义过滤器的实现</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 页面中使用过滤器</span></span><br><span class="line">&lt;span class="&#123;&#123; loop.index0 | index_class &#125;&#125;"&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 自定义过滤器</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">do_index_class</span><span class="params">(index)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    新闻排行数字图标过滤</span></span><br><span class="line"><span class="string">    :param index:</span></span><br><span class="line"><span class="string">    :return:</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="keyword">if</span> index == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"first"</span></span><br><span class="line">    <span class="keyword">elif</span> index == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"second"</span></span><br><span class="line">    <span class="keyword">elif</span> index == <span class="number">2</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"third"</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">""</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加过滤器</span></span><br><span class="line">app.add_template_filter(do_index_class, <span class="string">"index_class"</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="15-分页数据展示"><a href="#15-分页数据展示" class="headerlink" title="15) 分页数据展示"></a>15) 分页数据展示</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    paginate = News.query.filter(*filters).order_by(News.create_time.desc()).paginate(page, per_page, <span class="keyword">False</span>)</span><br><span class="line"><span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">    current_app.logger.error(e)</span><br><span class="line">    <span class="keyword">return</span> jsonify(errno=RET.DBERR, errmsg=<span class="string">"数据库查询错误"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 取到当前页数据</span></span><br><span class="line">news_model_list = paginate.items</span><br><span class="line">total_page = paginate.pages</span><br><span class="line">current_page = paginate.page</span><br></pre></td></tr></table></figure>
+<h3 id="4-常用业务逻辑前端代码"><a href="#4-常用业务逻辑前端代码" class="headerlink" title="4. 常用业务逻辑前端代码"></a>4. 常用业务逻辑前端代码</h3><h4 id="1-图片请求地址"><a href="#1-图片请求地址" class="headerlink" title="1) 图片请求地址"></a>1) 图片请求地址</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">".get_pic_code"</span>).attr(<span class="string">"src"</span>, <span class="string">"/passport/image_code?imageCodeId="</span>+imageCodeId)</span><br></pre></td></tr></table></figure>
+<h4 id="2-发送ajax请求"><a href="#2-发送ajax请求" class="headerlink" title="2) 发送ajax请求"></a>2) 发送ajax请求</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> params = &#123;</span><br><span class="line">    <span class="string">"mobile"</span>: mobile,</span><br><span class="line">&#125;;</span><br><span class="line">$.ajax(&#123;</span><br><span class="line">    url: <span class="string">"/passport/sms_code"</span>,</span><br><span class="line">    type: <span class="string">"POST"</span>,</span><br><span class="line">    data: <span class="built_in">JSON</span>.stringify(params),</span><br><span class="line">    contentType: <span class="string">"application/json"</span>,</span><br><span class="line">    success: <span class="function"><span class="keyword">function</span> (<span class="params">resp</span>) </span>&#123;</span><br><span class="line">        <span class="comment">//处理响应数据,显示在页面上</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="3-定时器操作-倒计时60s的js代码"><a href="#3-定时器操作-倒计时60s的js代码" class="headerlink" title="3) 定时器操作(倒计时60s的js代码)"></a>3) 定时器操作(倒计时60s的js代码)</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num = <span class="number">60</span></span><br><span class="line"><span class="keyword">var</span> t = setInterval(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (num == <span class="number">1</span>) &#123;</span><br><span class="line">        clearInterval(t);</span><br><span class="line">        $(<span class="string">".get_code"</span>).html(<span class="string">"点击获取验证码"</span>);</span><br><span class="line">        $(<span class="string">".get_code"</span>).attr(<span class="string">"onclick"</span>, <span class="string">"sendSMSCode();"</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        num -= <span class="number">1</span>;</span><br><span class="line">        $(<span class="string">".get_code"</span>).html(num+<span class="string">"s"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;, <span class="number">1000</span>);</span><br><span class="line">$(<span class="string">".get_code"</span>).html(<span class="string">""</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="4-对标签内容进行修改和对隐藏标签显示"><a href="#4-对标签内容进行修改和对隐藏标签显示" class="headerlink" title="4) 对标签内容进行修改和对隐藏标签显示"></a>4) 对标签内容进行修改和对隐藏标签显示</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"#register-password-err"</span>).html(resp.errmsg)</span><br><span class="line">$(<span class="string">"#register-password-err"</span>).show()</span><br></pre></td></tr></table></figure>
+<h4 id="5-JS刷新页面"><a href="#5-JS刷新页面" class="headerlink" title="5) JS刷新页面"></a>5) JS刷新页面</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=<span class="string">"javascript:;"</span> onclick=<span class="string">"logout()"</span>&gt;退出&lt;<span class="regexp">/a&gt;</span></span><br><span class="line"><span class="regexp">$.get('/</span>passport/logout<span class="string">', function (resp) &#123;</span></span><br><span class="line"><span class="string">    location.reload()</span></span><br><span class="line"><span class="string">&#125;)</span></span><br></pre></td></tr></table></figure>
+<h4 id="6-CSRF设置"><a href="#6-CSRF设置" class="headerlink" title="6) CSRF设置"></a>6) CSRF设置</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 设置请求勾子</span></span><br><span class="line"><span class="meta">@app.after_request</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">after_request</span><span class="params">(response)</span>:</span></span><br><span class="line">    <span class="comment"># 生成随机的csrf_token的值</span></span><br><span class="line">    csrf_token = generate_csrf()</span><br><span class="line">    <span class="comment"># 设置一个cookie</span></span><br><span class="line">    <span class="keyword">return</span> response</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在请求上加上csrf(ajax等)</span></span><br><span class="line">headers: &#123;</span><br><span class="line">    <span class="string">"X-CSRFToken"</span>: getCookie(<span class="string">'csrf_token'</span>)</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年02月12日 08:26</p>
+        <p>原始链接： <a class="post-url" href="/2018/06/24/023-Flask技术要点/" title="003.Hexo">https://www.jackiezz.com/2018/06/24/023-Flask技术要点/</a></p>
+        <footer>
+            <a href="https://www.jackiezz.com">
+                <img src="/images/logo.png" alt="John Doe">
+                John Doe
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://www.jackiezz.com/2018/06/24/023-Flask技术要点/&title=《003.Hexo》 — Hexo&pic=https://www.jackiezz.comimages/logo.png" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.jackiezz.com/2018/06/24/023-Flask技术要点/&title=《003.Hexo》 — Hexo&source=" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://www.jackiezz.com/2018/06/24/023-Flask技术要点/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《003.Hexo》 — Hexo&url=https://www.jackiezz.com/2018/06/24/023-Flask技术要点/&via=https://www.jackiezz.com" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://www.jackiezz.com/2018/06/24/023-Flask技术要点/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://www.jackiezz.com/2018/06/24/023-Flask技术要点/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/Flask/" class="color1">Flask</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-项目基本配置"><span class="post-toc-text">1. 项目基本配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-manage-py"><span class="post-toc-text">1) manage.py</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-gitignore"><span class="post-toc-text">2) .gitignore</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-加载配置"><span class="post-toc-text">3) 加载配置</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-MySQL数据库配置"><span class="post-toc-text">4) MySQL数据库配置</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#5-Redis配置"><span class="post-toc-text">5) Redis配置</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#6-设置Session的保存位置"><span class="post-toc-text">6) 设置Session的保存位置</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-设置CSRF保护"><span class="post-toc-text">7) 设置CSRF保护</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#8-加载Flask-Script组件"><span class="post-toc-text">8) 加载Flask_Script组件</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#9-集成Flask-Migrate对数据库进行迁移操作"><span class="post-toc-text">9) 集成Flask_Migrate对数据库进行迁移操作</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#10-集成日志"><span class="post-toc-text">10) 集成日志</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-项目结构"><span class="post-toc-text">2. 项目结构</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-蓝图和使用"><span class="post-toc-text">1) 蓝图和使用</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-添加静态文件"><span class="post-toc-text">2) 添加静态文件</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-常用业务逻辑后端代码"><span class="post-toc-text">3. 常用业务逻辑后端代码</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-根路由"><span class="post-toc-text">1) 根路由</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-favicon图标加载"><span class="post-toc-text">2) favicon图标加载</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-获取请求地址中的参数"><span class="post-toc-text">3) 获取请求地址中的参数</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-获取ajax请求参数"><span class="post-toc-text">4) 获取ajax请求参数</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#5-操作redis数据库"><span class="post-toc-text">5) 操作redis数据库</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#6-返回特殊格式的响应"><span class="post-toc-text">6) 返回特殊格式的响应</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-返回报错-404-403-…"><span class="post-toc-text">7) 返回报错(404, 403, …)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#8-校验参数的完整性"><span class="post-toc-text">8) 校验参数的完整性</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#9-返回json响应-返回模板及数据"><span class="post-toc-text">9) 返回json响应,返回模板及数据</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#10-通过ORM映射将数据保存到数据库"><span class="post-toc-text">10) 通过ORM映射将数据保存到数据库</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#11-向session中存储移出数据"><span class="post-toc-text">11) 向session中存储移出数据</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#12-对属性加密处理-如-密码加密"><span class="post-toc-text">12) 对属性加密处理(如: 密码加密)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#13-分页数据展示"><span class="post-toc-text">13) 分页数据展示</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#14-自定义过滤器的实现"><span class="post-toc-text">14) 自定义过滤器的实现</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#15-分页数据展示"><span class="post-toc-text">15) 分页数据展示</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-常用业务逻辑前端代码"><span class="post-toc-text">4. 常用业务逻辑前端代码</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-图片请求地址"><span class="post-toc-text">1) 图片请求地址</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-发送ajax请求"><span class="post-toc-text">2) 发送ajax请求</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-定时器操作-倒计时60s的js代码"><span class="post-toc-text">3) 定时器操作(倒计时60s的js代码)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-对标签内容进行修改和对隐藏标签显示"><span class="post-toc-text">4) 对标签内容进行修改和对隐藏标签显示</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#5-JS刷新页面"><span class="post-toc-text">5) JS刷新页面</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#6-CSRF设置"><span class="post-toc-text">6) CSRF设置</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2018/06/25/004.Vi/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          004.Vi
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2018/06/24/003.Hexo/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">003.Hexo</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2019 John Doe<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://www.jackiezz.com",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/Bug/">Bug</a><a class="category-link" href="/categories/Flask/">Flask</a><a class="category-link" href="/categories/Linux/">Linux</a><a class="category-link" href="/categories/Markdown/">Markdown</a><a class="category-link" href="/categories/Python/">Python</a><a class="category-link" href="/categories/Tool/">Tool</a><a class="category-link" href="/categories/博客/">博客</a><a class="category-link" href="/categories/操作系统/">操作系统</a><a class="category-link" href="/categories/编辑器/">编辑器</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Flask/" style="font-size: 10px;">Flask</a> <a href="/tags/bug/" style="font-size: 20px;">bug</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/vi/" style="font-size: 10px;">vi</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a href="/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/Flask/" style="font-size: 10px;">Flask</a> <a href="/tags/bug/" style="font-size: 20px;">bug</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/vi/" style="font-size: 10px;">vi</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>
