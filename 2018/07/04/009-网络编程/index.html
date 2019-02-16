@@ -15,16 +15,16 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="UDP &amp;amp; TCP1.网络基本概念 网络编程: 进程之间的通信 ip地址: 标记一台电脑 查看ip及通信是否正常: ifconfig, ping 地址 端口: ip+端口标识主机应用进程 常用端口 80 HTTP服务 21 FTP服务 22 ssh服务       python3编码解码str-&amp;gt;bytes: encode编码bytes-&amp;gt;str: decode解码  2.so">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://www.jackiezz.com/2018/07/04/009-网络编程/001.jpg">
-<meta property="og:image" content="https://www.jackiezz.com/2018/07/04/009-网络编程/002.png">
-<meta property="og:image" content="https://www.jackiezz.com/2018/07/04/009-网络编程/003.png">
-<meta property="og:image" content="https://www.jackiezz.com/2018/07/04/009-网络编程/004.png">
-<meta property="og:image" content="https://www.jackiezz.com/2018/07/04/009-网络编程/009-网络编程/005.png">
-<meta property="og:updated_time" content="2019-02-12T00:29:27.234Z">
+<meta property="og:image" content="https://www.jackiezz.com/2018/07/04/009-网络编程/2018/07/04/009-网络编程/001.jpg">
+<meta property="og:image" content="https://www.jackiezz.com/2018/07/04/009-网络编程/2018/07/04/009-网络编程/002.png">
+<meta property="og:image" content="https://www.jackiezz.com/2018/07/04/009-网络编程/2018/07/04/009-网络编程/003.png">
+<meta property="og:image" content="https://www.jackiezz.com/2018/07/04/009-网络编程/2018/07/04/009-网络编程/004.png">
+<meta property="og:image" content="https://www.jackiezz.com/2018/07/04/009-网络编程/005.png">
+<meta property="og:updated_time" content="2019-02-16T03:32:48.447Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="009.网络编程">
 <meta name="twitter:description" content="UDP &amp;amp; TCP1.网络基本概念 网络编程: 进程之间的通信 ip地址: 标记一台电脑 查看ip及通信是否正常: ifconfig, ping 地址 端口: ip+端口标识主机应用进程 常用端口 80 HTTP服务 21 FTP服务 22 ssh服务       python3编码解码str-&amp;gt;bytes: encode编码bytes-&amp;gt;str: decode解码  2.so">
-<meta name="twitter:image" content="https://www.jackiezz.com/2018/07/04/009-网络编程/001.jpg">
+<meta name="twitter:image" content="https://www.jackiezz.com/2018/07/04/009-网络编程/2018/07/04/009-网络编程/001.jpg">
   
   
     <link rel="icon" href="images/favicon.ico">
@@ -170,7 +170,7 @@
 </ul>
 <h3 id="3-UDP通信"><a href="#3-UDP通信" class="headerlink" title="3.UDP通信"></a>3.UDP通信</h3><ul>
 <li><p>UDP通信流程<br></p>
-<img src="/2018/07/04/009-网络编程/001.jpg" title="udp通信流程">
+<img src="/2018/07/04/009-网络编程/2018/07/04/009-网络编程/001.jpg" title="udp通信流程">
 <ul>
 <li><p>UDP绑定地址</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">local_addr = (<span class="string">''</span>, <span class="number">7788</span>) <span class="comment">#  ip地址和端口号，ip一般不用写，表示本机的任何一个ip</span></span><br><span class="line">udp_socket.bind(local_addr)</span><br></pre></td></tr></table></figure>
@@ -198,7 +198,7 @@
 <h4 id="1-TCP通信的特点"><a href="#1-TCP通信的特点" class="headerlink" title="1)TCP通信的特点"></a>1)TCP通信的特点</h4><pre><code>* 面向连接: 一对一
 * 可靠传输
 </code></pre><ul>
-<li>TCP通信流程<br><img src="/2018/07/04/009-网络编程/002.png" title="TCP通信流程">
+<li>TCP通信流程<br><img src="/2018/07/04/009-网络编程/2018/07/04/009-网络编程/002.png" title="TCP通信流程">
 </li>
 </ul>
 <h4 id="2-TCP客户端与服务器"><a href="#2-TCP客户端与服务器" class="headerlink" title="2)TCP客户端与服务器"></a>2)TCP客户端与服务器</h4><ul>
@@ -209,13 +209,13 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> socket <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">tcp_server_socket = socket(AF_INET, SOCK_STREAM)</span><br><span class="line"><span class="comment"># 绑定服务器ip</span></span><br><span class="line">tcp_server_socket.bind((<span class="string">""</span>, <span class="number">8080</span>))</span><br><span class="line"><span class="comment"># listen使套接字变为可以被动链接</span></span><br><span class="line">tcp_server_socket.listen(<span class="number">128</span>)</span><br><span class="line"><span class="comment"># accept等待客户端的链接</span></span><br><span class="line">client_socket, client_addr = tcp_server_socket.accept()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 利用对方socket接收客户端数据</span></span><br><span class="line">recv_data = client_socket.recv(<span class="number">1024</span>)</span><br><span class="line"><span class="comment"># 向客户端发送数据</span></span><br><span class="line">client_socket.send(<span class="string">"client_socket内容"</span>.encode(<span class="string">"utf-8"</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 关闭socket</span></span><br><span class="line">client_socket.close()</span><br><span class="line">tcp_server_socket.close()</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h4 id="3-TCP三次握手-四次挥手"><a href="#3-TCP三次握手-四次挥手" class="headerlink" title="3)TCP三次握手 四次挥手"></a>3)TCP三次握手 四次挥手</h4><img src="/2018/07/04/009-网络编程/003.png">
+<h4 id="3-TCP三次握手-四次挥手"><a href="#3-TCP三次握手-四次挥手" class="headerlink" title="3)TCP三次握手 四次挥手"></a>3)TCP三次握手 四次挥手</h4><img src="/2018/07/04/009-网络编程/2018/07/04/009-网络编程/003.png">
 <h3 id="5-TCP-IP协议-族"><a href="#5-TCP-IP协议-族" class="headerlink" title="5.TCP/IP协议(族)"></a>5.TCP/IP协议(族)</h3><ul>
 <li>简介<ul>
 <li>互联网协议包含了上百种协议标准，但是最重要的两个协议是TCP和IP协议，所以，大家把互联网的协议简称TCP/IP协议(族)</li>
 </ul>
 </li>
-<li>TCP/IP协议传输示意<br><img src="/2018/07/04/009-网络编程/004.png">
+<li>TCP/IP协议传输示意<br><img src="/2018/07/04/009-网络编程/2018/07/04/009-网络编程/004.png">
 </li>
 </ul>
 <h3 id="6-HTTP协议"><a href="#6-HTTP协议" class="headerlink" title="6.HTTP协议"></a>6.HTTP协议</h3><ul>
@@ -224,17 +224,17 @@
 <h3 id="7-WSGI"><a href="#7-WSGI" class="headerlink" title="7.WSGI"></a>7.WSGI</h3><ul>
 <li><p>简介</p>
 <ul>
-<li>WSGI允许开发者将选择web框架和web服务器分开。可以混合匹配web服务器和web框架，选择一个适合的配对<br>web服务器必须具备WSGI接口，所有的现代Python Web框架都已具备WSGI接口</li>
+<li>WSGI允许开发者将选择web框架和web服务器分开。可以混合匹配web服务器和web框架，选择一个适合的配对<br>web服务器必须具备WSGI接口，所有的现代Python Web框架都已具备WSGI接口  </li>
 </ul>
 </li>
 <li><p>WSGI图解</p>
-<p><img src="009-网络编程/005.png" alt="005"></p>
+<p><img src="/2018/07/04/009-网络编程/005.png" alt="005"></p>
 </li>
 </ul>
 
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2019年02月12日 08:29</p>
+        <p>最后更新： 2019年02月16日 11:32</p>
         <p>原始链接： <a class="post-url" href="/2018/07/04/009-网络编程/" title="009.网络编程">https://www.jackiezz.com/2018/07/04/009-网络编程/</a></p>
         <footer>
             <a href="https://www.jackiezz.com">

@@ -15,21 +15,21 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="Flask项目_新经产资讯1.项目开发准备1) 项目分析 项目简介  一款新闻展示的Web项目，主要为用户提供最新的金融资讯、数据 以抓取其他网站数据和用户发布作为新闻的主要来源 基于 Flask 框架，以 前后端不分离 的形式实现具体业务逻辑   技术实现  基于 Python 3.0 + Flask 框架实现 数据存储使用 Redis + MySQL 实现 第三方扩展： 七牛云：文件存储平台">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://www.jackiezz.com/2019/01/12/021-Flask项目-新经资讯/021-Flask项目-新经资讯/1547223486723.png">
-<meta property="og:image" content="https://www.jackiezz.com/2019/01/12/021-Flask项目-新经资讯/021-Flask项目-新经资讯/1547223860015.png">
-<meta property="og:image" content="https://www.jackiezz.com/2019/01/12/021-Flask项目-新经资讯/021-Flask项目-新经资讯/1547223987062.png">
-<meta property="og:image" content="https://www.jackiezz.com/2019/01/12/021-Flask项目-新经资讯/021-Flask项目-新经资讯/1547224215814.png">
-<meta property="og:image" content="https://www.jackiezz.com/2019/01/12/021-Flask项目-新经资讯/021-Flask项目-新经资讯/1547224295409.png">
-<meta property="og:image" content="https://www.jackiezz.com/2019/01/12/021-Flask项目-新经资讯/021-Flask项目-新经资讯/1547224319228.png">
-<meta property="og:image" content="https://www.jackiezz.com/2019/01/12/021-Flask项目-新经资讯/021-Flask项目-新经资讯/1547268274177.png">
-<meta property="og:image" content="https://www.jackiezz.com/2019/01/12/021-Flask项目-新经资讯/021-Flask项目-新经资讯/1547437386994.png">
+<meta property="og:image" content="https://www.jackiezz.com/2019/01/12/021-Flask项目-新经资讯/1547223486723.png">
+<meta property="og:image" content="https://www.jackiezz.com/2019/01/12/021-Flask项目-新经资讯/1547223860015.png">
+<meta property="og:image" content="https://www.jackiezz.com/2019/01/12/021-Flask项目-新经资讯/1547223987062.png">
+<meta property="og:image" content="https://www.jackiezz.com/2019/01/12/021-Flask项目-新经资讯/1547224215814.png">
+<meta property="og:image" content="https://www.jackiezz.com/2019/01/12/021-Flask项目-新经资讯/1547224295409.png">
+<meta property="og:image" content="https://www.jackiezz.com/2019/01/12/021-Flask项目-新经资讯/1547224319228.png">
+<meta property="og:image" content="https://www.jackiezz.com/2019/01/12/021-Flask项目-新经资讯/1547268274177.png">
+<meta property="og:image" content="https://www.jackiezz.com/2019/01/12/021-Flask项目-新经资讯/1547437386994.png">
 <meta property="og:image" content="https://www.jackiezz.com/assets/未设置csrf_token.png">
 <meta property="og:image" content="https://www.jackiezz.com/assets/手机验证码发送成功.png">
 <meta property="og:updated_time" content="2019-02-11T08:55:35.834Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="021.Flask项目_新经资讯">
 <meta name="twitter:description" content="Flask项目_新经产资讯1.项目开发准备1) 项目分析 项目简介  一款新闻展示的Web项目，主要为用户提供最新的金融资讯、数据 以抓取其他网站数据和用户发布作为新闻的主要来源 基于 Flask 框架，以 前后端不分离 的形式实现具体业务逻辑   技术实现  基于 Python 3.0 + Flask 框架实现 数据存储使用 Redis + MySQL 实现 第三方扩展： 七牛云：文件存储平台">
-<meta name="twitter:image" content="https://www.jackiezz.com/2019/01/12/021-Flask项目-新经资讯/021-Flask项目-新经资讯/1547223486723.png">
+<meta name="twitter:image" content="https://www.jackiezz.com/2019/01/12/021-Flask项目-新经资讯/1547223486723.png">
   
   
     <link rel="icon" href="images/favicon.ico">
@@ -331,24 +331,24 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 初始化git</span></span><br><span class="line"><span class="built_in">cd</span> [项目目录]</span><br><span class="line">git init</span><br><span class="line"><span class="comment"># 配置当前项目git提交信息(可省略此步，如不配置则使用全局配置)</span></span><br><span class="line">git config user.name XXX</span><br><span class="line">git config user.email XXX@xxx.com</span><br><span class="line"><span class="comment"># 添加忽略文件</span></span><br><span class="line">touch .gitignore</span><br><span class="line"><span class="comment"># 设置忽略文件内容(后续根据需要再添加)</span></span><br><span class="line">.idea</span><br><span class="line">*.py[cod]</span><br><span class="line"><span class="comment"># 添加所有文件到暂存区</span></span><br><span class="line">git add .</span><br><span class="line"><span class="comment"># 提交到本地仓库并填写注释</span></span><br><span class="line">git commit -m<span class="string">'第一次提交'</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>让 Pycharm 管理当前项目的 git</strong></p>
-<p><img src="021-Flask项目-新经资讯/1547223486723.png" alt="1547223486723"></p>
+<p><img src="/2019/01/12/021-Flask项目-新经资讯/1547223486723.png" alt="1547223486723"></p>
 </li>
 <li><p><strong>远程提交</strong></p>
 <blockquote>
 <p> 使用码云 <a href="https://gitee.com/" target="_blank" rel="noopener">https://gitee.com/</a> 作为在线 git 源代码仓库</p>
 </blockquote>
-<p><img src="021-Flask项目-新经资讯/1547223860015.png" alt="1547223860015"></p>
+<p><img src="/2019/01/12/021-Flask项目-新经资讯/1547223860015.png" alt="1547223860015"></p>
 </li>
 <li><p><strong>将已有项目上传到码云</strong>：</p>
 <ul>
 <li>方式一: 命令行</li>
 </ul>
-<p><img src="021-Flask项目-新经资讯/1547223987062.png" alt="1547223987062"></p>
+<p><img src="/2019/01/12/021-Flask项目-新经资讯/1547223987062.png" alt="1547223987062"></p>
 <ul>
 <li><p>方式二: Pycharm</p>
-<p><img src="021-Flask项目-新经资讯/1547224215814.png" alt="1547224215814"></p>
-<p><img src="021-Flask项目-新经资讯/1547224295409.png" alt="1547224295409"></p>
-<p><img src="021-Flask项目-新经资讯/1547224319228.png" alt="1547224319228"></p>
+<p><img src="/2019/01/12/021-Flask项目-新经资讯/1547224215814.png" alt="1547224215814"></p>
+<p><img src="/2019/01/12/021-Flask项目-新经资讯/1547224295409.png" alt="1547224295409"></p>
+<p><img src="/2019/01/12/021-Flask项目-新经资讯/1547224319228.png" alt="1547224319228"></p>
 </li>
 </ul>
 </li>
@@ -567,7 +567,7 @@
 </code></pre><blockquote>
 <p>当前应用程序的 logger 会根据应用程序的调试状态去调整日志级别, 如下图:</p>
 </blockquote>
-<p>  <img src="021-Flask项目-新经资讯/1547268274177.png" alt="1547268274177"></p>
+<p>  <img src="/2019/01/12/021-Flask项目-新经资讯/1547268274177.png" alt="1547268274177"></p>
 </li>
 </ul>
 <h4 id="5-蓝图的使用"><a href="#5-蓝图的使用" class="headerlink" title="5) 蓝图的使用"></a>5) 蓝图的使用</h4><ul>
@@ -597,7 +597,7 @@
 </blockquote>
 </li>
 </ol>
-<h4 id="6-数据库分析及创建"><a href="#6-数据库分析及创建" class="headerlink" title="6) 数据库分析及创建"></a>6) 数据库分析及创建</h4><p>​    <img src="021-Flask项目-新经资讯/1547437386994.png" alt="1547437386994"></p>
+<h4 id="6-数据库分析及创建"><a href="#6-数据库分析及创建" class="headerlink" title="6) 数据库分析及创建"></a>6) 数据库分析及创建</h4><p>​    <img src="/2019/01/12/021-Flask项目-新经资讯/1547437386994.png" alt="1547437386994"></p>
 <ul>
 <li><p>数据库表迁移</p>
 <ul>
@@ -812,7 +812,7 @@
 <li><p>进行代码测试，发现在请求发送短信的时候提示如下：</p>
 </li>
 </ul>
-<p><img src="../../../../../../assets/未设置csrf_token.png" alt="img"></p>
+<p><img src="/2019/01/12/021-Flask项目-新经资讯/../../../../../../assets/未设置csrf_token.png" alt="img"></p>
 <ul>
 <li>暂时关闭 <code>csrf_token</code> 的校验，去 <code>init/__init__.py</code> 文件中注释 csrf_token 保护功能，先将当前业务调通。</li>
 </ul>
@@ -820,7 +820,7 @@
 <ul>
 <li>再次运行测试，页面正常倒计时，说明短信发送成功</li>
 </ul>
-<p><img src="../../../../../../assets/手机验证码发送成功.png" alt="img"></p>
+<p><img src="/2019/01/12/021-Flask项目-新经资讯/../../../../../../assets/手机验证码发送成功.png" alt="img"></p>
 <blockquote>
 <p>修改现有前端页面 bug</p>
 </blockquote>
