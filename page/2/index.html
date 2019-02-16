@@ -107,6 +107,199 @@
       <div class="outer">
         <section id="main" class="body-wrap">
   
+    <article id="post-012-MySQL" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/09/012-MySQL/">012.MySQL</a>
+    </h1>
+  
+
+          
+              <span class="header-cate">
+                <i class="fa fa-map-marker"></i>
+                  
+                  <a href="/categories/Database/">Database</a>
+                  
+              </span>
+          
+      </header>
+    
+    <div class="article-entry " itemprop="articleBody">
+      
+        <div class="article-img">
+            <a href="/2019/01/09/012-MySQL/">
+                
+                <img src="https://www.jackiezz.com/images/mysql.png" alt="012.MySQL" title="012.MySQL">
+                
+            </a>
+        </div>
+        <div class="article-feed">
+            <p>
+                1.安装和卸载
+安装
+123456789# 安装服务器sudo apt install mysql-serversudo service mysql startsudo service mysql stopsudo service mysql restartps ajx|grep mysql # 安装客户端sudo apt install mysql-client
+
+配置...
+            </p>
+        </div>
+      
+        
+    </div>
+    <footer class="article-footer">
+        
+        <ul class="article-footer-menu">
+            
+                <li><i class="fa fa-calendar"></i>2019-01-09</li>
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/Mysql/" class="color1">Mysql</a>
+      
+  </li>
+
+        </ul>
+        
+            <a href="/2019/01/09/012-MySQL/#more" class="article-more-link">more&gt;&gt;</a>
+        
+    </footer>
+  </div>
+</article>
+
+
+  
+    <article id="post-011-正则" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/06/011-正则/">011.正则</a>
+    </h1>
+  
+
+          
+              <span class="header-cate">
+                <i class="fa fa-map-marker"></i>
+                  
+                  <a href="/categories/网络/">网络</a>
+                  
+              </span>
+          
+      </header>
+    
+    <div class="article-entry " itemprop="articleBody">
+      
+        <div class="article-img">
+            <a href="/2019/01/06/011-正则/">
+                
+                <img src="https://www.jackiezz.com/images/timg.jpeg" alt="011.正则" title="011.正则">
+                
+            </a>
+        </div>
+        <div class="article-feed">
+            <p>
+                1.概述
+查找验证特定格式的字符串
+应用：匹配数据，提取数据
+
+
+
+2.re模块
+re的基本使用
+1234import reret = re.match(r"test\d", "test3")  # 用正则"test\d"匹配字符串"test3"if ret:    ret.group()  # group取出匹配的结果
+
+re的其它功能
+123456789101112i...
+            </p>
+        </div>
+      
+        
+    </div>
+    <footer class="article-footer">
+        
+        <ul class="article-footer-menu">
+            
+                <li><i class="fa fa-calendar"></i>2019-01-06</li>
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/正则/" class="color3">正则</a>
+      
+  </li>
+
+        </ul>
+        
+            <a href="/2019/01/06/011-正则/#more" class="article-more-link">more&gt;&gt;</a>
+        
+    </footer>
+  </div>
+</article>
+
+
+  
+    <article id="post-010-多任务" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/04/010-多任务/">010.多任务</a>
+    </h1>
+  
+
+          
+      </header>
+    
+    <div class="article-entry " itemprop="articleBody">
+      
+        <div class="article-img">
+            <a href="/2019/01/04/010-多任务/">
+                
+                <img src="https://www.jackiezz.com/images/010.jpg" alt="010.多任务" title="010.多任务">
+                
+            </a>
+        </div>
+        <div class="article-feed">
+            <p>
+                1.基本概念1) 并发和并行  并发: 任务数&gt;cpu核数 :  切换执行  并行: 任务数&lt;cpu核数 :  真正一起执行
+2.线程
+threading 继承自 thread
+
+1)多线程实现
+函数实现
+123t = threading.Thread(target=函数)len(threading.enumerate())  # 查看线程数量t.start(...
+            </p>
+        </div>
+      
+        
+    </div>
+    <footer class="article-footer">
+        
+        <ul class="article-footer-menu">
+            
+                <li><i class="fa fa-calendar"></i>2019-01-04</li>
+            
+            
+        </ul>
+        
+            <a href="/2019/01/04/010-多任务/#more" class="article-more-link">more&gt;&gt;</a>
+        
+    </footer>
+  </div>
+</article>
+
+
+  
     <article id="post-009-网络编程" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -568,213 +761,6 @@ https://blog.csdn.net/yato0514/article/details/78510363
 
 
   
-    <article id="post-003.Hexo" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/24/003.Hexo/">003.Hexo</a>
-    </h1>
-  
-
-          
-              <span class="header-cate">
-                <i class="fa fa-map-marker"></i>
-                  
-                  <a href="/categories/博客/">博客</a>
-                  
-              </span>
-          
-      </header>
-    
-    <div class="article-entry " itemprop="articleBody">
-      
-        <div class="article-img">
-            <a href="/2018/06/24/003.Hexo/">
-                
-                <img src="https://www.jackiezz.com/images/hexo.jpg" alt="003.Hexo" title="003.Hexo">
-                
-            </a>
-        </div>
-        <div class="article-feed">
-            <p>
-                #Hexo
-1. 什么是Hexo快速、简洁的博客框架，Markdown渲染
-2. 安装
-安装前提：Node.jsGit
-
-123456789# 安装Gitsudo apt-get install git-core# 安装Node.jscurl https://raw.github.com/creationix/nvm/v0.33.11/install.sh | shwge...
-            </p>
-        </div>
-      
-        
-    </div>
-    <footer class="article-footer">
-        
-        <ul class="article-footer-menu">
-            
-                <li><i class="fa fa-calendar"></i>2018-06-24</li>
-            
-            
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/hexo/" class="color5">hexo</a>
-      
-  </li>
-
-        </ul>
-        
-            <a href="/2018/06/24/003.Hexo/#more" class="article-more-link">more&gt;&gt;</a>
-        
-    </footer>
-  </div>
-</article>
-
-
-  
-    <article id="post-002.Markdown语法" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/23/002.Markdown语法/">002.Markdown语法</a>
-    </h1>
-  
-
-          
-              <span class="header-cate">
-                <i class="fa fa-map-marker"></i>
-                  
-                  <a href="/categories/Markdown/">Markdown</a>
-                  
-              </span>
-          
-      </header>
-    
-    <div class="article-entry " itemprop="articleBody">
-      
-        <div class="article-img">
-            <a href="/2018/06/23/002.Markdown语法/">
-                
-                <img src="https://www.jackiezz.com/images/markdown.jpg" alt="002.Markdown语法" title="002.Markdown语法">
-                
-            </a>
-        </div>
-        <div class="article-feed">
-            <p>
-                Markdown语法我们理解您需要更便捷更高效的工具记录思想，整理笔记、知识，并将其中承载的价值传播给他人，Cmd Markdown 是我们给出的答案 —— 我们为记录思想和分享知识提供更专业的工具。 您可以使用 Cmd Markdown：
-
-
-整理知识，学习笔记
-发布日记，杂文，所见所想
-撰写发布技术文稿（代码支持）
-撰写发布学术论文（LaTeX 公式支持）
-
-
-
-除了...
-            </p>
-        </div>
-      
-        
-    </div>
-    <footer class="article-footer">
-        
-        <ul class="article-footer-menu">
-            
-                <li><i class="fa fa-calendar"></i>2018-06-23</li>
-            
-            
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/markdown/" class="color4">markdown</a>
-      
-  </li>
-
-        </ul>
-        
-            <a href="/2018/06/23/002.Markdown语法/#more" class="article-more-link">more&gt;&gt;</a>
-        
-    </footer>
-  </div>
-</article>
-
-
-  
-    <article id="post-001.Linux命令" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/22/001.Linux命令/">001.Linux命令</a>
-    </h1>
-  
-
-          
-              <span class="header-cate">
-                <i class="fa fa-map-marker"></i>
-                  
-                  <a href="/categories/Linux/">Linux</a>
-                  
-              </span>
-          
-      </header>
-    
-    <div class="article-entry " itemprop="articleBody">
-      
-        <div class="article-img">
-            <a href="/2018/06/22/001.Linux命令/">
-                
-                <img src="https://www.jackiezz.com/images/linux.jpg" alt="001.Linux命令" title="001.Linux命令">
-                
-            </a>
-        </div>
-        <div class="article-feed">
-            <p>
-                Linux的终端命令linux终端命令格式
-
-command [-options] [parameter]
-
-常见命令1234567lspwdcd /touch filemkdir foderrm fileclear
-查询命令帮助12command --helpman command
-1. 目录相关命令ls命令123456ls -a  # 展示当前文件夹所有内容ls -l...
-            </p>
-        </div>
-      
-        
-    </div>
-    <footer class="article-footer">
-        
-        <ul class="article-footer-menu">
-            
-                <li><i class="fa fa-calendar"></i>2018-06-22</li>
-            
-            
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/linux/" class="color1">linux</a>
-      
-  </li>
-
-        </ul>
-        
-            <a href="/2018/06/22/001.Linux命令/#more" class="article-more-link">more&gt;&gt;</a>
-        
-    </footer>
-  </div>
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -836,7 +822,7 @@ command [-options] [parameter]
             <a class="category-link" href="/categories/Bug/">Bug</a><a class="category-link" href="/categories/Database/">Database</a><a class="category-link" href="/categories/Flask/">Flask</a><a class="category-link" href="/categories/Linux/">Linux</a><a class="category-link" href="/categories/Markdown/">Markdown</a><a class="category-link" href="/categories/Python/">Python</a><a class="category-link" href="/categories/Tool/">Tool</a><a class="category-link" href="/categories/python/">python</a><a class="category-link" href="/categories/前端/">前端</a><a class="category-link" href="/categories/博客/">博客</a><a class="category-link" href="/categories/操作系统/">操作系统</a><a class="category-link" href="/categories/编辑器/">编辑器</a><a class="category-link" href="/categories/网络/">网络</a>
         </div>
         <div id="sidebar-menu-box-tags">
-            <a href="/tags/Flask/" style="font-size: 10px;">Flask</a> <a href="/tags/HTML-CSS/" style="font-size: 10px;">HTML&CSS</a> <a href="/tags/Mysql/" style="font-size: 10px;">Mysql</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/bug/" style="font-size: 20px;">bug</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/vi/" style="font-size: 10px;">vi</a> <a href="/tags/正则/" style="font-size: 10px;">正则</a>
+            <a href="/tags/Flask/" style="font-size: 10px;">Flask</a> <a href="/tags/HTML-CSS/" style="font-size: 20px;">HTML&CSS</a> <a href="/tags/Mysql/" style="font-size: 10px;">Mysql</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/bug/" style="font-size: 15px;">bug</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/jquery/" style="font-size: 10px;">jquery</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/python/" style="font-size: 15px;">python</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/vi/" style="font-size: 10px;">vi</a> <a href="/tags/正则/" style="font-size: 10px;">正则</a>
         </div>
     </div>
     <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
@@ -869,7 +855,7 @@ command [-options] [parameter]
     <div class="mobile-header-tag-container">
         <span class="title">Tags</span>
         <div id="mobile-header-container-tags">
-            <a href="/tags/Flask/" style="font-size: 10px;">Flask</a> <a href="/tags/HTML-CSS/" style="font-size: 10px;">HTML&CSS</a> <a href="/tags/Mysql/" style="font-size: 10px;">Mysql</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/bug/" style="font-size: 20px;">bug</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/vi/" style="font-size: 10px;">vi</a> <a href="/tags/正则/" style="font-size: 10px;">正则</a>
+            <a href="/tags/Flask/" style="font-size: 10px;">Flask</a> <a href="/tags/HTML-CSS/" style="font-size: 20px;">HTML&CSS</a> <a href="/tags/Mysql/" style="font-size: 10px;">Mysql</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/bug/" style="font-size: 15px;">bug</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/jquery/" style="font-size: 10px;">jquery</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/python/" style="font-size: 15px;">python</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/vi/" style="font-size: 10px;">vi</a> <a href="/tags/正则/" style="font-size: 10px;">正则</a>
         </div>
     </div>
 </div>
