@@ -16,10 +16,13 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="3. 模板1) Jinja2模板引擎简介 模板   视图函数有两个作用：处理业务逻辑和返回响应内容。模板的作用即返回响应内容。   模板其实是一个包含响应文本的文件，其中用占位符(变量)表示动态部分，告诉模板引擎其具体的值需要从使用的数据中获取 使用真实值替换变量，再返回最终得到的字符串，这个过程称为“渲染” Flask是使用 Jinja2 这个模板引擎来渲染模板  使用模板的好处：  视图函数只">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-18T11:49:06.123Z">
+<meta property="og:image" content="https://www.jackiezz.com/2019/01/12/021-Flask(二、模板)/021-Flask(二、模板">
+<meta property="og:image" content="https://www.jackiezz.com/2019/01/12/021-Flask(二、模板)/021-Flask(二、模板">
+<meta property="og:updated_time" content="2019-02-18T11:52:31.522Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="021-Flask(二、模板)">
 <meta name="twitter:description" content="3. 模板1) Jinja2模板引擎简介 模板   视图函数有两个作用：处理业务逻辑和返回响应内容。模板的作用即返回响应内容。   模板其实是一个包含响应文本的文件，其中用占位符(变量)表示动态部分，告诉模板引擎其具体的值需要从使用的数据中获取 使用真实值替换变量，再返回最终得到的字符串，这个过程称为“渲染” Flask是使用 Jinja2 这个模板引擎来渲染模板  使用模板的好处：  视图函数只">
+<meta name="twitter:image" content="https://www.jackiezz.com/2019/01/12/021-Flask(二、模板)/021-Flask(二、模板">
   
   
     <link rel="icon" href="images/favicon.ico">
@@ -170,15 +173,296 @@
 </ul>
 </li>
 <li><p><strong>使用</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- &#123;&#123;&#125;&#125; 来表示变量名，这种 &#123;&#123;&#125;&#125; 语法叫做**变量代码块 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;&#123; post.title &#125;&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Jinja2 模版中的变量代码块可以是任意 Python 类型或者对象，只要它能够被 Python 的 str() 方法转换为一个字符串就可以，比如，可以通过下面的方式显示一个字典或者列表中的某个元素:</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;your_dict[<span class="string">'key'</span>]&#125;&#125;</span><br><span class="line">&#123;&#123;your_list[<span class="number">0</span>]&#125;&#125;</span><br></pre></td></tr></table></figure>
 <ul>
-<li>`</li>
+<li><p>用 {<strong>%%</strong>} 定义的<strong>控制代码块</strong>，可以实现一些语言层次的功能，比如循环或者if语句</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if user %&#125;</span><br><span class="line">    &#123;&#123; user &#125;&#125;</span><br><span class="line">&#123;% else %&#125;</span><br><span class="line">    hello!</span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">    &#123;% for index in indexs %&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span> &#123;&#123; index &#125;&#125; <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    &#123;% endfor %&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 </li>
+<li><p><strong>注释</strong></p>
+<ul>
+<li><p>使用  进行注释，注释的内容不会在html中被渲染出来</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;# &#123;&#123; name &#125;&#125; #&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-模板的使用"><a href="#3-模板的使用" class="headerlink" title="3) 模板的使用"></a>3) 模板的使用</h4><ul>
+<li><p>在项目下创建 <code>templates</code> 文件夹，用于存放所有的模板文件，并在目录下创建一个模板html文件 <code>temp_demo1.html</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">我的模板html内容</span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置 templates 文件夹属性以便能够在代码中有智能提示</p>
+<p><img src="/2019/01/12/021-Flask(二、模板)/021-Flask(二、模板" alt="1550483912231">/1550483912231.png)</p>
+</li>
+<li><p>设置 html 中的模板语言，以便在 html 有智能提示</p>
+<p><img src="/2019/01/12/021-Flask(二、模板)/021-Flask(二、模板" alt="1550483942681">/1550483942681.png)</p>
+</li>
+<li><p>创建视图函数，将该模板内容进行渲染返回</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.route('/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">'temp_demo1.html'</span>)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>访问：<a href="http://127.0.0.1:5000/" target="_blank" rel="noopener">http://127.0.0.1:5000/</a> 运行测试</p>
+</blockquote>
+</li>
+<li><p>代码中传入字符串，列表，字典到模板中</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.route('/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="comment"># 往模板中传入的数据</span></span><br><span class="line">    my_str = <span class="string">'Hello 黑马程序员'</span></span><br><span class="line">    my_int = <span class="number">10</span></span><br><span class="line">    my_array = [<span class="number">3</span>, <span class="number">4</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">7</span>, <span class="number">9</span>]</span><br><span class="line">    my_dict = &#123;</span><br><span class="line">        <span class="string">'name'</span>: <span class="string">'xiaoming'</span>,</span><br><span class="line">        <span class="string">'age'</span>: <span class="number">18</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">'temp_demo1.html'</span>,</span><br><span class="line">                           my_str=my_str,</span><br><span class="line">                           my_int=my_int,</span><br><span class="line">                           my_array=my_array,</span><br><span class="line">                           my_dict=my_dict</span><br><span class="line">                           )</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>模板中代码</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">我的模板html内容</span><br><span class="line"><span class="tag">&lt;<span class="name">br</span>/&gt;</span>&#123;&#123; my_str &#125;&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">br</span>/&gt;</span>&#123;&#123; my_int &#125;&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">br</span>/&gt;</span>&#123;&#123; my_array &#125;&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">br</span>/&gt;</span>&#123;&#123; my_dict &#125;&#125;</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>相关运算，取值</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">br</span>/&gt;</span> my_int + 10 的和为：&#123;&#123; my_int + 10 &#125;&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">br</span>/&gt;</span> my_int + my_array第0个值的和为：&#123;&#123; my_int + my_array[0] &#125;&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">br</span>/&gt;</span> my_array 第0个值为：&#123;&#123; my_array[0] &#125;&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">br</span>/&gt;</span> my_array 第1个值为：&#123;&#123; my_array.1 &#125;&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">br</span>/&gt;</span> my_dict 中 name 的值为：&#123;&#123; my_dict['name'] &#125;&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">br</span>/&gt;</span> my_dict 中 age 的值为：&#123;&#123; my_dict.age &#125;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="4-过滤器"><a href="#4-过滤器" class="headerlink" title="4) 过滤器"></a>4) 过滤器</h4><blockquote>
+<p>过滤器的本质就是函数。有时候我们不仅仅只是需要输出变量的值，我们还需要修改变量的显示，甚至格式化、运算等等，而在模板中是不能直接调用 Python 中的某些方法，那么这就用到了过滤器。</p>
+</blockquote>
+<ul>
+<li><p>过滤器的使用方式为：变量名 | 过滤器。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;variable | filter_name(*args)&#125;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果没有任何参数传给过滤器,则可以把括号省略掉</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;variable | filter_name&#125;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>链式调用</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123; <span class="string">"hello world"</span> | reverse | upper &#125;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="1-gt-常见内建过滤器"><a href="#1-gt-常见内建过滤器" class="headerlink" title="1&gt; 常见内建过滤器"></a>1&gt; <strong>常见内建过滤器</strong></h5><ul>
+<li><p><strong>字符串操作</strong></p>
+</li>
+<li><p>safe：禁用转义</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;&#123;&#123; '&lt;em&gt;hello&lt;/em&gt;' | safe &#125;&#125;&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>capitalize：把变量值的首字母转成大写，其余字母转小写</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;&#123;&#123; 'hello' | capitalize &#125;&#125;&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>lower：把值转成小写</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;&#123;&#123; 'HELLO' | lower &#125;&#125;&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>upper：把值转成大写</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;&#123;&#123; 'hello' | upper &#125;&#125;&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>title：把值中的每个单词的首字母都转成大写</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;&#123;&#123; 'hello' | title &#125;&#125;&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>reverse：字符串反转</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;&#123;&#123; 'olleh' | reverse &#125;&#125;&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>format：格式化输出</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;&#123;&#123; '%s is %d' | format('name',17) &#125;&#125;&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>striptags：渲染之前把值中所有的HTML标签都删掉</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;&#123;&#123; '&lt;em&gt;hello&lt;/em&gt;' | striptags &#125;&#125;&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>列表操作</strong></p>
+</li>
+<li><p>first：取第一个元素</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;&#123;&#123; [1,2,3,4,5,6] | first &#125;&#125;&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>last：取最后一个元素</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;&#123;&#123; [1,2,3,4,5,6] | last &#125;&#125;&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>length：获取列表长度</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;&#123;&#123; [1,2,3,4,5,6] | length &#125;&#125;&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>sum：列表求和</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;&#123;&#123; [1,2,3,4,5,6] | sum &#125;&#125;&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>sort：列表排序</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;&#123;&#123; [6,2,3,1,5,4] | sort &#125;&#125;&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>语句块过滤</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% filter upper %&#125;</span><br><span class="line">    <span class="comment">#一大堆文字#</span></span><br><span class="line">&#123;% endfilter %&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="2-gt-自定义过滤器"><a href="#2-gt-自定义过滤器" class="headerlink" title="2&gt; 自定义过滤器"></a>2&gt; 自定义过滤器</h5><p>过滤器的本质是函数。当模板内置的过滤器不能满足需求，可以自定义过滤器。自定义过滤器有两种实现方式：</p>
+<p><strong>添加列表反转的过滤器</strong></p>
+<ul>
+<li><p>一种是通过Flask应用对象的 <strong>add_template_filter</strong> 方法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">do_listreverse</span><span class="params">(li)</span>:</span></span><br><span class="line">    <span class="comment"># 通过原列表创建一个新列表</span></span><br><span class="line">    temp_li = list(li)</span><br><span class="line">    <span class="comment"># 将新列表进行返转</span></span><br><span class="line">    temp_li.reverse()</span><br><span class="line">    <span class="keyword">return</span> temp_li</span><br><span class="line"></span><br><span class="line">app.add_template_filter(do_listreverse,<span class="string">'lireverse'</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通过装饰器来实现自定义过滤器</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.template_filter('lireverse')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">do_listreverse</span><span class="params">(li)</span>:</span></span><br><span class="line">    <span class="comment"># 通过原列表创建一个新列表</span></span><br><span class="line">    temp_li = list(li)</span><br><span class="line">    <span class="comment"># 将新列表进行返转</span></span><br><span class="line">    temp_li.reverse()</span><br><span class="line">    <span class="keyword">return</span> temp_li</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>重要：自定义的过滤器名称如果和内置的过滤器重名，会覆盖内置的过滤器。</strong></p>
+<h4 id="5-控制代码块"><a href="#5-控制代码块" class="headerlink" title="5) 控制代码块"></a>5) 控制代码块</h4><p>控制代码块主要包含两个：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- if/else if /else / endif</span><br><span class="line">- for / endfor</span><br></pre></td></tr></table></figure>
+<h5 id="1-gt-if语句"><a href="#1-gt-if语句" class="headerlink" title="1&gt; if语句"></a>1&gt; if语句</h5><blockquote>
+<p>Jinja2 语法中的if语句跟 Python 中的 if 语句相似,后面的布尔值或返回布尔值的表达式将决定代码中的哪个流程会被执行:</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;%<span class="keyword">if</span> user.is_logged_in() %&#125;</span><br><span class="line">    &lt;a href='/logout'&gt;Logout&lt;/a&gt;</span><br><span class="line">&#123;% <span class="keyword">else</span> %&#125;</span><br><span class="line">    &lt;a href='/login'&gt;Login&lt;/a&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>过滤器可以被用在 if 语句中:</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;% <span class="keyword">if</span> comments | length &gt; <span class="number">0</span> %&#125;</span><br><span class="line">    There are &#123;&#123; comments | length &#125;&#125; comments</span><br><span class="line">&#123;% <span class="keyword">else</span> %&#125;</span><br><span class="line">    There are no comments</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="2-gt-循环"><a href="#2-gt-循环" class="headerlink" title="2&gt; 循环"></a>2&gt; 循环</h5><ul>
+<li>我们可以在 Jinja2 中使用循环来迭代任何列表或者生成器函数</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;% <span class="keyword">for</span> post <span class="keyword">in</span> posts %&#125;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;h1&gt;&#123;&#123; post.title &#125;&#125;&lt;/h1&gt;</span><br><span class="line">        &lt;p&gt;&#123;&#123; post.text | safe &#125;&#125;&lt;/p&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&#123;% endfor %&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>循环和if语句可以组合使用，以模拟 Python 循环中的 continue 功能，下面这个循环将只会渲染post.text不为None的那些post：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;% <span class="keyword">for</span> post <span class="keyword">in</span> posts <span class="keyword">if</span> post.text %&#125;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;h1&gt;&#123;&#123; post.title &#125;&#125;&lt;/h1&gt;</span><br><span class="line">        &lt;p&gt;&#123;&#123; post.text | safe &#125;&#125;&lt;/p&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&#123;% endfor %&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在一个 for 循环块中你可以访问这些特殊的变量:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>变量</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>loop.index</td>
+<td>当前循环迭代的次数（从 1 开始）</td>
+</tr>
+<tr>
+<td>loop.index0</td>
+<td>当前循环迭代的次数（从 0 开始）</td>
+</tr>
+<tr>
+<td>loop.revindex</td>
+<td>到循环结束需要迭代的次数（从 1 开始）</td>
+</tr>
+<tr>
+<td>loop.revindex0</td>
+<td>到循环结束需要迭代的次数（从 0 开始）</td>
+</tr>
+<tr>
+<td>loop.first</td>
+<td>如果是第一次迭代，为 True 。</td>
+</tr>
+<tr>
+<td>loop.last</td>
+<td>如果是最后一次迭代，为 True 。</td>
+</tr>
+<tr>
+<td>loop.length</td>
+<td>序列中的项目数。</td>
+</tr>
+<tr>
+<td>loop.cycle</td>
+<td>在一串序列间期取值的辅助函数。见下面示例程序。</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>在循环内部,你可以使用一个叫做loop的特殊变量来获得关于for循环的一些信息<ul>
+<li>比如：要是我们想知道当前被迭代的元素序号，并模拟Python中的enumerate函数做的事情，则可以使用loop变量的index属性,例如:</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% <span class="keyword">for</span> post <span class="keyword">in</span> posts%&#125;</span><br><span class="line">&#123;&#123;loop.index&#125;&#125;, &#123;&#123;post.title&#125;&#125;</span><br><span class="line">&#123;% endfor %&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>会输出这样的结果</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>, Post title</span><br><span class="line"><span class="number">2</span>, Second Post</span><br></pre></td></tr></table></figure>
+<ul>
+<li>cycle函数会在每次循环的时候,返回其参数中的下一个元素,可以拿上面的例子来说明:</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% <span class="keyword">for</span> post <span class="keyword">in</span> posts%&#125;</span><br><span class="line">&#123;&#123;loop.cycle(<span class="string">'odd'</span>,<span class="string">'even'</span>)&#125;&#125; &#123;&#123;post.title&#125;&#125;</span><br><span class="line">&#123;% endfor %&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>会输出这样的结果：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">odd Post Title</span><br><span class="line">even Second Post</span><br></pre></td></tr></table></figure>
+<h4 id="6-宏"><a href="#6-宏" class="headerlink" title="6) 宏"></a>6) 宏</h4><blockquote>
+<ul>
+<li>把它看作 Jinja2 中的一个函数，它会返回一个模板或者 HTML 字符串</li>
+<li>为了避免反复地编写同样的模板代码，出现代码冗余，可以把他们写成函数以进行重用</li>
+<li>需要在多处重复使用的模板代码片段可以写入单独的文件，再包含在所有模板中，以避免重复</li>
+</ul>
+</blockquote>
+<h5 id="1-gt-宏的使用"><a href="#1-gt-宏的使用" class="headerlink" title="1&gt; 宏的使用"></a>1&gt; 宏的使用</h5><ul>
+<li>定义宏</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;% macro input(name,value=<span class="string">''</span>,type=<span class="string">'text'</span>) %&#125;</span><br><span class="line">    &lt;input type=<span class="string">"&#123;&#123;type&#125;&#125;"</span> name=<span class="string">"&#123;&#123;name&#125;&#125;"</span></span><br><span class="line">        value="&#123;&#123;value&#125;&#125;" class="form-control"&gt;</span><br><span class="line">&#123;% endmacro %&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>调用宏</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123; input(<span class="string">'name'</span> value=<span class="string">'zs'</span>)&#125;&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>这会输出</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=<span class="string">"text"</span> name=<span class="string">"name"</span></span><br><span class="line">    value="zs" class="form-control"&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>把宏单独抽取出来，封装成html文件，其它模板中导入使用，文件名可以自定义macro.html</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;% macro function(type=<span class="string">'text'</span>, name=<span class="string">''</span>, value=<span class="string">''</span>) %&#125;</span><br><span class="line">&lt;input type=<span class="string">"&#123;&#123;type&#125;&#125;"</span> name=<span class="string">"&#123;&#123;name&#125;&#125;"</span></span><br><span class="line">value="&#123;&#123;value&#125;&#125;" class="form-control"&gt;</span><br><span class="line"></span><br><span class="line">&#123;% endmacro %&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在其它模板文件中先导入，再调用</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;% <span class="keyword">import</span> <span class="string">'macro.html'</span> <span class="keyword">as</span> func %&#125;</span><br><span class="line">&#123;% func.function() %&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="2-gt-示例"><a href="#2-gt-示例" class="headerlink" title="2&gt; 示例"></a>2&gt; 示例</h5><ul>
+<li>使用宏之前代码</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span>&gt;</span>用户名：<span class="tag">&lt;/<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"username"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span>&gt;</span>身份证号：<span class="tag">&lt;/<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"idcard"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span>&gt;</span>密码：<span class="tag">&lt;/<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">name</span>=<span class="string">"password"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span>&gt;</span>确认密码：<span class="tag">&lt;/<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">name</span>=<span class="string">"password2"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"注册"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>定义宏</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;#定义宏，相当于定义一个函数，在使用的时候直接调用该宏，传入不同的参数就可以了#&#125;</span><br><span class="line">&#123;% macro input(label="", type="text", name="", value="") %&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">label</span>&gt;</span>&#123;&#123; label &#125;&#125;<span class="tag">&lt;/<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"&#123;&#123; type &#125;&#125;"</span> <span class="attr">name</span>=<span class="string">"&#123;&#123; name &#125;&#125;"</span> <span class="attr">value</span>=<span class="string">"&#123;&#123; value &#125;&#125;"</span>&gt;</span></span><br><span class="line">&#123;% endmacro %&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用宏</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span>&gt;</span></span><br><span class="line">    &#123;&#123; input("用户名：", name="username") &#125;&#125;<span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">    &#123;&#123; input("身份证号：", name="idcard") &#125;&#125;<span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">    &#123;&#123; input("密码：", type="password", name="password") &#125;&#125;<span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">    &#123;&#123; input("确认密码：", type="password", name="password2") &#125;&#125;<span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">    &#123;&#123; input(type="submit", value="注册") &#125;&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="7-模板继承"><a href="#7-模板继承" class="headerlink" title="7) 模板继承"></a>7) 模板继承</h4><blockquote>
+<p>模板继承是为了重用模板中的公共内容。一般Web开发中，继承主要使用在网站的顶部菜单、底部。这些内容可以定义在父模板中，子模板直接继承，而不需要重复书写。</p>
+</blockquote>
+<ul>
+<li>标签定义的内容</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% block top %&#125; &#123;% endblock %&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>相当于在父模板中挖个坑，当子模板继承父模板时，可以进行填充。</li>
+<li>子模板使用 extends 指令声明这个模板继承自哪个模板</li>
+<li>父模板中定义的块在子模板中被重新定义，在子模板中调用父模板的内容可以使用super()</li>
+</ul>
+<h5 id="1-gt-父模板"><a href="#1-gt-父模板" class="headerlink" title="1&gt; 父模板"></a>1&gt; 父模板</h5><ul>
+<li>base.html</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;% block top %&#125;</span><br><span class="line">  顶部菜单</span><br><span class="line">&#123;% endblock top %&#125;</span><br><span class="line"></span><br><span class="line">&#123;% block content %&#125;</span><br><span class="line">&#123;% endblock content %&#125;</span><br><span class="line"></span><br><span class="line">&#123;% block bottom %&#125;</span><br><span class="line">  底部</span><br><span class="line">&#123;% endblock bottom %&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="2-gt-子模板"><a href="#2-gt-子模板" class="headerlink" title="2&gt; 子模板"></a>2&gt; 子模板</h5><ul>
+<li>extends指令声明这个模板继承自哪</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;% extends <span class="string">'base.html'</span> %&#125;</span><br><span class="line">&#123;% block content %&#125;</span><br><span class="line"> 需要填充的内容</span><br><span class="line">&#123;% endblock content %&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>模板继承使用时注意点：<ul>
+<li>不支持多继承</li>
+<li>为了便于阅读，在子模板中使用extends时，尽量写在模板的第一行。</li>
+<li>不能在一个模板文件中定义多个相同名字的block标签。</li>
+<li>当在页面中使用多个block标签时，建议给结束标签起个名字，当多个block嵌套时，阅读性更好。</li>
+</ul>
+</li>
+</ul>
+<h4 id="8-包含"><a href="#8-包含" class="headerlink" title="8) 包含"></a>8) 包含</h4><blockquote>
+<p>Jinja2模板中，除了宏和继承，还支持一种代码重用的功能，叫包含(Include)。它的功能是将另一个模板整个加载到当前模板中，并直接渲染。</p>
+</blockquote>
+<ul>
+<li>include的使用</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% include <span class="string">'hello.html'</span> %&#125;</span><br></pre></td></tr></table></figure>
+<p>包含在使用时，如果包含的模板文件不存在时，程序会抛出<strong>TemplateNotFound</strong>异常，可以加上 <code>ignore missing</code> 关键字。如果包含的模板文件不存在，会忽略这条include语句。</p>
+<ul>
+<li>include 的使用加上关键字ignore missing</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% include <span class="string">'hello.html'</span> ignore missing %&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="9-小结"><a href="#9-小结" class="headerlink" title="9) 小结"></a>9) 小结</h4><ul>
+<li>宏(Macro)、继承(Block)、包含(include)均能实现代码的复用。</li>
+<li>继承(Block)的本质是代码替换，一般用来实现多个页面中重复不变的区域。</li>
+<li>宏(Macro)的功能类似函数，可以传入参数，需要定义、调用。</li>
+<li>包含(include)是直接将目标模板文件整个渲染出来。</li>
 </ul>
 
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2019年02月18日 19:49</p>
+        <p>最后更新： 2019年02月18日 19:52</p>
         <p>原始链接： <a class="post-url" href="/2019/01/12/021-Flask(二、模板)/" title="021-Flask(二、模板)">https://www.jackiezz.com/2019/01/12/021-Flask(二、模板)/</a></p>
         <footer>
             <a href="https://www.jackiezz.com">
@@ -296,7 +580,7 @@
 
     <aside class="post-toc-pos post-toc-top" id="post-toc">
         <nav class="post-toc-wrap">
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-模板"><span class="post-toc-text">3. 模板</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-Jinja2模板引擎简介"><span class="post-toc-text">1) Jinja2模板引擎简介</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-Jinja2"><span class="post-toc-text">2) Jinja2</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-模板"><span class="post-toc-text">3. 模板</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-Jinja2模板引擎简介"><span class="post-toc-text">1) Jinja2模板引擎简介</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-Jinja2"><span class="post-toc-text">2) Jinja2</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-模板的使用"><span class="post-toc-text">3) 模板的使用</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-过滤器"><span class="post-toc-text">4) 过滤器</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#1-gt-常见内建过滤器"><span class="post-toc-text">1&gt; 常见内建过滤器</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#2-gt-自定义过滤器"><span class="post-toc-text">2&gt; 自定义过滤器</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#5-控制代码块"><span class="post-toc-text">5) 控制代码块</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#1-gt-if语句"><span class="post-toc-text">1&gt; if语句</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#2-gt-循环"><span class="post-toc-text">2&gt; 循环</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#6-宏"><span class="post-toc-text">6) 宏</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#1-gt-宏的使用"><span class="post-toc-text">1&gt; 宏的使用</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#2-gt-示例"><span class="post-toc-text">2&gt; 示例</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-模板继承"><span class="post-toc-text">7) 模板继承</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#1-gt-父模板"><span class="post-toc-text">1&gt; 父模板</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#2-gt-子模板"><span class="post-toc-text">2&gt; 子模板</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#8-包含"><span class="post-toc-text">8) 包含</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#9-小结"><span class="post-toc-text">9) 小结</span></a></li></ol></li></ol>
         </nav>
     </aside>
     
