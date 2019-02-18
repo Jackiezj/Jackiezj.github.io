@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="3. 模板1) Jinja2模板引擎简介 模板   视图函数有两个作用：处理业务逻辑和返回响应内容。模板的作用即返回响应内容。   模板其实是一个包含响应文本的文件，其中用占位符(变量)表示动态部分，告诉模板引擎其具体的值需要从使用的数据中获取 使用真实值替换变量，再返回最终得到的字符串，这个过程称为“渲染” Flask是使用 Jinja2 这个模板引擎来渲染模板  使用模板的好处：  视图函数只">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-18T11:43:32.288Z">
+<meta property="og:updated_time" content="2019-02-18T11:44:28.848Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="021-Flask(二、模板)">
 <meta name="twitter:description" content="3. 模板1) Jinja2模板引擎简介 模板   视图函数有两个作用：处理业务逻辑和返回响应内容。模板的作用即返回响应内容。   模板其实是一个包含响应文本的文件，其中用占位符(变量)表示动态部分，告诉模板引擎其具体的值需要从使用的数据中获取 使用真实值替换变量，再返回最终得到的字符串，这个过程称为“渲染” Flask是使用 Jinja2 这个模板引擎来渲染模板  使用模板的好处：  视图函数只">
@@ -154,14 +154,27 @@
 <ul>
 <li>视图函数只负责业务逻辑和数据处理(业务逻辑方面)</li>
 <li>而模板则取到视图函数的数据结果进行展示(视图展示方面)</li>
-<li><p>代码结构清晰，耦合度低</p>
+<li>代码结构清晰，耦合度低</li>
+</ul>
+<h4 id="2-Jinja2"><a href="#2-Jinja2" class="headerlink" title="2) Jinja2"></a>2) Jinja2</h4><ul>
+<li><p><strong>两个概念</strong>：</p>
+<ul>
+<li>Jinja2：是 Python 下一个模板引擎，是由Python实现的模板语言，他的设计思想来源于 Django 的模板引擎，并扩展了其语法和一系列强大的功能，其是Flask内置的模板语言。</li>
+<li>模板语言：是一种被设计来自动生成文档的简单文本格式，在模板语言中，一般都会把一些变量传给模板，替换模板的特定位置上预先定义好的占位变量名。</li>
+</ul>
+</li>
+<li><p><strong>渲染模版函数</strong></p>
+<ul>
+<li>Flask提供的 <strong>render_template</strong> 函数封装了该模板引擎</li>
+<li><strong>render_template</strong> 函数的第一个参数是模板的文件名，后面的参数都是键值对，表示模板中变量对应的真实值。</li>
+</ul>
 </li>
 <li></li>
 </ul>
 
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2019年02月18日 19:43</p>
+        <p>最后更新： 2019年02月18日 19:44</p>
         <p>原始链接： <a class="post-url" href="/2019/01/12/021-Flask(二、模板)/" title="021-Flask(二、模板)">https://www.jackiezz.com/2019/01/12/021-Flask(二、模板)/</a></p>
         <footer>
             <a href="https://www.jackiezz.com">
@@ -279,7 +292,7 @@
 
     <aside class="post-toc-pos post-toc-top" id="post-toc">
         <nav class="post-toc-wrap">
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-模板"><span class="post-toc-text">3. 模板</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-Jinja2模板引擎简介"><span class="post-toc-text">1) Jinja2模板引擎简介</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-模板"><span class="post-toc-text">3. 模板</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-Jinja2模板引擎简介"><span class="post-toc-text">1) Jinja2模板引擎简介</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-Jinja2"><span class="post-toc-text">2) Jinja2</span></a></li></ol></li></ol>
         </nav>
     </aside>
     
