@@ -107,50 +107,6 @@
       <div class="outer">
         <section id="main" class="body-wrap">
   
-    <article id="post-019-git" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry " itemprop="articleBody">
-      
-        <div class="article-img">
-            <a href="/2019/02/16/019-git/">
-                
-                <img src="https://www.jackiezz.com/images/banner.jpg" alt="" title="">
-                
-            </a>
-        </div>
-        <div class="article-feed">
-            <p>
-                title: 019.gitauthor: jackiezztags:
-
-nulltop: 1date: 2019-01-11 19:17:59categories:cover_picture:
-
-019. Git版本控制
-git操作命令集合
-
-单人操作:1.sudo apt-get intall git ,安装git ,并创建git密码2.git, 查看安装结果,有提示...
-            </p>
-        </div>
-      
-        
-    </div>
-    <footer class="article-footer">
-        
-        <ul class="article-footer-menu">
-            
-                <li><i class="fa fa-calendar"></i>2019-02-16</li>
-            
-            
-        </ul>
-        
-            <a href="/2019/02/16/019-git/#more" class="article-more-link">more&gt;&gt;</a>
-        
-    </footer>
-  </div>
-</article>
-
-
-  
     <article id="post-022-爬虫基础" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -276,50 +232,40 @@ Robots协议:
 
 
   
-    <article id="post-022-Flask(三、数据库)" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-023-Flask技术要点" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/12/022-Flask(三、数据库)/">022-Flask(三、数据库)</a>
+      <a class="article-title" href="/2018/06/24/023-Flask技术要点/">003.Hexo</a>
     </h1>
   
 
+          
+              <span class="header-cate">
+                <i class="fa fa-map-marker"></i>
+                  
+                  <a href="/categories/Flask/">Flask</a>
+                  
+              </span>
           
       </header>
     
     <div class="article-entry " itemprop="articleBody">
       
         <div class="article-img">
-            <a href="/2019/01/12/022-Flask(三、数据库)/">
+            <a href="/2018/06/24/023-Flask技术要点/">
                 
-                <img src="https://www.jackiezz.com/images/banner.jpg" alt="022-Flask(三、数据库)" title="022-Flask(三、数据库)">
+                <img src="https://www.jackiezz.com/images/banner.jpg" alt="003.Hexo" title="003.Hexo">
                 
             </a>
         </div>
         <div class="article-feed">
             <p>
-                022-Flask(三、数据库)1. ORM
-ORM 全拼Object-Relation Mapping.
-
-中文意为 对象-关系映射.
-
-主要实现模型对象到关系数据库数据的映射.
-
-比如：把数据库表中每条记录映射为一个模型对象
-
-
-
-
-ORM图解
-/1550491711373.png)
-
-优点 :
-
-只需要面向对象编程, 不需要面向数据库编写代码.
-对数据库的操作都转化...
+                1. 项目基本配置1) manage.py123456789101112from flask import Flaskapp = Flask(__name__)@app.route('/')def index():    passif __name__ == '__main__':    app.run()
+2) .gitignore123.idea*.py[cod]lo...
             </p>
         </div>
       
@@ -329,7 +275,7 @@ ORM图解
         
         <ul class="article-footer-menu">
             
-                <li><i class="fa fa-calendar"></i>2019-01-12</li>
+                <li><i class="fa fa-calendar"></i>2018-06-24</li>
             
             
   <li class="article-footer-tags">
@@ -341,412 +287,7 @@ ORM图解
 
         </ul>
         
-            <a href="/2019/01/12/022-Flask(三、数据库)/#more" class="article-more-link">more&gt;&gt;</a>
-        
-    </footer>
-  </div>
-</article>
-
-
-  
-    <article id="post-021-Flask(二、模板)" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/12/021-Flask(二、模板)/">021-Flask(二、模板)</a>
-    </h1>
-  
-
-          
-      </header>
-    
-    <div class="article-entry " itemprop="articleBody">
-      
-        <div class="article-img">
-            <a href="/2019/01/12/021-Flask(二、模板)/">
-                
-                <img src="https://www.jackiezz.com/images/banner.jpg" alt="021-Flask(二、模板)" title="021-Flask(二、模板)">
-                
-            </a>
-        </div>
-        <div class="article-feed">
-            <p>
-                3. 模板1) Jinja2模板引擎简介
-模板
-
-
-视图函数有两个作用：处理业务逻辑和返回响应内容。模板的作用即返回响应内容。
-
-
-模板其实是一个包含响应文本的文件，其中用占位符(变量)表示动态部分，告诉模板引擎其具体的值需要从使用的数据中获取
-使用真实值替换变量，再返回最终得到的字符串，这个过程称为“渲染”
-Flask是使用 Jinja2 这个模板引擎来渲染模板
-
-使用...
-            </p>
-        </div>
-      
-        
-    </div>
-    <footer class="article-footer">
-        
-        <ul class="article-footer-menu">
-            
-                <li><i class="fa fa-calendar"></i>2019-01-12</li>
-            
-            
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/Flask/" class="color1">Flask</a>
-      
-  </li>
-
-        </ul>
-        
-            <a href="/2019/01/12/021-Flask(二、模板)/#more" class="article-more-link">more&gt;&gt;</a>
-        
-    </footer>
-  </div>
-</article>
-
-
-  
-    <article id="post-020-Flask(一、视图和路由)" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/12/020-Flask(一、视图和路由)/">020.Flask(一、视图和路由)</a>
-    </h1>
-  
-
-          
-      </header>
-    
-    <div class="article-entry " itemprop="articleBody">
-      
-        <div class="article-img">
-            <a href="/2019/01/12/020-Flask(一、视图和路由)/">
-                
-                <img src="https://www.jackiezz.com/images/banner.jpg" alt="020.Flask(一、视图和路由)" title="020.Flask(一、视图和路由)">
-                
-            </a>
-        </div>
-        <div class="article-feed">
-            <p>
-                020. Flask(一、视图和路由)1. Flask 简介1) Web应用程序的本质Web(World Wide Web)诞生最初的目的，是为了利用互联网交流工作文档。
-/web.jpg)
-2) Web框架
-什么是Web框架？
-协助开发者快速开发 Web 应用程序的一套功能代码
-开发者只需要按照框架约定要求，在指定位置写上自己的业务逻辑代码
-
-
-为什么要用Web框架？
-...
-            </p>
-        </div>
-      
-        
-    </div>
-    <footer class="article-footer">
-        
-        <ul class="article-footer-menu">
-            
-                <li><i class="fa fa-calendar"></i>2019-01-12</li>
-            
-            
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/Flask/" class="color1">Flask</a>
-      
-  </li>
-
-        </ul>
-        
-            <a href="/2019/01/12/020-Flask(一、视图和路由)/#more" class="article-more-link">more&gt;&gt;</a>
-        
-    </footer>
-  </div>
-</article>
-
-
-  
-    <article id="post-018-redis" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/10/018-redis/">018. Redis</a>
-    </h1>
-  
-
-          
-              <span class="header-cate">
-                <i class="fa fa-map-marker"></i>
-                  
-                  <a href="/categories/Database/">Database</a>
-                  
-              </span>
-          
-      </header>
-    
-    <div class="article-entry " itemprop="articleBody">
-      
-        <div class="article-img">
-            <a href="/2019/01/10/018-redis/">
-                
-                <img src="https://www.jackiezz.com/images/banner.jpg" alt="018. Redis" title="018. Redis">
-                
-            </a>
-        </div>
-        <div class="article-feed">
-            <p>
-                018.Redis简介
-什么是NoSQL
-
- NoSQL –&gt; not only sql, 泛指非关系型数据库
-
-不支持SQL语法
-NoSQL中存储的数据都是KV形式
-NoSQL产品: Mongodb, Redis, Hbase hadoop, Cassandra hadoop
-
-
-
-Redis特性
-
-Redis支持数据持久化
-Redis不仅仅支持K-V，同时还提供...
-            </p>
-        </div>
-      
-        
-    </div>
-    <footer class="article-footer">
-        
-        <ul class="article-footer-menu">
-            
-                <li><i class="fa fa-calendar"></i>2019-01-10</li>
-            
-            
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/Redis/" class="color1">Redis</a>
-      
-  </li>
-
-        </ul>
-        
-            <a href="/2019/01/10/018-redis/#more" class="article-more-link">more&gt;&gt;</a>
-        
-    </footer>
-  </div>
-</article>
-
-
-  
-    <article id="post-017-json&amp;ajax" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/10/017-json&ajax/">017. Json&amp;ajax</a>
-    </h1>
-  
-
-          
-              <span class="header-cate">
-                <i class="fa fa-map-marker"></i>
-                  
-                  <a href="/categories/前端/">前端</a>
-                  
-              </span>
-          
-      </header>
-    
-    <div class="article-entry " itemprop="articleBody">
-      
-        <div class="article-img">
-            <a href="/2019/01/10/017-json&ajax/">
-                
-                <img src="https://www.jackiezz.com/images/linux.jpg" alt="017. Json&ajax" title="017. Json&ajax">
-                
-            </a>
-        </div>
-        <div class="article-feed">
-            <p>
-                017. json&amp;ajax1. json
-json是 JavaScript Object Notation :  javascript对象表示法，这里说的json指的是类似于javascript对象的一种数据格式，目前这种数据格式比较流行，逐渐替换掉了传统的xml数据格式。
-
-
-javascript自定义对象：
-
-1234567var oMan = &#123;...
-            </p>
-        </div>
-      
-        
-    </div>
-    <footer class="article-footer">
-        
-        <ul class="article-footer-menu">
-            
-                <li><i class="fa fa-calendar"></i>2019-01-10</li>
-            
-            
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/jquery/" class="color2">jquery</a>
-      
-  </li>
-
-        </ul>
-        
-            <a href="/2019/01/10/017-json&ajax/#more" class="article-more-link">more&gt;&gt;</a>
-        
-    </footer>
-  </div>
-</article>
-
-
-  
-    <article id="post-016-jQuery" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/10/016-jQuery/">015. jQuery</a>
-    </h1>
-  
-
-          
-              <span class="header-cate">
-                <i class="fa fa-map-marker"></i>
-                  
-                  <a href="/categories/前端/">前端</a>
-                  
-              </span>
-          
-      </header>
-    
-    <div class="article-entry " itemprop="articleBody">
-      
-        <div class="article-img">
-            <a href="/2019/01/10/016-jQuery/">
-                
-                <img src="https://www.jackiezz.com/images/linux.jpg" alt="015. jQuery" title="015. jQuery">
-                
-            </a>
-        </div>
-        <div class="article-feed">
-            <p>
-                jquery介绍jQuery介绍
-jQuery是目前使用最广泛的javascript函数库。
-jquery的口号和愿望 Write Less, Do More（写得少，做得多）
-
-jquery是一个函数库，一个js文件，页面用script标签引入这个js文件就可以使用。
-1&lt;script type="text/javascript" src="js/jquery-1...
-            </p>
-        </div>
-      
-        
-    </div>
-    <footer class="article-footer">
-        
-        <ul class="article-footer-menu">
-            
-                <li><i class="fa fa-calendar"></i>2019-01-10</li>
-            
-            
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/HTML&amp;CSS/" class="color4">HTML&CSS</a>
-      
-  </li>
-
-        </ul>
-        
-            <a href="/2019/01/10/016-jQuery/#more" class="article-more-link">more&gt;&gt;</a>
-        
-    </footer>
-  </div>
-</article>
-
-
-  
-    <article id="post-014-HTML和CSS" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/10/014-HTML和CSS/">014. HTML&amp;CSS</a>
-    </h1>
-  
-
-          
-              <span class="header-cate">
-                <i class="fa fa-map-marker"></i>
-                  
-                  <a href="/categories/前端/">前端</a>
-                  
-              </span>
-          
-      </header>
-    
-    <div class="article-entry " itemprop="articleBody">
-      
-        <div class="article-img">
-            <a href="/2019/01/10/014-HTML和CSS/">
-                
-                <img src="https://www.jackiezz.com/images/linux.jpg" alt="014. HTML&CSS" title="014. HTML&CSS">
-                
-            </a>
-        </div>
-        <div class="article-feed">
-            <p>
-                014.HTML&amp;CSS1. HTML基本概念超文本标记语言html注释​    &lt;!-- 这是一段注释  --&gt;
-
-2. HTML标签1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859...
-            </p>
-        </div>
-      
-        
-    </div>
-    <footer class="article-footer">
-        
-        <ul class="article-footer-menu">
-            
-                <li><i class="fa fa-calendar"></i>2019-01-10</li>
-            
-            
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/HTML&amp;CSS/" class="color4">HTML&CSS</a>
-      
-  </li>
-
-        </ul>
-        
-            <a href="/2019/01/10/014-HTML和CSS/#more" class="article-more-link">more&gt;&gt;</a>
+            <a href="/2018/06/24/023-Flask技术要点/#more" class="article-more-link">more&gt;&gt;</a>
         
     </footer>
   </div>
@@ -755,10 +296,6 @@ jquery是一个函数库，一个js文件，页面用script标签引入这个js�
 
   
 
-
-  <nav id="page-nav">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next >></a>
-  </nav>
 </section>
         
       </div>
@@ -812,10 +349,10 @@ jquery是一个函数库，一个js文件，页面用script标签引入这个js�
 <div class="sidebar-menu-box" id="sidebar-menu-box">
     <div class="sidebar-menu-box-container">
         <div id="sidebar-menu-box-categories">
-            <a class="category-link" href="/categories/Bug/">Bug</a><a class="category-link" href="/categories/Database/">Database</a><a class="category-link" href="/categories/Flask/">Flask</a><a class="category-link" href="/categories/Linux/">Linux</a><a class="category-link" href="/categories/Markdown/">Markdown</a><a class="category-link" href="/categories/Python/">Python</a><a class="category-link" href="/categories/Tool/">Tool</a><a class="category-link" href="/categories/python/">python</a><a class="category-link" href="/categories/前端/">前端</a><a class="category-link" href="/categories/博客/">博客</a><a class="category-link" href="/categories/操作系统/">操作系统</a><a class="category-link" href="/categories/编辑器/">编辑器</a><a class="category-link" href="/categories/网络/">网络</a>
+            <a class="category-link" href="/categories/Flask/">Flask</a>
         </div>
         <div id="sidebar-menu-box-tags">
-            <a href="/tags/Flask/" style="font-size: 20px;">Flask</a> <a href="/tags/HTML-CSS/" style="font-size: 16.67px;">HTML&CSS</a> <a href="/tags/Mysql/" style="font-size: 10px;">Mysql</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/bug/" style="font-size: 13.33px;">bug</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/jquery/" style="font-size: 10px;">jquery</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/python/" style="font-size: 13.33px;">python</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/vi/" style="font-size: 10px;">vi</a> <a href="/tags/正则/" style="font-size: 10px;">正则</a>
+            <a href="/tags/Flask/" style="font-size: 10px;">Flask</a>
         </div>
     </div>
     <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
@@ -848,7 +385,7 @@ jquery是一个函数库，一个js文件，页面用script标签引入这个js�
     <div class="mobile-header-tag-container">
         <span class="title">Tags</span>
         <div id="mobile-header-container-tags">
-            <a href="/tags/Flask/" style="font-size: 20px;">Flask</a> <a href="/tags/HTML-CSS/" style="font-size: 16.67px;">HTML&CSS</a> <a href="/tags/Mysql/" style="font-size: 10px;">Mysql</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/bug/" style="font-size: 13.33px;">bug</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/jquery/" style="font-size: 10px;">jquery</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/python/" style="font-size: 13.33px;">python</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/vi/" style="font-size: 10px;">vi</a> <a href="/tags/正则/" style="font-size: 10px;">正则</a>
+            <a href="/tags/Flask/" style="font-size: 10px;">Flask</a>
         </div>
     </div>
 </div>
