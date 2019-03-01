@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>VI | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="Jackiezz, Jackiezz's Blog">
+  
+  <meta name="description" content="一、网络1. 网络通信 网络就是一种辅助双方或者多方能够连接在一起的工具   使用网络的目的联通多方进行通信  即把数据从一方传递给另外一方 网络编程 :  让在不同的电脑上的软件能够进行数据传递,即进程之间的通信    2. IP地址 ip地址:用来在网络中标记一台电脑,比如192.168.1.1;在本地局域网上是唯一的。   IP地址127.0.0.1~127.255.255.255用于回路测">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VI">
+<meta property="og:url" content="https://www.jackiezz.com/2019/02/27/010-网络编程/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="一、网络1. 网络通信 网络就是一种辅助双方或者多方能够连接在一起的工具   使用网络的目的联通多方进行通信  即把数据从一方传递给另外一方 网络编程 :  让在不同的电脑上的软件能够进行数据传递,即进程之间的通信    2. IP地址 ip地址:用来在网络中标记一台电脑,比如192.168.1.1;在本地局域网上是唯一的。   IP地址127.0.0.1~127.255.255.255用于回路测">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://www.jackiezz.com/2019/02/27/010-网络编程/1.jpg">
+<meta property="og:image" content="https://www.jackiezz.com/2019/02/27/010-网络编程/2.jpg">
+<meta property="og:image" content="https://www.jackiezz.com/2019/02/27/010-网络编程/3.jpg">
+<meta property="og:image" content="https://www.jackiezz.com/2019/02/27/010-网络编程/4.jpg">
+<meta property="og:image" content="https://www.jackiezz.com/2019/02/27/010-网络编程/5-1551306564738.jpg">
+<meta property="og:image" content="https://www.jackiezz.com/2019/02/27/010-网络编程/6.jpg">
+<meta property="og:image" content="https://www.jackiezz.com/2019/02/27/010-网络编程/7.jpg">
+<meta property="og:image" content="https://www.jackiezz.com/2019/02/27/010-网络编程/1551312127135.png">
+<meta property="og:image" content="https://www.jackiezz.com/2019/02/27/010-网络编程/8.jpg">
+<meta property="og:image" content="https://www.jackiezz.com/2019/02/27/010-网络编程/1551324991354.png">
+<meta property="og:image" content="https://www.jackiezz.com/2019/02/27/010-网络编程/9.jpg">
+<meta property="og:image" content="https://www.jackiezz.com/2019/02/27/010-网络编程/10.jpg">
+<meta property="og:image" content="https://www.jackiezz.com/2019/02/27/010-网络编程/11.jpg">
+<meta property="og:image" content="https://www.jackiezz.com/2019/02/27/010-网络编程/12.jpg">
+<meta property="og:image" content="https://www.jackiezz.com/2019/02/27/010-网络编程/1551450465276.png">
+<meta property="og:image" content="https://www.jackiezz.com/2019/02/27/010-网络编程/1551450703796.png">
+<meta property="og:updated_time" content="2019-03-01T15:58:20.209Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="VI">
+<meta name="twitter:description" content="一、网络1. 网络通信 网络就是一种辅助双方或者多方能够连接在一起的工具   使用网络的目的联通多方进行通信  即把数据从一方传递给另外一方 网络编程 :  让在不同的电脑上的软件能够进行数据传递,即进程之间的通信    2. IP地址 ip地址:用来在网络中标记一台电脑,比如192.168.1.1;在本地局域网上是唯一的。   IP地址127.0.0.1~127.255.255.255用于回路测">
+<meta name="twitter:image" content="https://www.jackiezz.com/2019/02/27/010-网络编程/1.jpg">
+  
+  
+    <link rel="icon" href="images/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">Jackiezz&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a href="/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        Jackiezz&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        Jackiezz的python之路
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="MinHow" target="_blank" href="//minhow.com">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/wongminho">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" href="//weibo.com/WongMinHo">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                        <a title="Twitter" target="_blank" href="//twitter.com/huangminhow">
+                            <i class="fa fa-twitter fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-010-网络编程" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      VI
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2019-02-27
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h2 id="一、网络"><a href="#一、网络" class="headerlink" title="一、网络"></a>一、网络</h2><h3 id="1-网络通信"><a href="#1-网络通信" class="headerlink" title="1. 网络通信"></a>1. 网络通信</h3><blockquote>
+<p>网络就是一种辅助双方或者多方能够连接在一起的工具</p>
+</blockquote>
+<ul>
+<li><p><strong>使用网络的目的</strong><br>联通多方进行通信  即把数据从一方传递给另外一方</p>
+<p>网络编程 :  让在不同的电脑上的软件能够进行数据传递,即进程之间的通信</p>
+</li>
+</ul>
+<p><img src="/2019/02/27/010-网络编程/1.jpg" alt="1"></p>
+<h3 id="2-IP地址"><a href="#2-IP地址" class="headerlink" title="2. IP地址"></a>2. IP地址</h3><blockquote>
+<p>ip地址:用来在网络中标记一台电脑,比如192.168.1.1;在本地局域网上是唯一的。</p>
+</blockquote>
+<blockquote>
+<p>IP地址127.0.0.1~127.255.255.255用于回路测试,    127.0.0.1代表本机IP地址</p>
+</blockquote>
+<h3 id="3-Linux网络命令"><a href="#3-Linux网络命令" class="headerlink" title="3. Linux网络命令"></a>3. Linux网络命令</h3><ul>
+<li><p><strong>ifconfig</strong></p>
+<blockquote>
+<p>查看或配置网卡信息:ifconfig</p>
+</blockquote>
+<p>修改ip</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ifconfig wlp0s20f3 192.168.199.100</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/02/27/010-网络编程/2.jpg" alt="2"></p>
+</li>
+<li><p><strong>ping</strong></p>
+<blockquote>
+<p>测试远程主机连通性</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ping 192.168.1.1</span><br><span class="line">ping www.baidu.com</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="4-端口"><a href="#4-端口" class="headerlink" title="4. 端口"></a>4. 端口</h3><blockquote>
+<p>如果一个程序需要收发网络数据,那么就需要有这样的端口<br>在linux系统中,端口可以有65536(2的16次方)个之多!</p>
+</blockquote>
+<p><img src="/2019/02/27/010-网络编程/3.jpg" alt="3"></p>
+<ul>
+<li><p><strong>端口号</strong></p>
+<p>端口是通过端口号来标记的,端口号只有整数,范围是从0到65535</p>
+</li>
+<li><p><strong>端口是怎样分配的</strong></p>
+<blockquote>
+<p>端口号不是随意使用的,而是按照一定的规定进行分配。</p>
+</blockquote>
+<ul>
+<li><p>知名端口(Well Known Ports)</p>
+<p>范围从0到1023</p>
+<p>​    80端口分配给HTTP服务<br>​    21端口分配给FTP服务</p>
+<blockquote>
+<p>一般情况下,如果一个程序需要使用知名端口的需要有root权限</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>动态端口(Dynamic Ports)</p>
+<p>动态端口的范围是从1024到65535</p>
+<blockquote>
+<p>动态分配是指当一个系统程序或应用程序程序需要网络通信时,它向主机申请一个端口,主机从可用的端口号中分配一个供它使用</p>
+<p>当这个程序关闭时,同时也就释放了所占用的端口号</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p>查看端口</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -an</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>端口作用</p>
+<p>通过 “IP地址 + 端口号”区分不同的服务</p>
+<p><img src="/2019/02/27/010-网络编程/4.jpg" alt="4"></p>
+<p><strong>总而言之,IP地址标识网络中的一台主机,端口号标识这台主机上的一个服务(应用程序)</strong></p>
+</li>
+</ul>
+<h3 id="5-socket"><a href="#5-socket" class="headerlink" title="5. socket"></a>5. socket</h3><ul>
+<li><p><strong>进程</strong> : 指的是<strong>运行的程序</strong>以及运行时<strong>用到的资源</strong>这个<strong>整体</strong>称之为进程</p>
+</li>
+<li><p><strong>进程间通信</strong> : 指的是:运行的程序之间的实现<strong>数据共享和传递</strong></p>
+</li>
+<li><p><strong>socket</strong>(简称套接字) ：是最通用的<strong>进程间通信的一种方式</strong></p>
+<p>它与其他进程间通信的一个主要不同是 : 它能实现<strong>不同主机间的进程间通信</strong>,我们网络上各种各样的服务大多都是基于Socket来完成通信的</p>
+</li>
+</ul>
+<h4 id="1-什么是socket"><a href="#1-什么是socket" class="headerlink" title="1) 什么是socket"></a>1) 什么是socket</h4><ul>
+<li><p>socket图解</p>
+<p><img src="/2019/02/27/010-网络编程/5-1551306564738.jpg" alt="5"></p>
+<blockquote>
+<p><strong>通信前提</strong> : 完成通信需要<strong>一对套接字</strong>(socket),网络通信的一端称为一个socket<br><strong>本质</strong> : 对底层网络协议<strong>TCP/IP的封装</strong>    并且提供了一套应用程序接口(<strong>API</strong>)<br>学习socket编程的<strong>目的</strong> : 用这一套函数接口为我们的应用<strong>开发服务</strong>。</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="2-创建socket"><a href="#2-创建socket" class="headerlink" title="2) 创建socket"></a>2) 创建socket</h4><blockquote>
+<p>在Python中使用socket模块的函数socket就可以完成:</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> socket</span><br><span class="line">socket.socket(AddressFamily, Type)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>说明:<br><strong>socket.socket</strong> : 创建一个socket,该函数带有两个参数:<br><strong>AddressFamily</strong> : 可以选择AF_INET(用于Internet进程间通信表示IPv4协议)或者AF_INET6(表示IPv6协议未来很快可能用上)等<br><strong>Type</strong> : 套接字类型,可以是SOCK_DGRAM(数据报套接字,主要用于UDP协议)或者SOCK_STREAM(流式套接字,主要用于TCP协议)等</p>
+</blockquote>
+<h4 id="3-创建一个udp-socket-udp套接字"><a href="#3-创建一个udp-socket-udp套接字" class="headerlink" title="3) 创建一个udp socket(udp套接字)"></a>3) 创建一个udp socket(udp套接字)</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"><span class="comment"># 创建udp的套接字</span></span><br><span class="line">s =	socket.socket(socket.AF_INET, socket.SOCK_DGRAM)</span><br><span class="line"><span class="comment"># ...这里是使用套接字的功能(省略)...</span></span><br><span class="line"><span class="comment"># 不用的时候,关闭套接字</span></span><br><span class="line">s.close()</span><br></pre></td></tr></table></figure>
+<h4 id="4-创建一个tcp-socket-tcp套接字"><a href="#4-创建一个tcp-socket-tcp套接字" class="headerlink" title="4) 创建一个tcp socket(tcp套接字)"></a>4) 创建一个tcp socket(tcp套接字)</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span>	socket</span><br><span class="line"><span class="comment"># 创建tcp的套接字</span></span><br><span class="line">s =	socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line"><span class="comment"># ...这里是使用套接字的功能(省略)...</span></span><br><span class="line"><span class="comment"># 不用的时候,关闭套接字</span></span><br><span class="line">s.close()</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>说明:<br>    套接字使用流程与文件的使用流程很类似</p>
+<ol>
+<li>创建套接字</li>
+<li>使用套接字收/发数据</li>
+<li>关闭套接字</li>
+</ol>
+</blockquote>
+<h2 id="二、udp服务器"><a href="#二、udp服务器" class="headerlink" title="二、udp服务器"></a>二、udp服务器</h2><h3 id="1-udp-接收数据"><a href="#1-udp-接收数据" class="headerlink" title="1. udp-接收数据"></a>1. udp-接收数据</h3><blockquote>
+<p>创建一个基于udp的网络程序流程很简单,具体步骤如下:</p>
+<ol>
+<li>创建客户端套接字</li>
+<li>发送/接收数据</li>
+<li>关闭套接字</li>
+</ol>
+</blockquote>
+<p><img src="/2019/02/27/010-网络编程/6.jpg" alt="6"></p>
+<ul>
+<li><p>示例</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> socket <span class="keyword">import</span> *</span><br><span class="line"><span class="comment"># 创建socket</span></span><br><span class="line">udp_socket = socket(AF_INET, SOCK_DGRAM)</span><br><span class="line"><span class="comment"># 绑定端口</span></span><br><span class="line">udp_socket.bind((<span class="string">""</span>, <span class="number">9999</span>))  <span class="comment">#	ip地址和端口号,ip一般不用写,表示本机的任何一个ip</span></span><br><span class="line"><span class="comment"># 发送数据</span></span><br><span class="line">udp_socket.sendto((input(<span class="string">"请输入要发送的数据"</span>)).encode(<span class="string">'utf-8'</span>), (<span class="string">"127.0.0.1"</span>, <span class="number">8888</span>))</span><br><span class="line"><span class="comment"># 关闭socket</span></span><br><span class="line">udp_socket.close()</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="2-udp-发送-接收数据"><a href="#2-udp-发送-接收数据" class="headerlink" title="2. udp-发送-接收数据"></a>2. udp-发送-接收数据</h3><ul>
+<li><p>示例</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> socket <span class="keyword">import</span> *</span><br><span class="line"><span class="comment"># 创建socket</span></span><br><span class="line">udp_socket = socket(AF_INET, SOCK_DGRAM)</span><br><span class="line"><span class="comment"># 绑定端口</span></span><br><span class="line">udp_socket.bind((<span class="string">""</span>, <span class="number">8888</span>))</span><br><span class="line"><span class="comment"># 接收数据</span></span><br><span class="line">recv = udp_socket.recvfrom(<span class="number">1024</span>)</span><br><span class="line">recv_data = recv[<span class="number">0</span>].decode(<span class="string">'utf-8'</span>)</span><br><span class="line">client_socket = recv[<span class="number">1</span>]</span><br><span class="line"><span class="comment"># 发送数据</span></span><br><span class="line">udp_socket.sendto((<span class="string">"拉收到了数据"</span> + recv_data).encode(<span class="string">'utf-8'</span>), (<span class="string">"127.0.0.1"</span>, <span class="number">9999</span>))</span><br><span class="line"><span class="comment"># 关闭socket</span></span><br><span class="line">udp_socket.close()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>编解码问题</li>
+</ul>
+<p><img src="/2019/02/27/010-网络编程/7.jpg" alt="7"></p>
+<blockquote>
+<p>其中decode()与encode()方法<strong>可以接受参数</strong>,其声明分别为:<br>bytes.decode(encoding=”utf-8”, errors=”strict”)<br>str.encode(encoding=”utf-8”, errors=”strict”)<br><strong>encoding</strong>是指在解码/编码(动词)过程中使用的字符编码(名词)<br><strong>errors</strong>是指错误的处理方案,errrors参数默认值是strict(严格的)意味着如果编解码出错将会抛出<br>UnicodeError;<br>如果想忽略编解码错误可以将errors设置为ignore。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="3-案例-udp聊天室"><a href="#3-案例-udp聊天室" class="headerlink" title="3. 案例-udp聊天室"></a>3. 案例-udp聊天室</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> socket <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">send_msg</span><span class="params">(udp_socket)</span>:</span></span><br><span class="line">    udp_socket.sendto(input(<span class="string">"请输入要发送的数据"</span>).encode(<span class="string">"utf-8"</span>), (<span class="string">""</span>, <span class="number">8888</span>))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">recv_msg</span><span class="params">(udp_socket)</span>:</span></span><br><span class="line">    recv = udp_socket.recvfrom(<span class="number">1024</span>)</span><br><span class="line">    recv_data = recv[<span class="number">1</span>]</span><br><span class="line">    recv_socket = recv[<span class="number">0</span>]</span><br><span class="line">    print(recv_data, recv_socket)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    udp_socket = socket(AF_INET, SOCK_DGRAM)</span><br><span class="line">    udp_socket.bind((<span class="string">""</span>, <span class="number">9999</span>))</span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">        choose_num = input(<span class="string">"请输入功能： 1.接收数据， 2.发送数据"</span>)</span><br><span class="line">        <span class="keyword">if</span> choose_num == <span class="string">"2"</span>:</span><br><span class="line">            send_msg(udp_socket)</span><br><span class="line">        <span class="keyword">elif</span> choose_num == <span class="string">"1"</span>:</span><br><span class="line">            recv_msg(udp_socket)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            print(<span class="string">"输入有误，请重新输入"</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<h2 id="三、TCP服务器"><a href="#三、TCP服务器" class="headerlink" title="三、TCP服务器"></a>三、TCP服务器</h2><h3 id="1-什么是tcp"><a href="#1-什么是tcp" class="headerlink" title="1. 什么是tcp"></a>1. 什么是tcp</h3><blockquote>
+<p><strong>TCP协议 : 传输控制协议</strong>(Transmission Control Protocol)</p>
+<p>一种面向连接的、可靠的、基于字节流的传输层通信协议</p>
+</blockquote>
+<h3 id="2-TCP特点"><a href="#2-TCP特点" class="headerlink" title="2. TCP特点"></a>2. TCP特点</h3><ul>
+<li><p><strong>面向连接</strong></p>
+<p>TCP通信需要经过创建连接、数据传送、终止连接三个步骤。</p>
+<p>通信双方必须先建立连接才能进行数据的传输双方都必须为该连接分配必要的系统内核资源,以管<br>理连接的状态和连接上的传输。</p>
+<p>双方间的数据传输都可以通过这一个连接进行</p>
+<p>完成数据交换后,双方必须断开此连接,以释放系统资源</p>
+<p><strong>这种连接是一对一的,因此TCP不适用于广播的应用程序,基于广播的应用程序请使用UDP协议。</strong></p>
+</li>
+<li><p><strong>可靠传输</strong></p>
+<ul>
+<li><p>TCP采用发送应答机制</p>
+<p>TCP发送的每个报文段都必须得到接收方的应答才认为这个TCP报文段传输成功</p>
+</li>
+<li><p>超时重传</p>
+<p>发送端发出一个报文段之后就启动定时器,如果在定时时间内没有收到应答就重新发送这个报文段。</p>
+<p>TCP为了保证不发生丢包,就给每个包一个序号,同时序号也保证了传送到接收端实体的包的按序接<br>收。然后接收端实体对已成功收到的包发回一个相应的确认(ACK);如果发送端实体在合理的往返<br>时延(RTT)内未收到确认,那么对应的数据包就被假设为已丢失将会被进行重传。</p>
+<p><img src="/2019/02/27/010-网络编程/1551312127135.png" alt="1551312127135"></p>
+</li>
+<li><p>错误校验<br>TCP用一个校验和函数来检验数据是否有错误;在发送和接收时都要计算校验。</p>
+</li>
+<li><p>流量控制和阻塞管理<br>流量控制用来避免主机发送得过快而使接收方来不及完全收下。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-TCP与UDP的不同点"><a href="#3-TCP与UDP的不同点" class="headerlink" title="3. TCP与UDP的不同点"></a>3. TCP与UDP的不同点</h3><ul>
+<li>面向连接(确认有创建三方交握,连接已创建才作传输。)</li>
+<li>有序数据传输</li>
+<li>重发丢失的数据包</li>
+<li>舍弃重复的数据包</li>
+<li>无差错的数据传输</li>
+<li>阻塞/流量控制</li>
+</ul>
+<p>而udp通信模型中,在通信开始之前,不需要建立相关的链接,只需要发送数据即可,类似于生活中,”写信”/“发短信“</p>
+<p><img src="/2019/02/27/010-网络编程/8.jpg" alt="8"></p>
+<h3 id="4-tcp客户端"><a href="#4-tcp客户端" class="headerlink" title="4. tcp客户端"></a>4. tcp客户端</h3><ul>
+<li><p>示例</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> socket <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建tcp_socket</span></span><br><span class="line">tcp_socket = socket(AF_INET, SOCK_STREAM)</span><br><span class="line">tcp_socket.bind((<span class="string">""</span>, <span class="number">8888</span>))</span><br><span class="line"><span class="comment"># 连接到服务器</span></span><br><span class="line">tcp_socket.connect((<span class="string">"192.168.199.113"</span>, <span class="number">9999</span>))</span><br><span class="line"><span class="comment"># 发送数据</span></span><br><span class="line">tcp_socket.send(<span class="string">"客户端数据"</span>.encode(<span class="string">'utf-8'</span>))</span><br><span class="line"><span class="comment"># 接收数据</span></span><br><span class="line">recv_data = tcp_socket.recv(<span class="number">1024</span>)</span><br><span class="line">print(recv_data.decode(<span class="string">'utf-8'</span>))</span><br><span class="line"><span class="comment"># 关闭socket</span></span><br><span class="line">tcp_socket.close()</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="5-tcp服务器"><a href="#5-tcp服务器" class="headerlink" title="5. tcp服务器"></a>5. tcp服务器</h3><ul>
+<li><p>流程</p>
+<ol>
+<li>socket创建一个套接字</li>
+<li>bind绑定ip和port</li>
+<li>listen使套接字变为可以被动套接字</li>
+<li>accept取出一个客户端连接用以服务</li>
+<li>recv/send接收发送数据</li>
+</ol>
+</li>
+<li><p>示例</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> socket <span class="keyword">import</span> *</span><br><span class="line"><span class="comment"># 创建server_socket</span></span><br><span class="line">server_socket = socket(AF_INET, SOCK_STREAM)</span><br><span class="line"><span class="comment"># 绑定ip端口</span></span><br><span class="line">server_socket.bind((<span class="string">"192.168.199.113"</span>, <span class="number">9999</span>))</span><br><span class="line"><span class="comment"># 被动监听</span></span><br><span class="line">server_socket.listen(<span class="number">128</span>)</span><br><span class="line"><span class="comment"># 连接客户端进行通信 （阻塞）</span></span><br><span class="line">client_socket, client_addr = server_socket.accept()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 接收数据</span></span><br><span class="line">recv_data = client_socket.recv(<span class="number">1024</span>)</span><br><span class="line"><span class="comment"># 发送数据</span></span><br><span class="line">client_socket.send(<span class="string">"tcp的服务器的数据"</span>.encode(<span class="string">'utf-8'</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 关闭socket</span></span><br><span class="line">client_socket.close()</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="6-tcp注意"><a href="#6-tcp注意" class="headerlink" title="6. tcp注意"></a>6. tcp注意</h3><ol>
+<li>tcp服务器一般情况下都需要绑定,否则客户端找不到这个服务器</li>
+<li>tcp客户端一般不绑定,因为是主动链接服务器,所以只要确定好服务器的ip、port等信息就好,本<br>地客户端可以随机</li>
+<li>tcp服务器中通过listen可以将socket创建出来的主动套接字变为被动的,这是做tcp服务器时必须要<br>做的</li>
+<li>当客户端需要链接服务器时,就需要使用connect进行链接,udp是不需要链接的而是直接发送,但<br>是tcp必须先链接,只有链接成功才能通信</li>
+<li>当一个tcp客户端连接服务器时,服务器端会有1个新的套接字,这个套接字用来标记这个客户端,<br>单独为这个客户端服务</li>
+<li>listen后的套接字是被动套接字,用来接收新的客户端的连接请求的,而accept返回的新套接字是标<br>识这个新客户端的</li>
+<li>关闭listen后的套接字意味着被动套接字关闭了,会导致新的客户端不能够链接服务器,但是之前<br>已经链接成功的客户端正常通信。</li>
+<li>关闭accept返回的套接字意味着这个客户端已经服务完毕</li>
+<li>当客户端的套接字调用close后,服务器端会recv解阻塞,并且返回的长度为0,因此服务器可以通<br>过返回数据的长度来区别客户端是否已经下线;同理    当服务器断开tcp连接的时候    客户端同样也会<br>收到0字节数据。</li>
+<li><img src="/2019/02/27/010-网络编程/1551324991354.png" alt="1551324991354"></li>
+</ol>
+<h3 id="7-案例：文件下载器"><a href="#7-案例：文件下载器" class="headerlink" title="7. 案例：文件下载器"></a>7. 案例：文件下载器</h3><p><img src="/2019/02/27/010-网络编程/9.jpg" alt="9"></p>
+<ul>
+<li><p>服务器代码示例</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> socket <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">init</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="comment"># 创建socket</span></span><br><span class="line">    server_socket = socket(AF_INET, SOCK_STREAM)</span><br><span class="line">    server_socket.bind((<span class="string">"192.168.199.113"</span>, <span class="number">9999</span>))</span><br><span class="line">    server_socket.listen(<span class="number">128</span>)</span><br><span class="line">    <span class="keyword">return</span> server_socket</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">conn_client</span><span class="params">(server_socket)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> server_socket.accept()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">send_smg</span><span class="params">(client_socket, content)</span>:</span></span><br><span class="line">    client_socket.send(content.encode(<span class="string">"utf-8"</span>))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">recv_smg</span><span class="params">(client_socket)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> client_socket.recv(<span class="number">1024</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">read_file</span><span class="params">(file_name)</span>:</span></span><br><span class="line">    <span class="keyword">with</span> open(file_name, <span class="string">"r"</span>) <span class="keyword">as</span> f:</span><br><span class="line">        <span class="keyword">return</span> f.read()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    server_socket = init()</span><br><span class="line">    client_socket, client_addr = conn_client(server_socket)</span><br><span class="line">    recv_data = recv_smg(client_socket)</span><br><span class="line">    <span class="comment"># 根据接收到的数据返回文件</span></span><br><span class="line">    file_name = recv_data.decode(<span class="string">"utf-8"</span>)</span><br><span class="line">    file_content = read_file(file_name)</span><br><span class="line">    <span class="comment"># 发送响应</span></span><br><span class="line">    send_smg(client_socket, file_content)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>客户端代码示例</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> socket <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    client_socket = socket(AF_INET, SOCK_STREAM)</span><br><span class="line">    client_socket.connect((<span class="string">"192.168.199.113"</span>, <span class="number">9999</span>))</span><br><span class="line">    file_name = input(<span class="string">"请输入文件名："</span>)</span><br><span class="line">    client_socket.send(file_name.encode(<span class="string">"utf-8"</span>))</span><br><span class="line">    recv_data = client_socket.recv(<span class="number">1024</span>)</span><br><span class="line">    <span class="keyword">if</span> recv_data:</span><br><span class="line">        <span class="keyword">with</span> open(<span class="string">"[接收文件]"</span>+file_name, <span class="string">"w"</span>) <span class="keyword">as</span> f:</span><br><span class="line">            f.write(recv_data.decode(<span class="string">"utf-8"</span>))</span><br><span class="line">    client_socket.close()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="四、tcp-ip协议"><a href="#四、tcp-ip协议" class="headerlink" title="四、tcp-ip协议"></a>四、tcp-ip协议</h2><blockquote>
+<p>计算机都遵守的<strong>网络通信协议</strong>叫做 <strong>TCP/IP协议</strong></p>
+</blockquote>
+<ul>
+<li><p><strong>socket套接字底层封装的就是这个TCP/IP协议</strong>做的事情</p>
+</li>
+<li><p>因为互联网协议包含了上百种协议标准,但是最重要的两个协议是TCP和IP协议</p>
+</li>
+<li>把互联网的协议简称TCP/IP协议(族)</li>
+</ul>
+<p><img src="/2019/02/27/010-网络编程/10.jpg" alt="10"></p>
+<p><img src="/2019/02/27/010-网络编程/11.jpg" alt="11"></p>
+<blockquote>
+<p>网际层也称为: 网络层<br>网络接口层也称为: 链路层</p>
+</blockquote>
+<p>另一种结构</p>
+<p><img src="/2019/02/27/010-网络编程/12.jpg" alt="12"></p>
+<h2 id="五、HTTP协议"><a href="#五、HTTP协议" class="headerlink" title="五、HTTP协议"></a>五、HTTP协议</h2><h3 id="1-网络通信过程"><a href="#1-网络通信过程" class="headerlink" title="1. 网络通信过程"></a>1. 网络通信过程</h3><ol>
+<li>在浏览器中输入一个网址时,需要将它先解析出ip地址来</li>
+<li>当得到ip地址之后,浏览器以tcp的方式3次握手链接服务器</li>
+<li>以tcp的方式发送http协议的请求数据给服务器</li>
+<li><p>服务器tcp的方式回应http协议的应答数据    给浏览器</p>
+<p><img src="/2019/02/27/010-网络编程/1551450465276.png" alt="1551450465276"></p>
+</li>
+</ol>
+<ul>
+<li>一些概念<ul>
+<li>MAC地址:在设备与设备之间数据通信时用来标记收发双方(网卡的序列号)</li>
+<li>IP地址:在逻辑上标记一台电脑,用来指引数据包的收发方向(相当于电脑的序列号)</li>
+<li>网络掩码:用来区分ip地址的网络号和主机号</li>
+<li>默认网关:当需要发送的数据包的目的ip不在本网段内时,就会发送给默认的一台电脑,成为网关</li>
+<li>集线器:已过时,用来连接多态电脑,缺点:每次收发数据都进行广播,网络会变的拥堵</li>
+<li>交换机:集线器的升级版,有学习功能知道需要发送给哪台设备,根据需要进行单播、广播</li>
+<li>路由器:连接多个不同的网段,让他们之间可以进行收发数据,每次收到数据后,ip不变,但是</li>
+<li>MAC地址会变化</li>
+<li>DNS:根据域名用来解析出IP(类似电话簿)</li>
+<li>http服务器:提供浏览器能够访问到的数据</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-HTTP协议"><a href="#2-HTTP协议" class="headerlink" title="2. HTTP协议"></a>2. HTTP协议</h3><blockquote>
+<p>HTTP: 超文本传输协议(HyperText Transfer Protocol) 是一种应用层协议</p>
+<p>HTML是一种用来<strong>定义网页的文本</strong></p>
+</blockquote>
+<p><img src="/2019/02/27/010-网络编程/1551450703796.png" alt="1551450703796"></p>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年03月01日 23:58</p>
+        <p>原始链接： <a class="post-url" href="/2019/02/27/010-网络编程/" title="VI">https://www.jackiezz.com/2019/02/27/010-网络编程/</a></p>
+        <footer>
+            <a href="https://www.jackiezz.com">
+                <img src="/images/logo.png" alt="John Doe">
+                John Doe
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://www.jackiezz.com/2019/02/27/010-网络编程/&title=《VI》 — Hexo&pic=https://www.jackiezz.comimages/logo.png" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.jackiezz.com/2019/02/27/010-网络编程/&title=《VI》 — Hexo&source=" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://www.jackiezz.com/2019/02/27/010-网络编程/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《VI》 — Hexo&url=https://www.jackiezz.com/2019/02/27/010-网络编程/&via=https://www.jackiezz.com" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://www.jackiezz.com/2019/02/27/010-网络编程/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://www.jackiezz.com/2019/02/27/010-网络编程/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#一、网络"><span class="post-toc-text">一、网络</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-网络通信"><span class="post-toc-text">1. 网络通信</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-IP地址"><span class="post-toc-text">2. IP地址</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-Linux网络命令"><span class="post-toc-text">3. Linux网络命令</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-端口"><span class="post-toc-text">4. 端口</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-socket"><span class="post-toc-text">5. socket</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-什么是socket"><span class="post-toc-text">1) 什么是socket</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-创建socket"><span class="post-toc-text">2) 创建socket</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-创建一个udp-socket-udp套接字"><span class="post-toc-text">3) 创建一个udp socket(udp套接字)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-创建一个tcp-socket-tcp套接字"><span class="post-toc-text">4) 创建一个tcp socket(tcp套接字)</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#二、udp服务器"><span class="post-toc-text">二、udp服务器</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-udp-接收数据"><span class="post-toc-text">1. udp-接收数据</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-udp-发送-接收数据"><span class="post-toc-text">2. udp-发送-接收数据</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-案例-udp聊天室"><span class="post-toc-text">3. 案例-udp聊天室</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#三、TCP服务器"><span class="post-toc-text">三、TCP服务器</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-什么是tcp"><span class="post-toc-text">1. 什么是tcp</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-TCP特点"><span class="post-toc-text">2. TCP特点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-TCP与UDP的不同点"><span class="post-toc-text">3. TCP与UDP的不同点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-tcp客户端"><span class="post-toc-text">4. tcp客户端</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-tcp服务器"><span class="post-toc-text">5. tcp服务器</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6-tcp注意"><span class="post-toc-text">6. tcp注意</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#7-案例：文件下载器"><span class="post-toc-text">7. 案例：文件下载器</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#四、tcp-ip协议"><span class="post-toc-text">四、tcp-ip协议</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#五、HTTP协议"><span class="post-toc-text">五、HTTP协议</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-网络通信过程"><span class="post-toc-text">1. 网络通信过程</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-HTTP协议"><span class="post-toc-text">2. HTTP协议</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2019/02/27/009-VI/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          VI
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2019/02/27/008-Linux命令/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">Ubuntu16的使用问题</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2019 John Doe<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://www.jackiezz.com",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/Database/">Database</a><a class="category-link" href="/categories/Markdown/">Markdown</a><a class="category-link" href="/categories/前端/">前端</a><a class="category-link" href="/categories/博客/">博客</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Flask/" style="font-size: 20px;">Flask</a> <a href="/tags/HTML-CSS/" style="font-size: 20px;">HTML&CSS</a> <a href="/tags/Mysql/" style="font-size: 15px;">Mysql</a> <a href="/tags/Redis/" style="font-size: 15px;">Redis</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/jquery/" style="font-size: 10px;">jquery</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a href="/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/Flask/" style="font-size: 20px;">Flask</a> <a href="/tags/HTML-CSS/" style="font-size: 20px;">HTML&CSS</a> <a href="/tags/Mysql/" style="font-size: 15px;">Mysql</a> <a href="/tags/Redis/" style="font-size: 15px;">Redis</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/jquery/" style="font-size: 10px;">jquery</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>

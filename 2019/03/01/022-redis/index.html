@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Redis | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="Jackiezz, Jackiezz's Blog">
+  
+  <meta name="description" content="Redis简介 什么是NoSQL   NoSQL –&amp;gt; not only sql, 泛指非关系型数据库  不支持SQL语法 NoSQL中存储的数据都是KV形式 NoSQL产品: Mongodb, Redis, Hbase hadoop, Cassandra hadoop    Redis特性  Redis支持数据持久化 Redis不仅仅支持K-V，同时还提供list，set，zset，has">
+<meta name="keywords" content="Redis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis">
+<meta property="og:url" content="https://www.jackiezz.com/2019/03/01/022-redis/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Redis简介 什么是NoSQL   NoSQL –&amp;gt; not only sql, 泛指非关系型数据库  不支持SQL语法 NoSQL中存储的数据都是KV形式 NoSQL产品: Mongodb, Redis, Hbase hadoop, Cassandra hadoop    Redis特性  Redis支持数据持久化 Redis不仅仅支持K-V，同时还提供list，set，zset，has">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://www.jackiezz.com/assets/p1_61.png">
+<meta property="og:updated_time" content="2019-03-01T15:58:20.229Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Redis">
+<meta name="twitter:description" content="Redis简介 什么是NoSQL   NoSQL –&amp;gt; not only sql, 泛指非关系型数据库  不支持SQL语法 NoSQL中存储的数据都是KV形式 NoSQL产品: Mongodb, Redis, Hbase hadoop, Cassandra hadoop    Redis特性  Redis支持数据持久化 Redis不仅仅支持K-V，同时还提供list，set，zset，has">
+<meta name="twitter:image" content="https://www.jackiezz.com/assets/p1_61.png">
+  
+  
+    <link rel="icon" href="images/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">Jackiezz&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a href="/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        Jackiezz&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        Jackiezz的python之路
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="MinHow" target="_blank" href="//minhow.com">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/wongminho">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" href="//weibo.com/WongMinHo">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                        <a title="Twitter" target="_blank" href="//twitter.com/huangminhow">
+                            <i class="fa fa-twitter fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-022-redis" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      Redis
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/Database/">Database</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2019-03-01
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h1 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h1><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><ul>
+<li><p>什么是NoSQL</p>
+<blockquote>
+<p> NoSQL –&gt; not only sql, 泛指非关系型数据库</p>
+<ul>
+<li>不支持SQL语法</li>
+<li>NoSQL中存储的数据都是KV形式</li>
+<li>NoSQL产品: Mongodb, Redis, Hbase hadoop, Cassandra hadoop</li>
+</ul>
+</blockquote>
+</li>
+<li><p>Redis特性</p>
+<ul>
+<li>Redis支持数据持久化</li>
+<li>Redis不仅仅支持K-V，同时还提供list，set，zset，hash等数据结构的存储。</li>
+<li>Redis支持数据的备份，即master-slave模式的数据备份。</li>
+</ul>
+</li>
+<li><p>Redis网站</p>
+<ul>
+<li><p><a href="https://redis.io/" target="_blank" rel="noopener">redis官方网站</a></p>
+</li>
+<li><p><a href="http://redis.cn/" target="_blank" rel="noopener">redis中文官网</a></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-安装配置"><a href="#1-安装配置" class="headerlink" title="1. 安装配置"></a>1. 安装配置</h3><h4 id="1-安装"><a href="#1-安装" class="headerlink" title="1) 安装"></a>1) 安装</h4><ul>
+<li><p>当前redis最新稳定版本是4.0.9</p>
+</li>
+<li><p>最新稳定版本下载链接： <a href="http://download.redis.io/releases/redis-4.0.9.tar.gz" target="_blank" rel="noopener">http://download.redis.io/releases/redis-4.0.9.tar.gz</a></p>
+</li>
+<li><p>step1:下载</p>
+<blockquote>
+<p>wget <a href="http://download.redis.io/releases/redis-4.0.9.tar.gz" target="_blank" rel="noopener">http://download.redis.io/releases/redis-4.0.9.tar.gz</a></p>
+</blockquote>
+</li>
+<li><p>step2:解压</p>
+<blockquote>
+<p>tar xzf redis-4.0.9.tar.gz</p>
+</blockquote>
+</li>
+<li><p>step3:移动，放到usr/local⽬录下</p>
+<blockquote>
+<p>sudo mv ./redis-4.0.9 /usr/local/redis/</p>
+</blockquote>
+</li>
+<li><p>step4:进⼊redis⽬录</p>
+<blockquote>
+<p>cd /usr/local/redis/</p>
+</blockquote>
+</li>
+<li><p>step5:生成</p>
+<blockquote>
+<p>sudo make</p>
+</blockquote>
+</li>
+<li><p>step6:测试,这段运⾏时间会较⻓</p>
+<blockquote>
+<p>sudo make test</p>
+</blockquote>
+<ul>
+<li><p>step6中常见错误:</p>
+<ol>
+<li><p>You need tcl 8.5 or newer in order to run the Redis test    </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装tcl</span></span><br><span class="line">wget http://downloads.sourceforge.net/tcl/tcl8.6.1-src.tar.gz  </span><br><span class="line">sudo tar xzvf tcl8.6.1-src.tar.gz  -C /usr/<span class="built_in">local</span>/  </span><br><span class="line"><span class="built_in">cd</span>  /usr/<span class="built_in">local</span>/tcl8.6.1/unix/  </span><br><span class="line">sudo ./configure  </span><br><span class="line">sudo make  </span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>/bin/sh: cc: command not found</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install gcc</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>step7:安装,将redis的命令安装到/usr/local/bin/⽬录</p>
+<blockquote>
+<p>sudo make install</p>
+</blockquote>
+</li>
+<li><p>step8:安装完成后，我们进入目录/usr/local/bin中查看</p>
+<blockquote>
+<p>cd /usr/local/bin<br>ls -a</p>
+</blockquote>
+<blockquote>
+<p> redis-server redis服务器</p>
+<ul>
+<li>redis-cli redis命令行客户端</li>
+<li>redis-benchmark redis性能测试工具</li>
+<li>redis-check-aof AOF文件修复工具</li>
+<li>redis-check-rdb RDB文件检索工具</li>
+</ul>
+</blockquote>
+</li>
+<li><p>step9:配置⽂件，移动到/etc/⽬录下</p>
+<blockquote>
+<p>配置⽂件⽬录为/usr/local/redis/redis.conf</p>
+</blockquote>
+<blockquote>
+<p>sudo cp /usr/local/redis/redis.conf /etc/redis/</p>
+</blockquote>
+</li>
+<li><p>Mac 上安装 Redis:</p>
+<ul>
+<li>安装 Homebrew：</li>
+</ul>
+<blockquote>
+<p><a href="https://brew.sh/" target="_blank" rel="noopener">https://brew.sh/</a></p>
+</blockquote>
+<ul>
+<li>使用 brew 安装 Redis</li>
+</ul>
+<blockquote>
+<p><a href="https://www.cnblogs.com/cloudshadow/p/mac_brew_install_redis.html" target="_blank" rel="noopener">https://www.cnblogs.com/cloudshadow/p/mac_brew_install_redis.html</a></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="2-配置"><a href="#2-配置" class="headerlink" title="2) 配置"></a>2) 配置</h4><blockquote>
+<p> sudo vi /etc/redis/redis.conf</p>
+</blockquote>
+<ul>
+<li><p>核心配置选项</p>
+<ul>
+<li><p>绑定ip：如果需要远程访问，可将此⾏注释，或绑定⼀个真实ip</p>
+<blockquote>
+<p>bind 127.0.0.1</p>
+</blockquote>
+</li>
+<li><p>端⼝，默认为6379</p>
+<blockquote>
+<p>port 6379</p>
+</blockquote>
+</li>
+<li><p>是否以守护进程运⾏</p>
+<ul>
+<li>如果以守护进程运⾏，则不会在命令⾏阻塞，类似于服务</li>
+<li>如果以⾮守护进程运⾏，则当前终端被阻塞</li>
+<li>设置为yes表示守护进程，设置为no表示⾮守护进程</li>
+<li>推荐设置为yes</li>
+</ul>
+<blockquote>
+<p>daemonize yes</p>
+</blockquote>
+</li>
+<li><p>数据⽂件</p>
+<blockquote>
+<p>dbfilename dump.rdb</p>
+</blockquote>
+</li>
+<li><p>数据⽂件存储路径</p>
+<blockquote>
+<p>dir /var/lib/redis</p>
+</blockquote>
+</li>
+<li><p>⽇志⽂件  ‘有问题, 未配置成功’</p>
+<blockquote>
+<p>logfile “/var/log/redis/redis-server.log”</p>
+</blockquote>
+</li>
+<li><p>数据库，默认有16个</p>
+<blockquote>
+<p>database 16</p>
+</blockquote>
+</li>
+<li><p>主从复制，类似于双机备份。</p>
+<blockquote>
+<p>slaveof</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>配置参考资料</p>
+<ul>
+<li><a href="http://blog.csdn.net/ljphilp/article/details/52934933" target="_blank" rel="noopener">http://blog.csdn.net/ljphilp/article/details/52934933</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="2-serveice和cli命令"><a href="#2-serveice和cli命令" class="headerlink" title="2. serveice和cli命令"></a>2. serveice和cli命令</h3><ul>
+<li><p>服务器端命令</p>
+<ul>
+<li><p>服务器端的命令为</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">redis-server /etc/redis/redis.conf  <span class="comment"># 指定加载的配置文件开启redis</span></span><br><span class="line">redis-server --<span class="built_in">help</span>  <span class="comment"># 查看服务器命令</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>常用命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ps aux | grep redis  <span class="comment"># 查看redis服务器进程</span></span><br><span class="line">sudo <span class="built_in">kill</span> -9 pid  <span class="comment"># 杀死redis服务器</span></span><br><span class="line">sudo redis-server /etc/redis/redis.conf  <span class="comment"># 指定加载的配置文件</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>客户端的命令</p>
+<ul>
+<li><p>连接服务器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">redis-cli  <span class="comment"># 连接redis</span></span><br><span class="line">redis-cli --<span class="built_in">help</span>  <span class="comment"># 查看命令帮助</span></span><br><span class="line">ping  <span class="comment"># 测试连接</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>切换数据库</p>
+<blockquote>
+<p> 数据库没有名称，默认有16个，通过0-15来标识，连接redis默认选择第一个数据库</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select 10</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-数据操作"><a href="#3-数据操作" class="headerlink" title="3. 数据操作"></a>3. 数据操作</h3><h4 id="1-string类型"><a href="#1-string类型" class="headerlink" title="1) string类型"></a>1) string类型</h4><ul>
+<li><p>简介</p>
+<blockquote>
+<p> string是 Redis 中最为基础的数据存储类型，是二进制安全的，所以可以接受任何格式的数据，如JPEG图像数据或Json对象描述信息等。</p>
+<p>在Redis中字符串类型的Value最多可以容纳的数据长度是512M。</p>
+</blockquote>
+</li>
+<li><p>保存</p>
+<p>如果设置的键不存在则为添加，如果设置的键已经存在则修改</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 设置键值</span></span><br><span class="line">set key value</span><br><span class="line"><span class="comment"># 设置键值及过期时间，以秒为单位</span></span><br><span class="line">setex key seconds value</span><br><span class="line"><span class="comment"># 设置多个键值</span></span><br><span class="line">mset key1 value1 key2 value2 ...</span><br><span class="line"><span class="comment"># 追加值</span></span><br><span class="line">append key value</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查询</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 获取：根据键获取值，如果不存在此键则返回nil</span></span><br><span class="line">get key</span><br><span class="line"><span class="comment"># 根据多个键获取多个值</span></span><br><span class="line">mget key1 key2 ...</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 删除键时会将值删除</span></span><br><span class="line">del key1 key2 ...</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="2-键命令"><a href="#2-键命令" class="headerlink" title="2) 键命令"></a>2) 键命令</h4><ul>
+<li><p>常用操作</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查找键，参数⽀持正则表达式</span></span><br><span class="line">keys pattern  <span class="comment"># eg: keys *,  keys 'a*'</span></span><br><span class="line"><span class="comment"># 判断键是否存在，如果存在返回1，不存在返回0</span></span><br><span class="line">exists key1</span><br><span class="line"><span class="comment"># 查看键对应的value的类型</span></span><br><span class="line"><span class="built_in">type</span> key</span><br><span class="line"><span class="comment"># 删除键及对应的值</span></span><br><span class="line">del key1 key2 ...</span><br><span class="line"><span class="comment"># 设置过期时间，以秒为单位,如果没有指定过期时间则⼀直存在，直到使⽤DEL移除</span></span><br><span class="line">expire key seconds</span><br><span class="line"><span class="comment"># 查看有效时间，以秒为单位</span></span><br><span class="line">ttl key</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="3-hash"><a href="#3-hash" class="headerlink" title="3) hash"></a>3) hash</h4><ul>
+<li><p>简介</p>
+<blockquote>
+<p>hash⽤于存储对象，对象的结构为属性、值</p>
+<p>值的类型为string</p>
+</blockquote>
+</li>
+<li><p>增加、修改</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 设置单个属性</span></span><br><span class="line">hset key field value</span><br><span class="line"><span class="comment"># 设置多个属性</span></span><br><span class="line">hmset key field1 value1 field2 value2 ...</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>MISCONF Redis is configured to save RDB snapshots, but is currently not able to persist on disk. Commands that may modify the data set are disabled. Please check Redis logs for details about the error.</p>
+</li>
+<li><p>Redis被配置为保存数据库快照，但它目前不能持久化到硬盘。用来修改集合数据的命令不能用</p>
+</li>
+<li><p>原因：</p>
+<ul>
+<li>强制关闭Redis快照导致不能持久化。 解决方案：</li>
+<li>运行config set stop-writes-on-bgsave-error no　命令后，关闭配置项stop-writes-on-bgsave-error解决该问题。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>查询</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 获取指定键所有的属性</span></span><br><span class="line">hkeys key</span><br><span class="line"><span class="comment"># 获取⼀个属性的值</span></span><br><span class="line">hget key field</span><br><span class="line"><span class="comment"># 获取多个属性的值</span></span><br><span class="line">hmget key field1 field2 ...</span><br><span class="line"><span class="comment"># 获取所有属性的值</span></span><br><span class="line">hvals key</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 删除整个hash键及值，使⽤del命令</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除属性，属性对应的值会被⼀起删除</span></span><br><span class="line">hdel key field1 field2 ...</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="4-list"><a href="#4-list" class="headerlink" title="4) list"></a>4) list</h4><ul>
+<li><p>简介</p>
+<ul>
+<li>列表的元素类型为string</li>
+<li>按照插⼊顺序排序</li>
+</ul>
+</li>
+<li><p>增加</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在左侧插⼊数据</span></span><br><span class="line">lpush key value1 value2 ...</span><br><span class="line"><span class="comment"># 在右侧插⼊数据</span></span><br><span class="line">rpush key value1 value2 ...</span><br><span class="line"><span class="comment"># 在指定元素的前或后插⼊新元素</span></span><br><span class="line">linsert key before或after 现有元素 新元素</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 设置指定索引位置的元素值</span></span><br><span class="line"><span class="comment"># 索引从左侧开始，第⼀个元素为0</span></span><br><span class="line"><span class="comment"># 索引可以是负数，表示尾部开始计数，如-1表示最后⼀个元素</span></span><br><span class="line">lset key index value</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查询</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 返回列表⾥指定范围内的元素</span></span><br><span class="line"><span class="comment"># start、stop为元素的下标索引</span></span><br><span class="line">lrange key start stop</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将列表中前count次出现的值为value的元素移除</span></span><br><span class="line"><span class="comment"># count &gt; 0: 从头往尾移除</span></span><br><span class="line"><span class="comment"># count &lt; 0: 从尾往头移除</span></span><br><span class="line"><span class="comment"># count = 0: 移除所有</span></span><br><span class="line">lrem key count value</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="5-set"><a href="#5-set" class="headerlink" title="5) set"></a>5) set</h4><ul>
+<li><p>简介</p>
+<ul>
+<li>⽆序集合</li>
+<li>元素为string类型</li>
+<li>元素具有唯⼀性，不重复</li>
+<li>说明：对于集合没有修改操作</li>
+</ul>
+</li>
+<li><p>增加</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 添加元素</span></span><br><span class="line">sadd key member1 member2 ...</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查询</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 返回所有的元素</span></span><br><span class="line">smembers key</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 删除指定元素</span></span><br><span class="line">srem key</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="6-zset"><a href="#6-zset" class="headerlink" title="6) zset"></a>6) zset</h4><ul>
+<li><p>简介</p>
+<ul>
+<li>sorted set，有序集合</li>
+<li>元素为string类型</li>
+<li>元素具有唯⼀性，不重复</li>
+<li>每个元素都会关联⼀个double类型的score，表示权重，通过权重将元素从⼩到⼤排序</li>
+<li>说明：没有修改操作</li>
+</ul>
+</li>
+<li><p>增加</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zadd key score1 member1 score2 member2 ...</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查询</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 返回指定范围内的元素</span></span><br><span class="line">    <span class="comment"># start、stop为元素的下标索引</span></span><br><span class="line">    <span class="comment"># 索引从左侧开始，第⼀个元素为0</span></span><br><span class="line">    <span class="comment"># 索引可以是负数，表示从尾部开始计数，如-1表示最后⼀个元素</span></span><br><span class="line">zrange key start stop</span><br><span class="line"><span class="comment"># 返回score值在min和max之间的成员</span></span><br><span class="line">zrangebyscore key min max</span><br><span class="line"><span class="comment"># 返回成员member的score值</span></span><br><span class="line">zscore key member</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 删除指定元素</span></span><br><span class="line">zrem key member1 member2 ...</span><br><span class="line"><span class="comment"># 删除权重在指定范围的元素</span></span><br><span class="line">zremrangebyscore key min max</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="4-与python交互"><a href="#4-与python交互" class="headerlink" title="4. 与python交互"></a>4. 与python交互</h3><p>​    安装Redis的有3种方式<a href="https://github.com/andymccurdy/redis-py" target="_blank" rel="noopener">https://github.com/andymccurdy/redis-py</a></p>
+<ul>
+<li><p>安装Redis</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 方式一</span></span><br><span class="line">pip install redis</span><br><span class="line"><span class="comment"># 方式二</span></span><br><span class="line">easy_install redis</span><br><span class="line"><span class="comment"># 方式三: 源码安装</span></span><br><span class="line">wget &lt;https://github.com/andymccurdy/redis-py/archive/master.zip&gt;</span><br><span class="line">unzip master.zip</span><br><span class="line"><span class="built_in">cd</span> redis-py-master</span><br><span class="line">sudo python setup.py install</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> redis <span class="keyword">import</span> *</span><br><span class="line"><span class="comment"># redis模块中提供了StrictRedis对象(Strict严格)，⽤于连接redis服务器，并按照不同类型提供 了不同⽅法，进⾏交互操作</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">	sr = StrictRedis(host=<span class="string">'localhost'</span>, port=<span class="number">6379</span>, db=<span class="number">0</span>)</span><br><span class="line">excepy Exception <span class="keyword">as</span> e:</span><br><span class="line">    print(e)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p> 根据不同的类型，拥有不同的实例⽅法可以调⽤，与前⾯学的redis命令对应，⽅法需要的参数与命令的参数⼀致</p>
+</blockquote>
+<ul>
+<li><p>string</p>
+<p>set, setex, mset, append, get, mget, key</p>
+</li>
+<li><p>keys</p>
+<p>exists, type, delete, expire, getrange, ttl</p>
+</li>
+<li><p>hash</p>
+<p>hset, hmset, hkeys, hget, hmget, hvals, hdel</p>
+</li>
+<li><p>list</p>
+<p>lpush, rpush, linsert, lrange, lset, lrem</p>
+</li>
+<li><p>set</p>
+<p>sadd, smembers, srem</p>
+</li>
+<li><p>zset</p>
+<p>zadd, zrange, zrangebyscore, zscore, zrem, zremrangebyscore</p>
+</li>
+</ul>
+</li>
+<li><p>对String类型数据的操作</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 获取键name的值</span></span><br><span class="line">result = sr.get(<span class="string">'name'</span>)</span><br><span class="line"><span class="comment"># 设置键name的值，如果键已经存在则进⾏修改，如果键不存在则进⾏添加</span></span><br><span class="line">result = sr.set(<span class="string">'name'</span>,<span class="string">'itcast'</span>)</span><br><span class="line"><span class="comment"># 删除键</span></span><br><span class="line">result = sr.delete(<span class="string">'name'</span>)</span><br><span class="line"><span class="comment"># 获取所有的键</span></span><br><span class="line">result=sr.keys()</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="5-搭建主从服务器"><a href="#5-搭建主从服务器" class="headerlink" title="5. 搭建主从服务器"></a>5. 搭建主从服务器</h3><ul>
+<li><p>简介</p>
+<blockquote>
+<p> master-slave</p>
+<p>⼀个master有多个slave，⼀个slave有多个slave，形成多级服务器集群架构</p>
+<p>master用来写数据，slave用来读数据, 读写比率是10:1</p>
+<p>通过主从配置可以实现读写分离</p>
+</blockquote>
+</li>
+<li><p>主从配置</p>
+<ul>
+<li><p>配置主</p>
+<ol>
+<li><p>修改/etc/redis/redis.conf文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo vi redis.conf</span><br><span class="line"><span class="built_in">bind</span> 192.168.199.113</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重启redis服务</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo service redis stop</span><br><span class="line">redis-server redis.conf</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>配置从</p>
+<ol>
+<li><p>复制/etc/redis/redis.conf文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp redis.conf ./slave.conf</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改/etc/redis/slave.conf文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vi slave.conf</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>编辑内容</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">bind</span> 192.168.26.128</span><br><span class="line">slaveof 192.168.26.128 6379</span><br><span class="line">port 6378</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code>4. redis服务
+
+   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo redis-server slave.conf</span><br></pre></td></tr></table></figure>
+
+5. 查看主从关系
+
+   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-cli -h 192.168.26.128 info Replication</span><br></pre></td></tr></table></figure>
+</code></pre><ul>
+<li><p>数据操作</p>
+<ul>
+<li><p>在master和slave分别执⾏info命令，查看输出信息 进入主客户端</p>
+<blockquote>
+<p>redis-cli -h 192.168.26.128 -p 6379</p>
+</blockquote>
+</li>
+<li><p>进入从的客户端</p>
+<blockquote>
+<p>redis-cli -h 192.168.26.128 -p 6378</p>
+</blockquote>
+</li>
+<li><p>在master上写数据</p>
+<blockquote>
+<p>set aa aa</p>
+</blockquote>
+</li>
+<li><p>在slave上读数据</p>
+<blockquote>
+<p>get aa</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="6-搭建集群"><a href="#6-搭建集群" class="headerlink" title="6. 搭建集群"></a>6. 搭建集群</h4><ul>
+<li><p>集群的概念</p>
+<blockquote>
+<p>集群是一组相互独立的、通过高速网络互联的计算机，它们构成了一个组，并以单一系统的模式加以管理。一个客户与集群相互作用时，集群像是一个独立的服务器。集群配置是用于提高可用性和可缩放性。</p>
+<p>当请求到来首先由负载均衡服务器处理，把请求转发到另外的一台服务器上</p>
+<ul>
+<li>redis集群搭建 <a href="http://www.cnblogs.com/wuxl360/p/5920330.html" target="_blank" rel="noopener">http://www.cnblogs.com/wuxl360/p/5920330.html</a></li>
+<li>[Python]搭建redis集群 <a href="http://blog.5ibc.net/p/51020.html" target="_blank" rel="noopener">http://blog.5ibc.net/p/51020.html</a></li>
+</ul>
+</blockquote>
+</li>
+<li><p>集群分类</p>
+<ul>
+<li>软件层面：只有一台电脑，在这一台电脑上启动了多个redis服务。</li>
+<li>硬件层面：存在多台实体的电脑，每台电脑上都启动了一个redis或者多个redis服务。</li>
+</ul>
+</li>
+<li><p>配置机器1</p>
+<ul>
+<li>在演示中，172.16.179.130为当前ubuntu机器的ip</li>
+<li>在172.16.179.130上进⼊Desktop⽬录，创建conf⽬录</li>
+<li><p>在conf⽬录下创建⽂件7000.conf，编辑内容如下</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">port 7000</span><br><span class="line">bind 172.16.179.130</span><br><span class="line">daemonize yes</span><br><span class="line">pidfile 7000.pid</span><br><span class="line">cluster-enabled yes</span><br><span class="line">cluster-config-file 7000_node.conf</span><br><span class="line">cluster-node-timeout 15000</span><br><span class="line">appendonly yes</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在conf⽬录下创建⽂件7001.conf，编辑内容如下</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">port 7001</span><br><span class="line">bind 172.16.179.130</span><br><span class="line">daemonize yes</span><br><span class="line">pidfile 7001.pid</span><br><span class="line">cluster-enabled yes</span><br><span class="line">cluster-config-file 7001_node.conf</span><br><span class="line">cluster-node-timeout 15000</span><br><span class="line">appendonly yes</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在conf⽬录下创建⽂件7002.conf，编辑内容如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">port 7002</span><br><span class="line">bind 172.16.179.130</span><br><span class="line">daemonize yes</span><br><span class="line">pidfile 7002.pid</span><br><span class="line">cluster-enabled yes</span><br><span class="line">cluster-config-file 7002_node.conf</span><br><span class="line">cluster-node-timeout 15000</span><br><span class="line">appendonly yes</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>总结：三个⽂件的配置区别在port、pidfile、cluster-config-file三项</p>
+</li>
+<li><p>使⽤配置⽂件启动redis服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">redis-server 7000.conf</span><br><span class="line">redis-server 7001.conf</span><br><span class="line">redis-server 7002.conf</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>配置机器2</p>
+<ul>
+<li><p>在演示中，172.16.179.131为当前ubuntu机器的ip</p>
+</li>
+<li><p>在172.16.179.131上进⼊Desktop⽬录，创建conf⽬录</p>
+</li>
+<li><p>在conf⽬录下创建⽂件7003.conf，编辑内容如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">port 7003</span><br><span class="line">bind 172.16.179.131</span><br><span class="line">daemonize yes</span><br><span class="line">pidfile 7003.pid</span><br><span class="line">cluster-enabled yes</span><br><span class="line">cluster-config-file 7003_node.conf</span><br><span class="line">cluster-node-timeout 15000</span><br><span class="line">appendonly yes</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在conf⽬录下创建⽂件7004.conf，编辑内容如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">port 7004</span><br><span class="line">bind 172.16.179.131</span><br><span class="line">daemonize yes</span><br><span class="line">pidfile 7004.pid</span><br><span class="line">cluster-enabled yes</span><br><span class="line">cluster-config-file 7004_node.conf</span><br><span class="line">cluster-node-timeout 15000</span><br><span class="line">appendonly yes</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在conf⽬录下创建⽂件7005.conf，编辑内容如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">port 7005</span><br><span class="line">bind 172.16.179.131</span><br><span class="line">daemonize yes</span><br><span class="line">pidfile 7005.pid</span><br><span class="line">cluster-enabled yes</span><br><span class="line">cluster-config-file 7005_node.conf</span><br><span class="line">cluster-node-timeout 15000</span><br><span class="line">appendonly yes</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>总结：三个⽂件的配置区别在port、pidfile、cluster-config-file三项</p>
+</li>
+<li><p>使⽤配置⽂件启动redis服务</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">redis-server 7003.conf</span><br><span class="line">redis-server 7004.conf</span><br><span class="line">redis-server 7005.conf</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>创建集群</p>
+<ul>
+<li><p>redis的安装包中包含了redis-trib.rb，⽤于创建集群</p>
+</li>
+<li><p>接下来的操作在172.16.179.130机器上进⾏</p>
+</li>
+<li><p>将命令复制，这样可以在任何⽬录下调⽤此命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp /usr/share/doc/redis-tools/examples/redis-trib.rb /usr/local/bin/</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装ruby环境，因为redis-trib.rb是⽤ruby开发的</p>
+<blockquote>
+<p>sudo apt-get install ruby</p>
+</blockquote>
+</li>
+<li><p>在提示信息处输⼊y，然后回⻋继续安装 <img src="/2019/03/01/022-redis/../../../../../../assets/p1_61.png" alt="安装"></p>
+</li>
+<li><p>运⾏如下命令创建集群</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-trib.rb create --replicas 1 172.16.179.130:7000 172.16.179.130:7001 172.16.179.130:7002 172.16.179.131:7003 172.16.179.131:7004 172.16.179.131:7005</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执⾏上⾯这个指令在某些机器上可能会报错,主要原因是由于安装的 ruby 不是最 新版本!</p>
+</li>
+<li><p>天朝的防⽕墙导致⽆法下载最新版本,所以需要设置 gem 的源</p>
+</li>
+<li><p>解决办法如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">-- 先查看⾃⼰的 gem 源是什么地址</span><br><span class="line">gem source -l -- 如果是https://rubygems.org/ 就需要更换</span><br><span class="line">-- 更换指令为</span><br><span class="line">gem sources --add https://gems.ruby-china.org/ --remove https://rubygems.org/</span><br><span class="line">-- 通过 gem 安装 redis 的相关依赖</span><br><span class="line">sudo gem install redis</span><br><span class="line">-- 然后重新执⾏指令</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-trib.rb create --replicas 1 172.16.179.130:7000 172.16.179.130:7001 172.16.179.130:7002 172.16.179.131:7003 172.16.179.131:7004 172.16.179.131:7005</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>提示如下主从信息，输⼊yes后回⻋ </p>
+</li>
+<li><p>提示完成，集群搭建成功</p>
+</li>
+</ul>
+</li>
+<li><p>验证连接到集群</p>
+<blockquote>
+<p>redis-cli -h 172.16.179.131 -c -p 7002</p>
+</blockquote>
+</li>
+<li><p>集群下python交互</p>
+<blockquote>
+<p>pip install redis-py-cluster</p>
+<p>redis-py-cluster源码地址<a href="https://github.com/Grokzen/redis-py-cluster" target="_blank" rel="noopener">https://github.com/Grokzen/redis-py-cluster</a></p>
+</blockquote>
+<ul>
+<li><p>创建⽂件redis_cluster.py，示例码如下</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> rediscluster <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">  <span class="keyword">try</span>:</span><br><span class="line">    <span class="comment"># 构建所有的节点，Redis会使⽤CRC16算法，将键和值写到某个节点上</span></span><br><span class="line">    startup_nodes = [</span><br><span class="line">        &#123;<span class="string">'host'</span>: <span class="string">'192.168.26.128'</span>, <span class="string">'port'</span>: <span class="string">'7000'</span>&#125;,</span><br><span class="line">        &#123;<span class="string">'host'</span>: <span class="string">'192.168.26.130'</span>, <span class="string">'port'</span>: <span class="string">'7003'</span>&#125;,</span><br><span class="line">        &#123;<span class="string">'host'</span>: <span class="string">'192.168.26.128'</span>, <span class="string">'port'</span>: <span class="string">'7001'</span>&#125;,</span><br><span class="line">    ]</span><br><span class="line">    <span class="comment"># 构建StrictRedisCluster对象</span></span><br><span class="line">    src=StrictRedisCluster(startup_nodes=startup_nodes,decode_responses=<span class="keyword">True</span>)</span><br><span class="line">    <span class="comment"># 设置键为name、值为itheima的数据</span></span><br><span class="line">    result=src.set(<span class="string">'name'</span>,<span class="string">'itheima'</span>)</span><br><span class="line">    print(result)</span><br><span class="line">    <span class="comment"># 获取键为name</span></span><br><span class="line">    name = src.get(<span class="string">'name'</span>)</span><br><span class="line">    print(name)</span><br><span class="line">  <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">    print(e)</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年03月01日 23:58</p>
+        <p>原始链接： <a class="post-url" href="/2019/03/01/022-redis/" title="Redis">https://www.jackiezz.com/2019/03/01/022-redis/</a></p>
+        <footer>
+            <a href="https://www.jackiezz.com">
+                <img src="/images/logo.png" alt="John Doe">
+                John Doe
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://www.jackiezz.com/2019/03/01/022-redis/&title=《Redis》 — Hexo&pic=https://www.jackiezz.comimages/logo.png" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.jackiezz.com/2019/03/01/022-redis/&title=《Redis》 — Hexo&source=" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://www.jackiezz.com/2019/03/01/022-redis/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Redis》 — Hexo&url=https://www.jackiezz.com/2019/03/01/022-redis/&via=https://www.jackiezz.com" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://www.jackiezz.com/2019/03/01/022-redis/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://www.jackiezz.com/2019/03/01/022-redis/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/Redis/" class="color1">Redis</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Redis"><span class="post-toc-text">Redis</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#简介"><span class="post-toc-text">简介</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-安装配置"><span class="post-toc-text">1. 安装配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-安装"><span class="post-toc-text">1) 安装</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-配置"><span class="post-toc-text">2) 配置</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-serveice和cli命令"><span class="post-toc-text">2. serveice和cli命令</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-数据操作"><span class="post-toc-text">3. 数据操作</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-string类型"><span class="post-toc-text">1) string类型</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-键命令"><span class="post-toc-text">2) 键命令</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-hash"><span class="post-toc-text">3) hash</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-list"><span class="post-toc-text">4) list</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#5-set"><span class="post-toc-text">5) set</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#6-zset"><span class="post-toc-text">6) zset</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-与python交互"><span class="post-toc-text">4. 与python交互</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-搭建主从服务器"><span class="post-toc-text">5. 搭建主从服务器</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#6-搭建集群"><span class="post-toc-text">6. 搭建集群</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2019/03/01/023-git/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          Git版本控制
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2019/03/01/021-json&ajax/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">Json&amp;ajax</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2019 John Doe<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://www.jackiezz.com",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/Database/">Database</a><a class="category-link" href="/categories/Markdown/">Markdown</a><a class="category-link" href="/categories/前端/">前端</a><a class="category-link" href="/categories/博客/">博客</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Flask/" style="font-size: 20px;">Flask</a> <a href="/tags/HTML-CSS/" style="font-size: 20px;">HTML&CSS</a> <a href="/tags/Mysql/" style="font-size: 15px;">Mysql</a> <a href="/tags/Redis/" style="font-size: 15px;">Redis</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/jquery/" style="font-size: 10px;">jquery</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a href="/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/Flask/" style="font-size: 20px;">Flask</a> <a href="/tags/HTML-CSS/" style="font-size: 20px;">HTML&CSS</a> <a href="/tags/Mysql/" style="font-size: 15px;">Mysql</a> <a href="/tags/Redis/" style="font-size: 15px;">Redis</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/jquery/" style="font-size: 10px;">jquery</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>

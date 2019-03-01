@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Python提高 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="Jackiezz, Jackiezz's Blog">
+  
+  <meta name="description" content="1.GIL(全局解释器锁)面试题：  问题：描述Python GIL的概念， 以及它对python多线程的影响？编写一个多线程抓取网页的程序，并阐明多线程抓取程序是否可比单线程性能有提升，并解释原因  答案：  Python语言和GIL没有半毛钱关系。仅仅是由于历史原因在Cpython虚拟机(解释器)，难以移除GIL。 GIL：全局解释器锁。每个线程在执行的过程都需要先获取GIL，保证同一时刻只有">
+<meta name="keywords" content="Mysql">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python提高">
+<meta property="og:url" content="https://www.jackiezz.com/2019/03/01/017-python提高/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1.GIL(全局解释器锁)面试题：  问题：描述Python GIL的概念， 以及它对python多线程的影响？编写一个多线程抓取网页的程序，并阐明多线程抓取程序是否可比单线程性能有提升，并解释原因  答案：  Python语言和GIL没有半毛钱关系。仅仅是由于历史原因在Cpython虚拟机(解释器)，难以移除GIL。 GIL：全局解释器锁。每个线程在执行的过程都需要先获取GIL，保证同一时刻只有">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-03-01T15:58:20.225Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python提高">
+<meta name="twitter:description" content="1.GIL(全局解释器锁)面试题：  问题：描述Python GIL的概念， 以及它对python多线程的影响？编写一个多线程抓取网页的程序，并阐明多线程抓取程序是否可比单线程性能有提升，并解释原因  答案：  Python语言和GIL没有半毛钱关系。仅仅是由于历史原因在Cpython虚拟机(解释器)，难以移除GIL。 GIL：全局解释器锁。每个线程在执行的过程都需要先获取GIL，保证同一时刻只有">
+  
+  
+    <link rel="icon" href="images/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">Jackiezz&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a href="/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        Jackiezz&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        Jackiezz的python之路
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="MinHow" target="_blank" href="//minhow.com">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/wongminho">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" href="//weibo.com/WongMinHo">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                        <a title="Twitter" target="_blank" href="//twitter.com/huangminhow">
+                            <i class="fa fa-twitter fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-017-python提高" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      Python提高
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/Database/">Database</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2019-03-01
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h3 id="1-GIL-全局解释器锁"><a href="#1-GIL-全局解释器锁" class="headerlink" title="1.GIL(全局解释器锁)"></a>1.GIL(全局解释器锁)</h3><p>面试题：</p>
+<ul>
+<li>问题：描述Python GIL的概念， 以及它对python多线程的影响？编写一个多线程抓取网页的程序，并阐明多线程抓取程序是否可比单线程性能有提升，并解释原因</li>
+</ul>
+<p>答案：</p>
+<ul>
+<li>Python语言和GIL没有半毛钱关系。仅仅是由于历史原因在Cpython虚拟机(解释器)，难以移除GIL。</li>
+<li>GIL：全局解释器锁。每个线程在执行的过程都需要先获取GIL，保证同一时刻只有一个线程可以执行代码。</li>
+<li>线程释放GIL锁的情况： 在IO操作等可能会引起阻塞的system call之前,可以暂时释放GIL,但在执行完毕后,必须重新获取GIL Python 3.x使用计时器（执行时间达到阈值后，当前线程释放GIL）或Python 2.x，tickets计数达到100</li>
+<li>Python使用多进程是可以利用多核的CPU资源的。</li>
+<li>多线程爬取比单线程性能有提升，因为遇到IO阻塞会自动释放GIL锁</li>
+</ul>
+<p>面试题：</p>
+<ul>
+<li>有了GIL为什么还要有互斥锁</li>
+</ul>
+<p>答案：</p>
+<ul>
+<li>互斥锁保证一行代码执行完成切换线程，GIL可能会在一行代码未执行完成就切换线程</li>
+<li>如：a = a + 1 互斥锁a = a+1执行完成后切换线程，GIL可能只执行a+1就切换了，从而导致数据不准确</li>
+</ul>
+<h3 id="2-深拷贝和浅拷贝"><a href="#2-深拷贝和浅拷贝" class="headerlink" title="2.深拷贝和浅拷贝"></a>2.深拷贝和浅拷贝</h3><blockquote>
+<p>赋值不会copy, 只是指向同一引用, id相同</p>
+</blockquote>
+<ul>
+<li><p>浅拷贝</p>
+<blockquote>
+<p>浅拷贝是对于一个对象的顶层拷贝 –&gt; 拷贝引用,不拷贝内容</p>
+</blockquote>
+</li>
+<li><p>深拷贝</p>
+<blockquote>
+<p> 深拷贝是对于一个对象所有层次的拷贝(递归)</p>
+</blockquote>
+</li>
+<li><p>copy.copy()和copy.deepcopy()</p>
+<blockquote>
+<p>copy.copy对于可变类型，会进行浅拷贝</p>
+<p>copy.copy对于不可变类型，不会拷贝，仅仅是指向其引用</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> copy</span><br><span class="line">list0 = [<span class="number">1</span>]</span><br><span class="line">list1 = [list0, <span class="number">2</span>]</span><br><span class="line">list2 = copy.copy(list1)  <span class="comment"># copy  id(list1)!=id(list2) 但 id(list1[0]) == id(list2[0])</span></span><br><span class="line">list3 = copy.deepcopy(list1)  <span class="comment"># deepcopy  id(list1)!=id(list2) 且 id(list1[0]) != id(list2[0])</span></span><br><span class="line"></span><br><span class="line">list = [<span class="number">1</span>, <span class="number">2</span>]</span><br><span class="line">copy_list = copy.copy(list)</span><br><span class="line">list2 = list</span><br><span class="line"><span class="comment"># 此处 id(list)==id(list2)!=id(copy_list), 若list中还有list,则内部list的三个id值相同</span></span><br><span class="line">list_id, list2_id, copy_list_id = id(list), id(list2), id(copy_list)</span><br><span class="line"></span><br><span class="line">num = <span class="number">1</span></span><br><span class="line">num2 = num</span><br><span class="line">copy_num = copy.copy(num)</span><br><span class="line"><span class="comment"># 三个id值相同</span></span><br><span class="line">num_id, num2_id, copy_num_id = id(num), id(num2), id(copy_num)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>应用<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> copy</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">(temp)</span>:</span></span><br><span class="line">    temp.append(<span class="number">44</span>)</span><br><span class="line">nums = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">test.(copy.deepcopy(nums))  <span class="comment"># 应用deepcopy能够在不改变nums值的条件下使用nums</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="3-私有化"><a href="#3-私有化" class="headerlink" title="3.私有化"></a>3.私有化</h3><ul>
+<li><code>xx</code>: 公有</li>
+<li><code>_xx</code>: 私有化属性和方法，from somemodule import * 禁止导入,类对象和子类可以访问</li>
+<li><code>__xx</code>: 私有化属性和方法，无法在外部直接访问</li>
+<li><code>__xx__</code>: 公有，魔法方法或属性，不要自己发明</li>
+</ul>
+<blockquote>
+<p>私有属性方法的获得：<code>_Class__object</code>  一般不要使用</p>
+<p>如：Student类中的<code>__name</code>属性  可以通过<code>_Student__name</code>获得</p>
+</blockquote>
+<h3 id="4-import注意点"><a href="#4-import注意点" class="headerlink" title="4.import注意点"></a>4.import注意点</h3><ul>
+<li><p>import搜索路径</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">sys.path  <span class="comment"># 显示要导入模块的查找路径</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>程序执行时添加新的模块路径</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sys.path.append(<span class="string">"/home/itcast/xxx"</span>)</span><br><span class="line">sys.path.insert(<span class="number">0</span>, <span class="string">"/home/itcast/xxx"</span>)  <span class="comment"># 可以确保先搜索这个路径</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重新导入模块</p>
+<blockquote>
+<p>执行过程过模块变化了，可以重新导入</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> imp <span class="keyword">import</span> reload</span><br><span class="line">reload(reload_test)  <span class="comment"># 重新导入reload_test模块</span></span><br></pre></td></tr></table></figure>
+<h3 id="5-多继承"><a href="#5-多继承" class="headerlink" title="5.多继承"></a>5.多继承</h3><p>1) super().方法 不一定就是父类方法，而是会按照 类.<strong>mro</strong> 属性中的顺序，执行下一个被继承类的方法</p>
+<ul>
+<li>总结：<ul>
+<li>单继承：用super().method</li>
+<li>多继承：用super(类, self).method</li>
+</ul>
+</li>
+</ul>
+<p>2) 继承不是复制，类属性只是对父类属性的引用</p>
+<h3 id="6-property"><a href="#6-property" class="headerlink" title="6.property"></a>6.property</h3><blockquote>
+<p>用来操作私有属性，在方法内部可以设置修改权限</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span><span class="params">(objetct)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, age)</span>:</span></span><br><span class="line">        self.__age = age</span><br><span class="line"></span><br><span class="line"><span class="meta">    @property  # get方法</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">age</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">"有权限"</span>)</span><br><span class="line">        <span class="keyword">return</span> self.__age</span><br><span class="line"></span><br><span class="line"><span class="meta">    @age.setter  # set方法</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">age</span><span class="params">(self, new_age)</span>:</span></span><br><span class="line">        self.__age = new_age</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">xiaoming = Person(<span class="number">18</span>)</span><br><span class="line">print(xiaoming.age)  <span class="comment"># 获取__age属性</span></span><br><span class="line">xiaoming.age = <span class="number">50</span>  <span class="comment"># 设置__age为50</span></span><br></pre></td></tr></table></figure>
+<h3 id="7-range-生成式-推导式-生成器"><a href="#7-range-生成式-推导式-生成器" class="headerlink" title="7.range  生成式/推导式  生成器"></a>7.range  生成式/推导式  生成器</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># range使用</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">10</span>, <span class="number">2</span>):  <span class="comment"># range(m, n, 步长)</span></span><br><span class="line">    print(i)  <span class="comment"># 1 3 5 7 9</span></span><br><span class="line"><span class="comment"># 列表生成式</span></span><br><span class="line">list1 = [i**<span class="number">2</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, <span class="number">100</span>) <span class="keyword">if</span> i % <span class="number">2</span> ==<span class="number">0</span> ]</span><br><span class="line"><span class="comment"># 列表生成器</span></span><br><span class="line">list1 = (i**<span class="number">2</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, <span class="number">100</span>) <span class="keyword">if</span> i % <span class="number">2</span> ==<span class="number">0</span> )</span><br><span class="line"><span class="comment"># 生成器</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fib</span><span class="params">(num)</span>:</span></span><br><span class="line">    temp = <span class="keyword">yield</span> num  <span class="comment"># 使用了yield关键字的函数不再是函数，而是生成器</span></span><br><span class="line">G = fib(<span class="number">3</span>)  <span class="comment"># G为一个生成器</span></span><br><span class="line">next(G)</span><br><span class="line">G.send(<span class="keyword">None</span>)  <span class="comment"># 与等价next(G)</span></span><br><span class="line">temp = G.send(<span class="string">"python"</span>)	 <span class="comment"># temp接收下次c.send("python")的python</span></span><br></pre></td></tr></table></figure>
+<h3 id="8-迭代器"><a href="#8-迭代器" class="headerlink" title="8.迭代器"></a>8.迭代器</h3><blockquote>
+<p> <code>isinstance(对象, Iterable)</code>  :  判断是否为可迭代对象</p>
+</blockquote>
+<ul>
+<li><p><strong>迭代器本质</strong><br>​    一个具备了<strong>iter</strong>方法的对象，就是一个可迭代对象<br>​    一个实现了<strong>iter</strong>方法和<strong>next</strong>方法的对象，就是迭代器</p>
+</li>
+<li><p>for…in…循环的本质</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> Iterable  <span class="comment"># Iterable可迭代对象</span></span><br><span class="line">	<span class="keyword">pass</span></span><br><span class="line"><span class="comment"># 此处的item等价于:</span></span><br><span class="line">i = iter(Iterable)</span><br><span class="line">next(i)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<pre><code>iter(对象)返回该对象的迭代器
+</code></pre><p>​    next(迭代器)返回迭代器的下一条数据</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="9-闭包"><a href="#9-闭包" class="headerlink" title="9. 闭包"></a>9. 闭包</h3><ul>
+<li><p>概念:</p>
+<p>函数内定义函数，且内函数用到外边函数的变量，将内函数及用到的变量称之为闭包</p>
+<p>简单说: 就是函数中的函数</p>
+</li>
+<li><p>eg</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">line_conf</span><span class="params">(a, b)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">line</span><span class="params">(x)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> a*x + b</span><br><span class="line">    <span class="keyword">return</span> line</span><br><span class="line"><span class="comment"># 调用</span></span><br><span class="line">line_conf(<span class="number">1</span>, <span class="number">1</span>)(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="10-装饰器"><a href="#10-装饰器" class="headerlink" title="10. 装饰器"></a>10. 装饰器</h3><ul>
+<li><p>定义<br>​    @函数名 是python的一种语法糖</p>
+</li>
+<li><p>实例</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">out</span><span class="params">(fun)</span>:</span></span><br><span class="line">	print(<span class="string">"out"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inner</span><span class="params">()</span>:</span></span><br><span class="line">        <span class="keyword">return</span> fun()</span><br><span class="line">    <span class="keyword">return</span> inner</span><br><span class="line"></span><br><span class="line"><span class="meta">@out</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">"main"</span>)</span><br><span class="line"><span class="meta">		@out &lt;==&gt; out(main)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 被装饰的函数有不定长参数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">timefun</span><span class="params">(func)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wrapped_func</span><span class="params">(*args, **kwargs)</span>:</span></span><br><span class="line">        print(<span class="string">"%s called at %s"</span>%(func.__name__, ctime()))</span><br><span class="line">        <span class="keyword">return</span> func(*args, **kwargs)</span><br><span class="line">    <span class="keyword">return</span> wrapped_func</span><br><span class="line"><span class="comment"># 装饰器带参数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">timefun_arg</span><span class="params">(pre=<span class="string">"hello"</span>)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">timefun</span><span class="params">(func)</span>:</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">wrapped_func</span><span class="params">()</span>:</span></span><br><span class="line">            print(<span class="string">"%s called at %s %s"</span> % (func.__name__, ctime(), pre))</span><br><span class="line">            <span class="keyword">return</span> func()</span><br><span class="line">        <span class="keyword">return</span> wrapped_func</span><br><span class="line">    <span class="keyword">return</span> timefun</span><br><span class="line">foo()==timefun_arg(<span class="string">"itcast"</span>)(foo)()</span><br></pre></td></tr></table></figure>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年03月01日 23:58</p>
+        <p>原始链接： <a class="post-url" href="/2019/03/01/017-python提高/" title="Python提高">https://www.jackiezz.com/2019/03/01/017-python提高/</a></p>
+        <footer>
+            <a href="https://www.jackiezz.com">
+                <img src="/images/logo.png" alt="John Doe">
+                John Doe
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://www.jackiezz.com/2019/03/01/017-python提高/&title=《Python提高》 — Hexo&pic=https://www.jackiezz.comimages/logo.png" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.jackiezz.com/2019/03/01/017-python提高/&title=《Python提高》 — Hexo&source=" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://www.jackiezz.com/2019/03/01/017-python提高/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Python提高》 — Hexo&url=https://www.jackiezz.com/2019/03/01/017-python提高/&via=https://www.jackiezz.com" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://www.jackiezz.com/2019/03/01/017-python提高/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://www.jackiezz.com/2019/03/01/017-python提高/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/Mysql/" class="color1">Mysql</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-GIL-全局解释器锁"><span class="post-toc-text">1.GIL(全局解释器锁)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-深拷贝和浅拷贝"><span class="post-toc-text">2.深拷贝和浅拷贝</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-私有化"><span class="post-toc-text">3.私有化</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-import注意点"><span class="post-toc-text">4.import注意点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-多继承"><span class="post-toc-text">5.多继承</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6-property"><span class="post-toc-text">6.property</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#7-range-生成式-推导式-生成器"><span class="post-toc-text">7.range  生成式/推导式  生成器</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#8-迭代器"><span class="post-toc-text">8.迭代器</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-闭包"><span class="post-toc-text">9. 闭包</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#10-装饰器"><span class="post-toc-text">10. 装饰器</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2019/03/01/018-HTML和CSS/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          HTML&amp;CSS
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2019/03/01/016-MySQL/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">MySQL</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2019 John Doe<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://www.jackiezz.com",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/Database/">Database</a><a class="category-link" href="/categories/Markdown/">Markdown</a><a class="category-link" href="/categories/前端/">前端</a><a class="category-link" href="/categories/博客/">博客</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Flask/" style="font-size: 20px;">Flask</a> <a href="/tags/HTML-CSS/" style="font-size: 20px;">HTML&CSS</a> <a href="/tags/Mysql/" style="font-size: 15px;">Mysql</a> <a href="/tags/Redis/" style="font-size: 15px;">Redis</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/jquery/" style="font-size: 10px;">jquery</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a href="/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/Flask/" style="font-size: 20px;">Flask</a> <a href="/tags/HTML-CSS/" style="font-size: 20px;">HTML&CSS</a> <a href="/tags/Mysql/" style="font-size: 15px;">Mysql</a> <a href="/tags/Redis/" style="font-size: 15px;">Redis</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/jquery/" style="font-size: 10px;">jquery</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>

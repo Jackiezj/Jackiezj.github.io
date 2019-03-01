@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>MySQL | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="Jackiezz, Jackiezz's Blog">
+  
+  <meta name="description" content="1.安装和卸载 安装 123456789# 安装服务器sudo apt install mysql-serversudo service mysql startsudo service mysql stopsudo service mysql restartps ajx|grep mysql # 安装客户端sudo apt install mysql-client  配置 123456789101">
+<meta name="keywords" content="Mysql">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL">
+<meta property="og:url" content="https://www.jackiezz.com/2019/03/01/016-MySQL/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1.安装和卸载 安装 123456789# 安装服务器sudo apt install mysql-serversudo service mysql startsudo service mysql stopsudo service mysql restartps ajx|grep mysql # 安装客户端sudo apt install mysql-client  配置 123456789101">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-03-01T15:58:20.224Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MySQL">
+<meta name="twitter:description" content="1.安装和卸载 安装 123456789# 安装服务器sudo apt install mysql-serversudo service mysql startsudo service mysql stopsudo service mysql restartps ajx|grep mysql # 安装客户端sudo apt install mysql-client  配置 123456789101">
+  
+  
+    <link rel="icon" href="images/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">Jackiezz&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a href="/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        Jackiezz&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        Jackiezz的python之路
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="MinHow" target="_blank" href="//minhow.com">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/wongminho">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" href="//weibo.com/WongMinHo">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                        <a title="Twitter" target="_blank" href="//twitter.com/huangminhow">
+                            <i class="fa fa-twitter fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-016-MySQL" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      MySQL
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/Database/">Database</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2019-03-01
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h3 id="1-安装和卸载"><a href="#1-安装和卸载" class="headerlink" title="1.安装和卸载"></a>1.安装和卸载</h3><ul>
+<li><p><strong>安装</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装服务器</span></span><br><span class="line">sudo apt install mysql-server</span><br><span class="line">sudo service mysql start</span><br><span class="line">sudo service mysql stop</span><br><span class="line">sudo service mysql restart</span><br><span class="line">ps ajx|grep mysql</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 安装客户端</span></span><br><span class="line">sudo apt install mysql-client</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>配置</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 配置MySQL</span></span><br><span class="line">sudo vi /etc/mysql/mysql.conf.d/mysqld.cnf</span><br><span class="line"><span class="comment"># 数据库授权</span></span><br><span class="line">grant all privileges on *.* to <span class="string">'root'</span>@<span class="string">'192.168.199.133'</span> identified by <span class="string">'root'</span> with grant option;</span><br><span class="line">flush privileges;</span><br><span class="line"><span class="comment"># 修改数据库密码</span></span><br><span class="line">sudo cat /etc/mysql/debian.cnf</span><br><span class="line"><span class="comment"># 这条指令的密码输入是输入第一条指令获得的信息中的 password = ZCt7QB7d8O3rFKQZ 得来。</span></span><br><span class="line">mysql -u debian-sys-maint -p</span><br><span class="line"><span class="comment"># 修改密码，本篇文章将密码修改成 root , 用户可自行定义。</span></span><br><span class="line">use mysql;</span><br><span class="line">update mysql.user <span class="built_in">set</span> authentication_string=password(<span class="string">'root'</span>) <span class="built_in">where</span> user=<span class="string">'root'</span> and Host =<span class="string">'localhost'</span>;</span><br><span class="line">update user <span class="built_in">set</span> plugin=<span class="string">"mysql_native_password"</span>; </span><br><span class="line">flush privileges;</span><br><span class="line">quit;</span><br><span class="line"><span class="comment"># 重新启动mysql:</span></span><br><span class="line">sudo service mysql restart</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>卸载</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 首先用dpkg --list|grep mysql查看自己的mysql有哪些依赖</span></span><br><span class="line">sudo apt-get remove mysql-common</span><br><span class="line">sudo apt-get autoremove --purge mysql-server-5.0 </span><br><span class="line"><span class="comment"># 再用dpkg --list|grep mysql查看，还剩什么就卸载什么</span></span><br><span class="line"><span class="comment"># 最后清楚残留数据：</span></span><br><span class="line">dpkg -l |grep ^rc|awk <span class="string">'&#123;print $2&#125;'</span> |sudo xargs dpkg -P</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="2-MySQL数据类型和约束"><a href="#2-MySQL数据类型和约束" class="headerlink" title="2. MySQL数据类型和约束"></a>2. MySQL数据类型和约束</h3><ul>
+<li><p><strong>常用数据类型</strong></p>
+<ul>
+<li>整数：int，bit</li>
+<li>小数：decimal</li>
+<li>字符串：varchar,char</li>
+<li>日期时间: date, time, datetime</li>
+<li>枚举类型(enum)</li>
+</ul>
+<blockquote>
+<p>decimal表示浮点数，如decimal(5,2)表示共存5位数，小数占2位<br>char表示固定长度的字符串，如char(3)，如果填充’ab’时会补一个空格为’ab ‘<br>varchar表示可变长度的字符串，如varchar(3)，填充’ab’时就会存储’ab’<br>text字符串表示存储大文本，当字符大于4000时推荐使用<br>对于图片、音频、视频等文件，不存储在数据库中，而是上传到某个服务器上，然后在表中存储这个文件的保存路径</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p><strong>约束</strong></p>
+<ul>
+<li>主键primary key：物理上存储的顺序</li>
+<li>非空not null：此字段不允许填写空值</li>
+<li>惟一unique：此字段的值不允许重复</li>
+<li>默认default：当不填写此值时会使用默认值，如果填写时以填写为准</li>
+<li>外键foreign key：对关系字段进行约束，当为关系字段填写值时，会到关联的表中查询此值是否存在，如果存在则填写成功，如果不存在则填写失败并抛出异常</li>
+</ul>
+<blockquote>
+<p>说明:</p>
+<p>虽然外键约束可以保证数据的有效性，但是在进行数据的crud（增加、修改、删除、查询）时，都会降低数据库的性能，所以不推荐使用，那么数据的有效性怎么保证呢？答：可以在逻辑层进行控制</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="3-对数据库及数据的操作"><a href="#3-对数据库及数据的操作" class="headerlink" title="3.对数据库及数据的操作"></a>3.对数据库及数据的操作</h3><ul>
+<li><p><strong>登录及版本</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -p  <span class="comment"># 登录数据库</span></span><br><span class="line">quit <span class="built_in">exit</span> ctrl+d  <span class="comment"># 退出数据库</span></span><br><span class="line">select version();  <span class="comment"># 查看当前版本</span></span><br><span class="line">select now();  <span class="comment"># 查看当前时间</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>操作数据库</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">show databases;  <span class="comment"># 查看所有数据库</span></span><br><span class="line">use test1;  <span class="comment"># 使用数据库</span></span><br><span class="line">create database test1 charset=utf8;  <span class="comment"># 创建数据库</span></span><br><span class="line">select database();  <span class="comment"># 查看当前使用的数据库</span></span><br><span class="line">drop database test1;  <span class="comment"># 删除数据库</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>操作数据表</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> <span class="keyword">tables</span>;  <span class="comment"># 查看数据库中所有表</span></span><br><span class="line">desc classes;  <span class="comment"># 查看表结构</span></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">create</span> <span class="keyword">table</span> classes;  <span class="comment"># 查看表创建语句</span></span><br><span class="line"><span class="comment"># 创建表</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> classes(</span><br><span class="line">    <span class="keyword">id</span> <span class="built_in">int</span> <span class="keyword">unsigned</span> auto_increment primary <span class="keyword">key</span> <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">    <span class="keyword">name</span> <span class="built_in">varchar</span>(<span class="number">10</span>)</span><br><span class="line">);</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> students(</span><br><span class="line">    <span class="keyword">id</span> <span class="built_in">int</span> <span class="keyword">unsigned</span> auto_increment primary <span class="keyword">key</span> <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">    <span class="keyword">name</span> <span class="built_in">varchar</span>(<span class="number">20</span>) <span class="keyword">default</span> <span class="string">''</span>,</span><br><span class="line">    age <span class="built_in">tinyint</span> <span class="keyword">unsigned</span> <span class="keyword">default</span> <span class="number">0</span>,</span><br><span class="line">    gender enum(<span class="string">'男'</span>,<span class="string">'女'</span>,<span class="string">'人妖'</span>,<span class="string">'保密'</span>),</span><br><span class="line">    cls_id <span class="built_in">int</span> <span class="keyword">unsigned</span> <span class="keyword">default</span> <span class="number">0</span></span><br><span class="line">);</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 修改表</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> students <span class="keyword">add</span> birthday datetime;  <span class="comment"># 添加字段</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> students <span class="keyword">modify</span> birthday <span class="built_in">varchar</span>(<span class="number">200</span>);  <span class="comment"># 修改字段属性,原属性丢失,modify修改时字段必须带有数据类型可以带有属性,也可以没有</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> students <span class="keyword">modify</span> birthday <span class="built_in">date</span> <span class="keyword">after</span> <span class="keyword">name</span>;  <span class="comment"># 将birthday移到name后面</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> students <span class="keyword">modify</span> birthday <span class="built_in">date</span> <span class="keyword">first</span>;  <span class="comment"># 将birthday移到第一个</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> students <span class="keyword">change</span> birthday birth datetime <span class="keyword">not</span> <span class="literal">null</span>;  <span class="comment"># 重命名修改表字段</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> students <span class="keyword">alter</span> age <span class="keyword">set</span> <span class="keyword">default</span> <span class="number">18</span>;  <span class="comment"># 给字段添加默认值</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> students <span class="keyword">alter</span> age <span class="keyword">drop</span> <span class="keyword">default</span>;  <span class="comment"># 删除默认值</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> students <span class="keyword">add</span> primary <span class="keyword">key</span>(<span class="keyword">id</span>);  <span class="comment"># 添加主键</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> students <span class="keyword">drop</span> primary <span class="keyword">key</span>;  <span class="comment"># 删除主键</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> students <span class="keyword">drop</span> birthday;   <span class="comment"># 删除字段</span></span><br><span class="line"> </span><br><span class="line"><span class="comment"># 删除表</span></span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">table</span> students;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>数据备份和恢复</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysqldump -uroot -p test1 &gt; python.sql  # 备份</span><br><span class="line">mysql -uroot -p test2 &lt; python.sql  # 恢复</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>操作数据</strong></p>
+<ul>
+<li>基本操作CRUD</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 基本查询</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> classes;</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">id</span>,<span class="keyword">name</span> <span class="keyword">from</span> classes;</span><br><span class="line"><span class="comment">-- 增加</span></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> students <span class="keyword">values</span>(<span class="number">0</span>,<span class="string">'张三'</span>,<span class="number">1</span>,<span class="string">'甘肃'</span>,<span class="string">'2018-1-1'</span>);  <span class="comment">-- 全列插入  主键用0或者 default 或者 null 来占位</span></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> students(<span class="keyword">name</span>,hometown,birthday) <span class="keyword">values</span>(<span class="string">'黄蓉'</span>,<span class="string">'桃花岛'</span>,<span class="string">'2018-1-1'</span>);  <span class="comment">-- 部分插入</span></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> classes <span class="keyword">values</span>(<span class="number">0</span>,<span class="string">'python1'</span>),(<span class="number">0</span>,<span class="string">'python2'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> classes(<span class="keyword">name</span>) <span class="keyword">values</span>(<span class="string">'java'</span>),(<span class="string">'php'</span>),(<span class="string">'c'</span>)</span><br><span class="line"><span class="comment">-- 修改</span></span><br><span class="line"><span class="keyword">update</span> students <span class="keyword">set</span> gender=<span class="number">0</span>,hometown=<span class="string">'北京'</span> <span class="keyword">where</span> <span class="keyword">id</span>=<span class="number">5</span>;</span><br><span class="line"><span class="comment">-- 删除</span></span><br><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> student <span class="keyword">where</span> <span class="keyword">id</span>=<span class="number">5</span>;</span><br><span class="line"><span class="keyword">update</span> students <span class="keyword">set</span> isdelete=<span class="number">1</span> <span class="keyword">where</span> <span class="keyword">id</span>=<span class="number">1</span>;  <span class="comment">-- 逻辑删除</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>查询操作</p>
+<ul>
+<li>基础查询</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> 表名   <span class="comment">-- 查询所有字段</span></span><br><span class="line"><span class="keyword">select</span> 列<span class="number">1</span>, 列<span class="number">2</span>, ... <span class="keyword">from</span> 表名;  <span class="comment">-- 查询指定字段</span></span><br><span class="line"><span class="keyword">select</span> s.id <span class="keyword">as</span> 序号, s.name <span class="keyword">as</span> 名字 <span class="keyword">from</span> students <span class="keyword">as</span> s  <span class="comment">-- as起别名</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">distinct</span> 列<span class="number">1</span>, ... <span class="keyword">from</span> 表名;  <span class="comment">-- 消除重复行</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>条件查询</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 比较查询    = &gt; &gt;= &lt; &lt;= !=</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> students <span class="keyword">where</span> <span class="keyword">id</span> &gt; <span class="number">3</span>;</span><br><span class="line"><span class="comment">-- 逻辑运算符 and or not</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> students <span class="keyword">where</span> <span class="keyword">id</span> &gt; <span class="number">3</span> <span class="keyword">and</span> gender=<span class="number">0</span>;</span><br><span class="line"><span class="comment">-- 模糊查询  like (%任意多个任意字符, _任意一个字符)</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> students <span class="keyword">where</span> <span class="keyword">name</span> <span class="keyword">like</span> <span class="string">'黄%'</span>;</span><br><span class="line"><span class="comment">-- 范围查询   in between...and...</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> students <span class="keyword">where</span> <span class="keyword">id</span> <span class="keyword">in</span>(<span class="number">1</span>,<span class="number">3</span>,<span class="number">8</span>);</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> students <span class="keyword">where</span> <span class="keyword">id</span> <span class="keyword">between</span> <span class="number">3</span> <span class="keyword">and</span> <span class="number">8</span>;</span><br><span class="line"><span class="comment">-- 空判断	null    is not null</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> students <span class="keyword">where</span> height <span class="keyword">is</span> <span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>排序</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from 表名 order by 列1 asc|desc [,列2 asc|desc,...]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>聚合函数</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">count(*)  -- 计算总行数</span><br><span class="line">max(列)  <span class="comment">-- 求此列最大值</span></span><br><span class="line">min(列)  <span class="comment">-- 求此列最小值</span></span><br><span class="line">sum(列)  <span class="comment">-- 求此列的和</span></span><br><span class="line">avg(列)  <span class="comment">-- 求此列的平均值</span></span><br><span class="line">eg:  <span class="keyword">select</span> <span class="keyword">avg</span>(<span class="keyword">id</span>) <span class="keyword">from</span> students <span class="keyword">where</span> is_delete=<span class="number">0</span> <span class="keyword">and</span> gender=<span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>分组</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 1.group by + group_concat(name)</span></span><br><span class="line">eg: <span class="keyword">select</span> gender,<span class="keyword">group_concat</span>(<span class="keyword">name</span>) <span class="keyword">from</span> students <span class="keyword">group</span> <span class="keyword">by</span> gender;</span><br><span class="line">+<span class="comment">--------+-----------------------------------------------------------+</span></span><br><span class="line">| gender | group_concat(name)                                        |</span><br><span class="line">+<span class="comment">--------+-----------------------------------------------------------+</span></span><br><span class="line">| 男     | 彭于晏,刘德华,周杰伦,程坤,郭靖                                 |</span><br><span class="line">| 女     | 小明,小月月,黄蓉,王祖贤,刘亦菲,静香,周杰                        |</span><br><span class="line">| 中性   | 金星                                                       |</span><br><span class="line">| 保密   | 凤姐                                                       |</span><br><span class="line">+<span class="comment">--------+-----------------------------------------------------------+</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 2.group by +  聚合函数</span></span><br><span class="line"><span class="keyword">select</span> gender,<span class="keyword">avg</span>(age) <span class="keyword">from</span> students <span class="keyword">group</span> <span class="keyword">by</span> gender;  <span class="comment">-- 分别统计性别为男女的平均年龄</span></span><br><span class="line"><span class="comment">-- 3.group by + having</span></span><br><span class="line"><span class="keyword">select</span> gender,<span class="keyword">count</span>(*) <span class="keyword">from</span> students <span class="keyword">group</span> <span class="keyword">by</span> gender <span class="keyword">having</span> <span class="keyword">count</span>(*)&gt;<span class="number">2</span>;</span><br><span class="line"><span class="comment">-- 4.group by + with rollup</span></span><br><span class="line">	<span class="comment">-- with rollup的作用是：在最后新增一行，来记录当前列里所有记录的总和</span></span><br><span class="line"><span class="keyword">select</span> gender,<span class="keyword">count</span>(*) <span class="keyword">from</span> students <span class="keyword">group</span> <span class="keyword">by</span> gender <span class="keyword">with</span> <span class="keyword">rollup</span>;</span><br><span class="line">+<span class="comment">--------+----------+</span></span><br><span class="line">| gender | count(*) |</span><br><span class="line">+<span class="comment">--------+----------+</span></span><br><span class="line">| 男     |        5 |</span><br><span class="line">| 女     |        7 |</span><br><span class="line">| 中性   |        1 |</span><br><span class="line">| 保密   |        1 |</span><br><span class="line">| NULL   |       14 |</span><br><span class="line">+<span class="comment">--------+----------+</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>分页</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> 表名 <span class="keyword">limit</span> <span class="keyword">start</span>,<span class="keyword">count</span>  <span class="comment"># 从start开始，获取count条数据</span></span><br><span class="line"><span class="comment">-- 求第n页的数据</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> students <span class="keyword">where</span> is_delete=<span class="number">0</span> <span class="keyword">limit</span> (n<span class="number">-1</span>)*m,m</span><br></pre></td></tr></table></figure>
+<ul>
+<li>连接查询</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 内连接查询</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> students <span class="keyword">inner</span> <span class="keyword">join</span> classes <span class="keyword">on</span> students.cls_id = classes.id;  <span class="comment">-- 公共部分</span></span><br><span class="line"><span class="comment">-- 右连接查询</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> students <span class="keyword">as</span> s <span class="keyword">right</span> <span class="keyword">join</span> classes <span class="keyword">as</span> c <span class="keyword">on</span> s.cls_id = c.id;  <span class="comment">--公共+B  字段变多了</span></span><br><span class="line"><span class="comment">-- 左连接查询</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> students <span class="keyword">as</span> s <span class="keyword">right</span> <span class="keyword">join</span> classes <span class="keyword">as</span> c <span class="keyword">on</span> s.cls_id = c.id;  <span class="comment">-- 公共+A</span></span><br><span class="line"><span class="comment">-- 自关联</span></span><br><span class="line">	<span class="comment">-- 创建areas表</span></span><br><span class="line">    <span class="keyword">create</span> <span class="keyword">table</span> areas(</span><br><span class="line">        aid <span class="built_in">int</span> primary <span class="keyword">key</span>,</span><br><span class="line">        atitle <span class="built_in">varchar</span>(<span class="number">20</span>),</span><br><span class="line">        pid <span class="built_in">int</span></span><br><span class="line">    );</span><br><span class="line">    <span class="comment">-- 查询省的名称为“山西省”的所有城市</span></span><br><span class="line"><span class="keyword">select</span> city.* <span class="keyword">from</span> areas <span class="keyword">as</span> city <span class="keyword">inner</span> <span class="keyword">join</span> areas <span class="keyword">as</span> province <span class="keyword">on</span> city.pid=province.aid <span class="keyword">where</span> province.atitle=<span class="string">'山西省'</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>子查询</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 概念: 在一个 select 语句中,嵌入了另外一个 select 语句, 那么被嵌入的 select 语句称之为子查询语句</span></span><br><span class="line"><span class="comment">-- 标量子查询</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> students <span class="keyword">where</span> age &gt; (<span class="keyword">select</span> <span class="keyword">avg</span>(age) <span class="keyword">from</span> students);</span><br><span class="line"><span class="comment">-- 列级子查询</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">name</span> <span class="keyword">from</span> classes <span class="keyword">where</span> <span class="keyword">id</span> <span class="keyword">in</span> (<span class="keyword">select</span> cls_id <span class="keyword">from</span> students);</span><br><span class="line"><span class="comment">-- 行级子查询</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> students <span class="keyword">where</span> (height,age) = (<span class="keyword">select</span> <span class="keyword">max</span>(height),<span class="keyword">max</span>(age) <span class="keyword">from</span> students);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>完整的select语句</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">distinct</span> *</span><br><span class="line"><span class="keyword">from</span> 表名</span><br><span class="line"><span class="keyword">where</span> ....</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> ... <span class="keyword">having</span> ...</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> ...</span><br><span class="line"><span class="keyword">limit</span> <span class="keyword">start</span>,<span class="keyword">count</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-Python操作MySQL"><a href="#4-Python操作MySQL" class="headerlink" title="4. Python操作MySQL"></a>4. Python操作MySQL</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pymysql</span><br><span class="line"></span><br><span class="line">conn = pymysql.connect(host=<span class="string">'192.168.199.113'</span>,</span><br><span class="line">                       port=<span class="number">3306</span>,</span><br><span class="line">                       database=<span class="string">'flask_demo'</span>,</span><br><span class="line">                       user=<span class="string">'root'</span>,</span><br><span class="line">                       password=<span class="string">'root'</span>,</span><br><span class="line">                       charset=<span class="string">'utf8'</span>)</span><br><span class="line"></span><br><span class="line">cs = conn.cursor()  <span class="comment"># 获取执行对象</span></span><br><span class="line">line_count = cs.execute(<span class="string">"select * from author"</span>)  <span class="comment"># 用执行对象执行sql语句,返回受影响的行数</span></span><br><span class="line">fetchall_tuple = cs.fetchall()  <span class="comment"># 获取sql查询的结果</span></span><br><span class="line"></span><br><span class="line">conn.commit()  <span class="comment"># 有增改删时, 执行提交</span></span><br><span class="line">cs.close()  <span class="comment"># 关闭</span></span><br><span class="line">conn.close()</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>connection对象<br>conn = pymysql.connect(参数列表)<br>​    参数host：连接的mysql主机，如果本机是’localhost’<br>​    参数port：连接的mysql主机的端口，默认是3306<br>​    参数database：数据库的名称<br>​    参数user：连接的用户名<br>​    参数password：连接的密码<br>​    参数charset：通信采用的编码方式，推荐使用utf8<br>connection对象的方法<br>​    close()关闭连接<br>​    commit()提交<br>​    cursor()返回Cursor对象，用于执行sql语句并获得结果</p>
+</blockquote>
+<ul>
+<li>参数化防止SQL注入</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 对于 sql = 'select * from goods where name="%s" ' % find_name 这样的sql手动写入占位符会造成SQL注入攻击, 如: find_name 为 " or 1=1 or "(双引号也要)时, 可造成攻击</span></span><br><span class="line"><span class="comment"># 安全的方式, 构造参数列表</span></span><br><span class="line">params = [find_name]</span><br><span class="line">count = cs1.execute(<span class="string">'select * from goods where name=%s'</span>, params)</span><br></pre></td></tr></table></figure>
+<h3 id="5-MySQL高级"><a href="#5-MySQL高级" class="headerlink" title="5.MySQL高级"></a>5.MySQL高级</h3><h4 id="1-视图"><a href="#1-视图" class="headerlink" title="1) 视图"></a>1) 视图</h4><ul>
+<li><p>概念</p>
+<p>视图就是一条SELECT语句执行后返回的结果集</p>
+<p>作用: 像函数提高重用性</p>
+</li>
+<li><p>定义</p>
+<p><code>create view 视图名称 as select语句;</code></p>
+</li>
+<li><p>查看已定义的视图</p>
+<p><code>show tables;</code></p>
+</li>
+<li><p>使用<br><code>select * from 视图;</code></p>
+</li>
+<li><p>删除<br><code>drop view 视图名称;</code></p>
+</li>
+</ul>
+<h4 id="2-事务"><a href="#2-事务" class="headerlink" title="2) 事务"></a>2) 事务</h4><ul>
+<li><p>概念</p>
+<p>一个操作序列，这些操作要么都执行，要么都不执行，它是一个不可分割的工作单位</p>
+</li>
+<li><p>事务四大特性</p>
+<ul>
+<li>原子性(Atomicity)<br>​    一个事务必须被视为一个不可分割的最小工作单元</li>
+<li>一致性(Consistency)<br>​    从一个一致性的状态转换到另一个一致性的状态<br>隔离性(Isolation)</li>
+<li>一个事务所做的修改在最终提交以前，对其他事务是不可见的。a=100, 事务提交前,a=100<br>持久性(Durability)</li>
+<li>一旦事务提交，则其所做的修改会永久保存到数据库</li>
+</ul>
+</li>
+<li><p>开启事务</p>
+<p>开启事务后执行修改命令，变更会维护到本地缓存中，而不维护到物理表中, 所以事务内部数据变更, 事务外部数据不变更</p>
+<p><code>begin; | start transaction;</code></p>
+</li>
+<li><p>提交事务<br><code>commit;</code></p>
+</li>
+<li><p>回滚事务</p>
+<p><code>rollback;</code></p>
+</li>
+</ul>
+<blockquote>
+<p>注意<br>修改数据的命令会自动的触发事务，包括insert、update、delete 而在SQL语句中有手动开启事务的原因是：可以进行多次数据的修改，如果成功一起成功，否则一起会滚到之前的数据</p>
+</blockquote>
+<h4 id="4-索引"><a href="#4-索引" class="headerlink" title="4) 索引"></a>4) 索引</h4><ul>
+<li><p>概念<br>索引是一种特殊的文件, 它们包含着对数据表里所有记录的引用指针。<br>目的:  提高速度</p>
+</li>
+<li><p>使用</p>
+<ul>
+<li><p>查看索引    </p>
+<p><code>show index from 表名</code></p>
+</li>
+<li><p>创建索引</p>
+<p><code>create index 索引名称 on 表名(字段名称(长度))</code></p>
+</li>
+<li><p>删除索引</p>
+<p><code>drop index 索引名称 on 表名</code></p>
+</li>
+</ul>
+<blockquote>
+<p>注意<br>​    索引影响更新和插入速度，因为它需要同样更新每个索引文件。<br>​    对于一个经常需要更新和插入的表格或比较小的表，就没有必要为一个很少使用的where字句单独建立索引了</p>
+</blockquote>
+</li>
+</ul>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年03月01日 23:58</p>
+        <p>原始链接： <a class="post-url" href="/2019/03/01/016-MySQL/" title="MySQL">https://www.jackiezz.com/2019/03/01/016-MySQL/</a></p>
+        <footer>
+            <a href="https://www.jackiezz.com">
+                <img src="/images/logo.png" alt="John Doe">
+                John Doe
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://www.jackiezz.com/2019/03/01/016-MySQL/&title=《MySQL》 — Hexo&pic=https://www.jackiezz.comimages/logo.png" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.jackiezz.com/2019/03/01/016-MySQL/&title=《MySQL》 — Hexo&source=" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://www.jackiezz.com/2019/03/01/016-MySQL/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《MySQL》 — Hexo&url=https://www.jackiezz.com/2019/03/01/016-MySQL/&via=https://www.jackiezz.com" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://www.jackiezz.com/2019/03/01/016-MySQL/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://www.jackiezz.com/2019/03/01/016-MySQL/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/Mysql/" class="color1">Mysql</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-安装和卸载"><span class="post-toc-text">1.安装和卸载</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-MySQL数据类型和约束"><span class="post-toc-text">2. MySQL数据类型和约束</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-对数据库及数据的操作"><span class="post-toc-text">3.对数据库及数据的操作</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-Python操作MySQL"><span class="post-toc-text">4. Python操作MySQL</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-MySQL高级"><span class="post-toc-text">5.MySQL高级</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-视图"><span class="post-toc-text">1) 视图</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-事务"><span class="post-toc-text">2) 事务</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-索引"><span class="post-toc-text">4) 索引</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2019/03/01/017-python提高/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          Python提高
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2019/03/01/014-hexo/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">Hexo</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2019 John Doe<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://www.jackiezz.com",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/Database/">Database</a><a class="category-link" href="/categories/Markdown/">Markdown</a><a class="category-link" href="/categories/前端/">前端</a><a class="category-link" href="/categories/博客/">博客</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Flask/" style="font-size: 20px;">Flask</a> <a href="/tags/HTML-CSS/" style="font-size: 20px;">HTML&CSS</a> <a href="/tags/Mysql/" style="font-size: 15px;">Mysql</a> <a href="/tags/Redis/" style="font-size: 15px;">Redis</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/jquery/" style="font-size: 10px;">jquery</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a href="/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/Flask/" style="font-size: 20px;">Flask</a> <a href="/tags/HTML-CSS/" style="font-size: 20px;">HTML&CSS</a> <a href="/tags/Mysql/" style="font-size: 15px;">Mysql</a> <a href="/tags/Redis/" style="font-size: 15px;">Redis</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/jquery/" style="font-size: 10px;">jquery</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>
